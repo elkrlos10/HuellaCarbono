@@ -81,8 +81,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Css\estilos.css" />
+    <Content Include="Css\fullpage.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\anterior.png" />
+    <Content Include="Images\fondoConciencia.png" />
+    <Content Include="Images\fondoConciencia2.png" />
+    <Content Include="Images\fondoFinal.png" />
+    <Content Include="Images\FondoIncio.png" />
+    <Content Include="Images\fondoPapel.png" />
+    <Content Include="Images\fondoTransporte-02.png" />
+    <Content Include="Images\fondoTransporte.png" />
+    <Content Include="Images\fondoVuelos.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\nube1.png" />
+    <Content Include="Images\nube2.png" />
+    <Content Include="Images\nube3.png" />
+    <Content Include="Images\nube4.png" />
+    <Content Include="Images\planeta.png" />
+    <Content Include="Images\siguiente.png" />
     <Content Include="index.html" />
+    <Content Include="Models\Encuesta.js" />
     <Content Include="Models\General.js" />
     <Content Include="Models\Principal.js" />
     <Content Include="Models\Prueba.js" />
@@ -90,9 +110,12 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.fullPage.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\sweetalert2.min.js" />
     <Content Include="Scripts\waitingDialog.js" />
+    <Content Include="Views\Encuesta.html" />
     <Content Include="Views\Prueba.html" />
     <Content Include="Views\Prueba2.html" />
     <Content Include="Web.config" />
@@ -105,6 +128,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Fonts\ROBOTO-BLACK.TTF" />
+    <Content Include="Fonts\ROBOTO-BLACKITALIC.TTF" />
+    <Content Include="Fonts\ROBOTO-BOLDITALIC.TTF" />
+    <Content Include="Fonts\ROBOTO-BOLD_0.TTF" />
+    <Content Include="Fonts\ROBOTO-ITALIC.TTF" />
+    <Content Include="Fonts\ROBOTO-LIGHTITALIC.TTF" />
+    <Content Include="Fonts\ROBOTO-LIGHT_0.TTF" />
+    <Content Include="Fonts\ROBOTO-MEDIUM.TTF" />
+    <Content Include="Fonts\ROBOTO-MEDIUMITALIC.TTF" />
+    <Content Include="Fonts\ROBOTO-REGULAR.TTF" />
+    <Content Include="Fonts\ROBOTO-THIN.TTF" />
+    <Content Include="Fonts\ROBOTO-THINITALIC.TTF" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

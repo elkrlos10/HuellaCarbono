@@ -14,7 +14,12 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute"]);
         $routeProvider.when("/Prueba2", {
             templateUrl: "Views/Prueba2.html",
             controller: "Prueba2Controller"
-        })
+		})
+
+		$routeProvider.when("/Encuesta", {
+			templateUrl: "Views/Encuesta.html",
+			controller: "EncuestaController"
+		})
         //Indicamos que cuando copien una ruta que no existe redireccione al index
         $routeProvider.otherwise({ redirecTo: "/" });
     }

@@ -1,0 +1,270 @@
+﻿body {
+	overflow:hidden;
+	overflow-y:hidden;
+}
+
+.container-fluid{
+	margin:0px;
+	padding:0px;
+}
+
+.contenedor {
+	overflow-y: hidden;
+	width: 700%;
+	height: 100vh;
+	background: #ffe0eb;
+}
+
+/*-----------SECCION DE INICIO-------------*/
+
+.index {
+	display:none;
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../Images/FondoIncio.png');
+	background-size:100%;
+	overflow-y:hidden;
+}
+
+.logo img{
+	margin: 0px auto;
+	display:block;
+	padding-top:60px;
+	width:235px;
+}
+
+.txtInicio {
+	margin:30px;
+	text-align: center;
+	font-family: RobotoLight;
+	font-size: 30px;
+	color: #4C4C4C;
+}
+
+.selectCargo {
+	margin: 30px;
+	text-align: center;
+	font-family: RobotoLight;
+	font-size: 23px;
+	color: #4C4C4C;
+}
+
+.selectCargo input{
+	margin:10px;
+}
+
+.radio {
+	border: 2px solid #82A20D;
+}
+
+.boton {
+	background: #82A20D;
+	border-radius: 20px;
+	padding: 5px;
+	border: none;
+	width: 156px;
+	height: 40px;
+	font-family: ROBOTO-MEDIUM;
+	font-size: 15px;
+	display:block;
+	margin:20px auto;
+}
+
+.boton:hover {
+	background: #6a8204;
+}
+
+.bgAnimado{
+}
+
+.tierra {
+	display:block;
+	margin:0 auto;
+	transform-origin:center center;
+	animation: rotar infinite 12s;
+}
+
+@keyframes rotar{
+	0%{
+		transform: rotate(0deg);
+	}
+
+
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+.nubes {
+	position: absolute;
+	z-index: 999;
+	bottom: 20px;
+
+}
+
+#nube1 {
+	position: absolute;
+	left: -300px;
+	bottom: 120px;
+	animation: moverDer infinite 10s;
+}
+
+@keyframes moverDer{
+	0%{
+		left:-300px;
+	}
+
+	100%{
+		left: 1700px;
+	}
+}
+
+#nube2 {
+	position: absolute;
+	left: 0px;
+	bottom: 200px;
+	animation: moverIzq infinite 12s;
+}
+
+
+#nube3 {
+	position: absolute;
+	left: 1600px;
+	bottom: 80px;
+	animation: moverIzq infinite 10s;
+}
+
+@keyframes moverIzq{
+	0% {
+		left: 1600px;
+	}
+
+	100% {
+		left: -300px;
+	}
+}
+
+#nube4 {
+	position: absolute;
+	left: 1600px;
+	bottom: -10px;
+	animation: moverDer infinite 12s;
+}
+
+
+/*----------------TRANSPORTE------------------*/
+.transporte {
+	display:none;
+	width: 100vw;
+	height: 100vh;
+	background-size: 100%;
+	background-image: url('../Images/fondoTransporte-02.png');
+}
+
+.logoEncuesta{
+	padding:15px;
+}
+
+
+.logoEncuesta img{
+	width: 170px;
+}
+
+.txtPregunta {
+	font-family: ROBOTO-REGULAR;
+	font-size: 30px;
+	text-align: center;
+	color: #4C4C4C;
+	margin:20px;
+}
+
+.preguntas{
+	margin:10px;
+}
+
+.mediosTrans {
+	display: block;
+	margin: 0 auto;
+	background: none;
+	border: none;
+	color: #4C4C4C;
+	font-family: RobotoLight;
+	font-size: 25px;
+	text-align: center;
+	border-bottom: 1px solid #4C4C4C;
+}
+
+.mediosTrans option {
+	padding: 0px 3px;
+	background: none;
+	border: none;
+	font-family: RobotoLight;
+	font-size: 25px;
+	text-align: center;
+	border-bottom: 1px solid #4C4C4C;
+}
+
+.gris {
+	width: 22%;
+	height: 20px;
+	border-radius: 20px;
+	background: #4c4c4c;
+	display: block;
+	margin: 0 auto;
+	position: absolute;
+	top: 472px;
+	right: 39%;
+	z-index:998;
+}
+
+.degradado {
+	width: 22%;
+	height: 20px;
+	border-radius: 20px;
+	background: linear-gradient(to right,#FFAA3B,#FF5A19);
+	margin: 0 auto;
+	position: absolute;
+	top: 472px;
+	right: 39%;
+}
+
+.circulo {
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	background: white;
+	border: 2px solid #4c4c4c;
+	position: absolute;
+	top: 466px;
+	right: 60%;
+	z-index: 999;
+}
+
+@font-face {
+	font-family: 'RobotoLight';
+	src: url('../Fonts/ROBOTO-LIGHT_0.TTF') format('truetype');
+}
+@font-face {
+	font-family: 'ROBOTO-MEDIUM';
+	src: url('../Fonts/ROBOTO-MEDIUM.TTF') format('truetype');
+}
+@font-face {
+	font-family: 'ROBOTO-REGULAR';
+	src: url('../Fonts/ROBOTO-REGULAR.TTF') format('truetype');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@
 namespace HuellaCarbonoWeb.Controllers
 {
     using LogicaNegocio.Logica;
+    using Modelo.Datos;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -10,8 +11,8 @@ namespace HuellaCarbonoWeb.Controllers
 
     public class UsuarioController: ApiController
     {
-        [HttpGet]
-        [AllowAnonymous]
+        [HttpPost]
+       
         public async Task<Response> IniciarSesion()
         {
             try
@@ -22,7 +23,7 @@ namespace HuellaCarbonoWeb.Controllers
 
                 return new Response
                 {
-                    success = true,
+                    IsSuccess = true,
                     Result = res,
                     Result1 = token
                 };
@@ -33,40 +34,33 @@ namespace HuellaCarbonoWeb.Controllers
 
                 return new Response
                 {
-                    success = false,
+                    IsSuccess = false,
                     Message = e.Message
                 };
 
             }
         }
 
-        [HttpPost]
-        [Authorize]
-        public async Task<Response> Prueba()
+        [HttpGet]
+        public async Task<Usuario> Prueba()
         {
             try
             {
                 UsuarioBl oUsuario = new UsuarioBl();
                 var res = await oUsuario.Prueba();
-                //var token = TokenGenerator.GenerateTokenJwt("123");
-                var identity = Thread.CurrentPrincipal.Identity;
 
-                return new Response
-                {
-                    success = true,
-                    Result = res,
-                   Result1= $" IPrincipal-user: {identity.Name} - IsAuthenticated: {identity.IsAuthenticated}"
-                };
+
+                return (res);
 
             }
             catch (Exception e)
             {
 
-                return new Response
-                {
-                    success = false,
-                    Message = e.Message
-                };
+                return null;
+                //{
+                //    IsSuccess = false,
+                //    Message = e.Message
+                //};
 
             }
         }

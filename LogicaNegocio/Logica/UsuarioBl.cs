@@ -27,19 +27,19 @@ namespace LogicaNegocio.Logica
             return Task.FromResult<Usuario>(Datos);
         }
 
-        public Task<List<Usuario>> Prueba()
+        public Task<Usuario> Prueba()
         {
             //var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);
             PersonaDTO oPersonaDTO = new PersonaDTO();
             var Datos = (from i in entity.Usuario
-                         select i).ToList();
+                         select i).FirstOrDefault();
 
             if (Datos == null)
             {
                 return null;
             }
 
-            return Task.FromResult<List<Usuario>>(Datos);
+            return Task.FromResult<Usuario>(Datos);
         }
 
         //public string RecuperarPassword(string Email, string Cedula)

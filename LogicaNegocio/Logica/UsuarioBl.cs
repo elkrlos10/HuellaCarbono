@@ -27,73 +27,33 @@ namespace LogicaNegocio.Logica
             return Task.FromResult<Usuario>(Datos);
         }
 
-        public Task<Usuario> Prueba()
+        public Task<bool> RegistarEmpresa(EmpresaDTO oEmpresa)
         {
             //var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);
-            PersonaDTO oPersonaDTO = new PersonaDTO();
-            var Datos = (from i in entity.Usuario
-                         select i).FirstOrDefault();
+            Usuario usuario = new Usuario();
+            usuario.NombreUsuario = oEmpresa.Email;
+            usuario.Password = oEmpresa.Password;
 
-            if (Datos == null)
-            {
-                return null;
-            }
+            entity.Usuario.Add(usuario);
+            entity.SaveChanges();
 
-            return Task.FromResult<Usuario>(Datos);
+            var user = (from i in entity.Usuario
+                        where i.NombreUsuario == oEmpresa.Email && oEmpresa.Password == oEmpresa.Password
+                        select i).FirstOrDefault();
+
+            Empresa empresa = new Empresa();
+            empresa.NombreEmpresa = oEmpresa.NombreEmpresa;
+            empresa.Email = oEmpresa.Email;
+            empresa.Nit = oEmpresa.Nit;
+            empresa.Direccion = oEmpresa.Direccion;
+            empresa.IdUsuario = user.IdUsuario;
+            entity.Empresa.Add(empresa);
+            entity.SaveChanges();
+
+            return Task.FromResult<bool>(true);
         }
 
-        //public string RecuperarPassword(string Email, string Cedula)
-        //{
-        //    //var Contraseña = "";
-        //    //PersonaDTO oPersonaDTO = new PersonaDTO();
-        //    //var Instructor = (from i in entity.Instructor
-        //    //                  where i.Email == Email
-        //    //                  && i.Cedula == Cedula
-        //    //                  select i).FirstOrDefault();
-
-        //    //var Coordinador = (from i in entity.Coordinacion
-        //    //                   where i.Correo == Email
-        //    //                   && i.Cedula == Cedula
-        //    //                   select i).FirstOrDefault();
-
-        //    //if (Instructor != null)
-        //    //{
-        //    //    var Usuario = (from i in entity.Usuario
-        //    //                   where i.IdUsuario == Instructor.IdUsuario
-        //    //                   select i).FirstOrDefault();
-
-        //    //    oPersonaDTO.IdUsuario = Instructor.IdUsuario;
-        //    //    oPersonaDTO.Nombre = Instructor.Nombre;
-        //    //    oPersonaDTO.Apellido = Instructor.Apellido;
-        //    //    oPersonaDTO.Cedula = Instructor.Cedula;
-        //    //    Contraseña = SecurityEncode.SecurityEncode.Desencriptar(Usuario.Password);
-        //    //}
-        //    //if (Coordinador != null)
-        //    //{
-        //    //    var Usuario = (from i in entity.Usuario
-        //    //                   where i.IdUsuario == Coordinador.IdUsuario
-        //    //                   select i).FirstOrDefault();
-
-        //    //    oPersonaDTO.IdUsuario = Coordinador.IdUsuario;
-        //    //    oPersonaDTO.Nombre = Coordinador.Nombre;
-        //    //    oPersonaDTO.Apellido = Coordinador.Apellido;
-        //    //    oPersonaDTO.Cedula = Coordinador.Cedula;
-        //    //    Contraseña = SecurityEncode.SecurityEncode.Desencriptar(Usuario.Password);
-        //    //}
-        //    //if (Instructor != null || Coordinador != null)
-        //    //{
-        //    //    var Asunto = "Recupetación de Contraseña";
-        //    //    var Plantilla = "Sr(a) " + oPersonaDTO.Nombre + " " + oPersonaDTO.Apellido + ".<br/> La Contraseña de su cuenta de usuario es " + Contraseña;
-        //    //    SendMail.SendMailMessage(Asunto, Plantilla, Email);
-        //    //    return Email;
-        //    //}
-        //    //else
-        //    //{
-        //    //    return null;
-        //    //}
-
-        //}
-
+     
         public void CambiarContrasena(string Password, string newPassword, int usuario)
         {
             var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);

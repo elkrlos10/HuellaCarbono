@@ -163,6 +163,7 @@
     <Content Include="Fonts\ROBOTO-THIN.TTF" />
     <Content Include="Fonts\ROBOTO-THINITALIC.TTF" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

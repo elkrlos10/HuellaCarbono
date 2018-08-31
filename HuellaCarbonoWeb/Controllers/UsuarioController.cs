@@ -4,6 +4,7 @@ namespace HuellaCarbonoWeb.Controllers
 {
     using LogicaNegocio.Logica;
     using Modelo.Datos;
+    using Modelo.DTO;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace HuellaCarbonoWeb.Controllers
 
     public class UsuarioController: ApiController
     {
-        [HttpPost]
+        [HttpGet]
        
         public async Task<Response> IniciarSesion()
         {
@@ -41,26 +42,21 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<Usuario> Prueba()
+        [HttpPost]
+        public async Task<bool> RegistarEmpresa(EmpresaDTO oEmpresa)
         {
             try
             {
                 UsuarioBl oUsuario = new UsuarioBl();
-                var res = await oUsuario.Prueba();
+                var res = await oUsuario.RegistarEmpresa(oEmpresa);
 
-
-                return (res);
+                return res;
 
             }
             catch (Exception e)
             {
 
-                return null;
-                //{
-                //    IsSuccess = false,
-                //    Message = e.Message
-                //};
+                return false;
 
             }
         }

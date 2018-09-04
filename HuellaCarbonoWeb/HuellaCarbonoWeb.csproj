@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -163,6 +164,7 @@
     <Content Include="Fonts\ROBOTO-THIN.TTF" />
     <Content Include="Fonts\ROBOTO-THINITALIC.TTF" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ApiHuella - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -33,6 +33,7 @@ namespace LogicaNegocio.Logica
             Usuario usuario = new Usuario();
             usuario.NombreUsuario = oEmpresa.Email;
             usuario.Password = oEmpresa.Password;
+            usuario.TipoUsuario = oEmpresa.TipoUsuario;
 
             entity.Usuario.Add(usuario);
             entity.SaveChanges();
@@ -47,6 +48,7 @@ namespace LogicaNegocio.Logica
             empresa.Nit = oEmpresa.Nit;
             empresa.Direccion = oEmpresa.Direccion;
             empresa.IdUsuario = user.IdUsuario;
+            empresa.TipoEmpresa = oEmpresa.TipoEmpresa;
             entity.Empresa.Add(empresa);
             entity.SaveChanges();
 
@@ -68,5 +70,14 @@ namespace LogicaNegocio.Logica
                 entity.SaveChanges();
             }
         }
+
+        public Task<Proyecto> CrearProyecto(Proyecto oProyecto)
+        {
+            entity.Proyecto.Add(oProyecto);
+            entity.SaveChanges();
+
+            return Task.FromResult<Proyecto>(oProyecto);
+        }
+
     }
 }

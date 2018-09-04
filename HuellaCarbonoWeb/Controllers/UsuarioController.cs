@@ -13,7 +13,6 @@ namespace HuellaCarbonoWeb.Controllers
     public class UsuarioController: ApiController
     {
         [HttpGet]
-       
         public async Task<Response> IniciarSesion()
         {
             try
@@ -48,9 +47,9 @@ namespace HuellaCarbonoWeb.Controllers
             try
             {
                 UsuarioBl oUsuario = new UsuarioBl();
-                var res = await oUsuario.RegistarEmpresa(oEmpresa);
+                var response = await oUsuario.RegistarEmpresa(oEmpresa);
 
-                return res;
+                return response;
 
             }
             catch (Exception e)
@@ -58,6 +57,22 @@ namespace HuellaCarbonoWeb.Controllers
 
                 return false;
 
+            }
+        }
+
+        [HttpPost]
+        public async Task<Proyecto> CrearProyecto(Proyecto oProyecto)
+        {
+            try
+            {
+                UsuarioBl oUsuario = new UsuarioBl();
+                var response = await oUsuario.CrearProyecto(oProyecto);
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                return null;
             }
         }
     }

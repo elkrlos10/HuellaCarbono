@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logica\EncuestaBl.cs" />
     <Compile Include="Logica\Response.cs" />
     <Compile Include="Logica\UsuarioBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

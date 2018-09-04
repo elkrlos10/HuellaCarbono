@@ -60,6 +60,7 @@
     <Compile Include="Datos\Vehiculos.cs" />
     <Compile Include="DTO\EmpresaDTO.cs" />
     <Compile Include="DTO\PersonaDTO.cs" />
+    <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

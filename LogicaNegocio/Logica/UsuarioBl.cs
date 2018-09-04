@@ -12,19 +12,25 @@ namespace LogicaNegocio.Logica
     {
         Model1 entity = new Model1();
 
-        public Task<Usuario> IniciarSesion()
+        public Task<UsuarioDTO> IniciarSesion(UsuarioDTO oUser)
         {
             //var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);
             PersonaDTO oPersonaDTO = new PersonaDTO();
             var Datos = (from i in entity.Usuario
-                         select i).FirstOrDefault();
+                         join e in entity.Empresa on i.IdUsuario equals e.IdUsuario
+                         where i.NombreUsuario == oUser.NombreUsuario & i.Password == oUser.Password
+                         select new UsuarioDTO{
+                             IdUsuario = i.IdUsuario,
+                             NombreUsuario= i.NombreUsuario,
+                             TipoEmpresa= e.TipoEmpresa,
+                         }).FirstOrDefault();
 
             if (Datos == null)
             {
                 return null;
             }
 
-            return Task.FromResult<Usuario>(Datos);
+            return Task.FromResult<UsuarioDTO>(Datos);
         }
 
         public Task<bool> RegistarEmpresa(EmpresaDTO oEmpresa)

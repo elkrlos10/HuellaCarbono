@@ -12,32 +12,21 @@ namespace HuellaCarbonoWeb.Controllers
 
     public class UsuarioController: ApiController
     {
-        [HttpGet]
-        public async Task<Response> IniciarSesion()
+        [HttpPost]
+        public async Task<UsuarioDTO> IniciarSesion(UsuarioDTO oUser)
         {
             try
             {
                 UsuarioBl oUsuario = new UsuarioBl();
-                var res = await oUsuario.IniciarSesion();
+                var response = await oUsuario.IniciarSesion(oUser);
                 var token = TokenGenerator.GenerateTokenJwt("123");
 
-                return new Response
-                {
-                    IsSuccess = true,
-                    Result = res,
-                    Result1 = token
-                };
+                return response;
 
             }
             catch (Exception e)
             {
-
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = e.Message
-                };
-
+                return null;
             }
         }
 

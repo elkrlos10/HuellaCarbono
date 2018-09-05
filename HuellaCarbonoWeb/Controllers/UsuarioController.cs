@@ -50,6 +50,25 @@ namespace HuellaCarbonoWeb.Controllers
         }
 
         [HttpPost]
+        public async Task<Usuario> RegistarEmpresa1()
+        {
+            try
+            {
+                UsuarioBl oUsuarioBl = new UsuarioBl();
+                var response = await oUsuarioBl.ConsultarUsuario();
+
+                return response;
+
+            }
+            catch (Exception e)
+            {
+
+                return null;
+
+            }
+        }
+
+        [HttpPost]
         public async Task<Proyecto> CrearProyecto(Proyecto oProyecto)
         {
             try

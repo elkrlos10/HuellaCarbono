@@ -16,6 +16,7 @@ namespace LogicaNegocio.Logica
         {
             //var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);
             PersonaDTO oPersonaDTO = new PersonaDTO();
+
             var Datos = (from i in entity.Usuario
                          join e in entity.Empresa on i.IdUsuario equals e.IdUsuario
                          where i.NombreUsuario == oUser.NombreUsuario & i.Password == oUser.Password
@@ -35,25 +36,34 @@ namespace LogicaNegocio.Logica
 
         public Task<bool> RegistarEmpresa(EmpresaDTO oEmpresa)
         {
+
             //var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);
+            var user = (from i in entity.Usuario
+                        where i.NombreUsuario == oEmpresa.Email
+                        select i).FirstOrDefault();
+
+            if (user != null)
+            {
+                return Task.FromResult<bool>(false);
+            }
             Usuario usuario = new Usuario();
             usuario.NombreUsuario = oEmpresa.Email;
             usuario.Password = oEmpresa.Password;
-            usuario.TipoUsuario = oEmpresa.TipoUsuario;
+            usuario.TipoUsuario =1;
 
             entity.Usuario.Add(usuario);
             entity.SaveChanges();
 
-            var user = (from i in entity.Usuario
-                        where i.NombreUsuario == oEmpresa.Email && oEmpresa.Password == oEmpresa.Password
-                        select i).FirstOrDefault();
+            //var user1 = (from i in entity.Usuario
+            //            where i.NombreUsuario == oEmpresa.Email
+            //            select i).FirstOrDefault();
 
             Empresa empresa = new Empresa();
             empresa.NombreEmpresa = oEmpresa.NombreEmpresa;
             empresa.Email = oEmpresa.Email;
             empresa.Nit = oEmpresa.Nit;
             empresa.Direccion = oEmpresa.Direccion;
-            empresa.IdUsuario = user.IdUsuario;
+            empresa.IdUsuario = usuario.IdUsuario;
             empresa.TipoEmpresa = oEmpresa.TipoEmpresa;
             entity.Empresa.Add(empresa);
             entity.SaveChanges();
@@ -83,6 +93,14 @@ namespace LogicaNegocio.Logica
             entity.SaveChanges();
 
             return Task.FromResult<Proyecto>(oProyecto);
+        }
+
+        public Task<Usuario> ConsultarUsuario()
+        {
+            var Usuario = (from i in entity.Usuario
+                           select i).FirstOrDefault();
+
+            return Task.FromResult<Usuario>(Usuario);
         }
 
     }

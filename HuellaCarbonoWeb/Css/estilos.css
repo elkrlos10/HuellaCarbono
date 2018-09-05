@@ -12,18 +12,28 @@
 	overflow-y: hidden;
 	width: 700%;
 	height: 100vh;
-	background: #ffe0eb;
+	position:relative;
+	display:inline-flex;
+}
+
+section{
+	display:inline-block;
+	width:100%;
+	height:100vh;
+	max-height:100vh;
+	overflow:auto;
+
 }
 
 /*-----------SECCION DE INICIO-------------*/
 
 .index {
-	display:none;
+	position:relative;
 	width: 100vw;
 	height: 100vh;
 	background-image: url('../Images/FondoIncio.png');
-	background-size:100%;
-	overflow-y:hidden;
+	background-size: 100%;
+	overflow-y: hidden;
 }
 
 .logo img{
@@ -77,22 +87,9 @@
 .bgAnimado{
 }
 
-.tierra {
+.tierra img{
 	display:block;
 	margin:0 auto;
-	transform-origin:center center;
-	animation: rotar infinite 12s;
-}
-
-@keyframes rotar{
-	0%{
-		transform: rotate(0deg);
-	}
-
-
-	100%{
-		transform: rotate(360deg);
-	}
 }
 
 .nubes {
@@ -151,10 +148,24 @@
 	animation: moverDer infinite 12s;
 }
 
+.der{
+	position:absolute;
+	right:10px;
+	top:48%;
+	cursor:pointer;
+}
+
+.izq {
+	position: absolute;
+	left: 10px;
+	top: 48%;
+	cursor: pointer;
+}
+
 
 /*----------------TRANSPORTE------------------*/
 .transporte {
-	display:none;
+	position: relative;
 	width: 100vw;
 	height: 100vh;
 	background-size: 100%;
@@ -203,41 +214,56 @@
 	text-align: center;
 	border-bottom: 1px solid #4C4C4C;
 }
+.bar{
+	position:relative;
+}
 
 .gris {
+	position: absolute;
 	width: 22%;
 	height: 20px;
 	border-radius: 20px;
 	background: #4c4c4c;
-	display: block;
+	right: 0px;
+	left: 0px;
+	z-index: 998;
 	margin: 0 auto;
-	position: absolute;
-	top: 472px;
-	right: 39%;
-	z-index:998;
 }
 
 .degradado {
+	position: absolute;
+	right: 0px;
+	left: 0px;
 	width: 22%;
 	height: 20px;
 	border-radius: 20px;
 	background: linear-gradient(to right,#FFAA3B,#FF5A19);
 	margin: 0 auto;
-	position: absolute;
-	top: 472px;
-	right: 39%;
 }
 
 .circulo {
+	position: absolute;
+	display: block;
+	margin: 0 auto;
+	right: 0px;
+	left: 0px;
 	width: 30px;
 	height: 30px;
 	border-radius: 100%;
 	background: white;
 	border: 2px solid #4c4c4c;
-	position: absolute;
-	top: 466px;
-	right: 60%;
 	z-index: 999;
+}
+
+/*---------------------VUELOS--------------------*/
+
+.vuelos {
+	position: relative;
+	background-image: url('../Images/fondoVuelos.png');
+	width: 100vw;
+	height: 100vh;
+	background-size: 100%;
+	background-position: bottom center;
 }
 
 @font-face {

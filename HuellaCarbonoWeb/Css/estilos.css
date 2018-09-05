@@ -28,7 +28,11 @@ section{
 /*-----------SECCION DE INICIO-------------*/
 
 .index {
+<<<<<<< HEAD
 	position:relative;
+=======
+	display: block;
+>>>>>>> 2a042f7c99be882c9f068c10a2f809ac0dfec55d
 	width: 100vw;
 	height: 100vh;
 	background-image: url('../Images/FondoIncio.png');

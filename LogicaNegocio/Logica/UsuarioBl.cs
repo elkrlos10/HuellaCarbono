@@ -24,6 +24,7 @@ namespace LogicaNegocio.Logica
                              IdUsuario = i.IdUsuario,
                              NombreUsuario= i.NombreUsuario,
                              TipoEmpresa= e.TipoEmpresa,
+                             IdEmpresa= e.IdEmpresa
                          }).FirstOrDefault();
 
             if (Datos == null)

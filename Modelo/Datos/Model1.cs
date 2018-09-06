@@ -8,7 +8,7 @@ namespace Modelo.Datos
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model11")
+            : base("name=Model1")
         {
         }
 
@@ -23,29 +23,29 @@ namespace Modelo.Datos
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Empresa>()
-                .Property(e => e.NombreEmpresa)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Empresa>()
+            //    .Property(e => e.NombreEmpresa)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<Empresa>()
-                .Property(e => e.Nit)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Empresa>()
+            //    .Property(e => e.Nit)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<Empresa>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Empresa>()
+            //    .Property(e => e.Email)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<Empresa>()
-                .Property(e => e.Direccion)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Empresa>()
+            //    .Property(e => e.Direccion)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<Usuario>()
-                .Property(e => e.NombreUsuario)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Usuario>()
+            //    .Property(e => e.NombreUsuario)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<Usuario>()
-                .Property(e => e.Password)
-                .IsUnicode(false);
+            //modelBuilder.Entity<Usuario>()
+            //    .Property(e => e.Password)
+            //    .IsUnicode(false);
         }
     }
 }

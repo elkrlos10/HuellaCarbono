@@ -61,13 +61,25 @@
 					<br />
 					bicicleta?
 				</p>
-				<div class="bar">
-					<div class="gris"></div>
-					<div class="degradado"></div>
-					<div class="circulo"></div>
+				<div>
+					<diV>
+						<p>Price: {{priceSlider.value}}</p>
+						<rzslider rz-slider-model="priceSlider.value"
+								  rz-slider-options="priceSlider.options">
+						</rzslider>
+					</diV>
+					<!--div ng-controller="TestController as vm">
+						
+						<rzslider rz-slider-model="vm.priceSlider.value" rz-slider-options="vm.priceSlider.options"></rzslider>
+					</div>-->
 				</div>
-			</div>
-		</section>
+						<!--<div class="bar" id="bar">
+				<div class="gris"></div>
+				<div class="degradado"></div>
+				<div class="circulo" id="circulo"></div>
+			</div>-->
+					</div>
+</section>
 
 		<section class="vuelos">
 			<div class="logoEncuesta">

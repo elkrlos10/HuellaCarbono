@@ -1,15 +1,15 @@
 ﻿//controlador angular de personas
 (function () {
-    //var personas = function ($scope, nombre del servicio) {
+	//var personas = function ($scope, nombre del servicio) {
 	var encuesta = function ($scope) {
 
-		$("#botonPasar").click(function() {
+		$("#botonPasar").click(function () {
 			var enlace = $(this).attr("enlace");
 			var posX = $(enlace).position().left;
 
-			$("html,body").stop(true,true).animate({
-				scrollLeft:posX+"px"
-			},1000, "easeOutExpo")
+			$("html,body").stop(true, true).animate({
+				scrollLeft: posX + "px"
+			}, 1000, "easeOutExpo")
 		})
 
 		//Transporte
@@ -41,13 +41,22 @@
 			}, 1000, "easeOutExpo")
 		})
 
-	}
-	
 
+		//Mover Barra
+		var vm = this;
+
+		$scope.priceSlider = {
+			value: 200,
+			options: {
+				floor: 0,
+				ceil: 500
+			}
+		}
+	}
 
     //inyectar las dependencias que se esta usando
 	encuesta.$inject = ["$scope"];
-    //para declarar que este es mi controlador
-	AngularApp.controller("EncuestaController", encuesta);
+//para declarar que este es mi controlador
+AngularApp.controller("EncuestaController", encuesta);
 
-})()
+}) ()

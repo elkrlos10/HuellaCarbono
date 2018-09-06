@@ -1,5 +1,5 @@
 ﻿//Inicializamos el modulo de angular e injectamos las dependencias que necesite
-var AngularApp = angular.module("HuellaApp", ["ngRoute"]);
+var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule"]);
 
 //Configuración de las rutas (vistas)
 (function () {
@@ -10,11 +10,6 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute"]);
             templateUrl: "Views/Prueba.html",
             controller: "PersonasController"
         })
-
-        $routeProvider.when("/Prueba2", {
-            templateUrl: "Views/Prueba2.html",
-            controller: "Prueba2Controller"
-		})
 
 		$routeProvider.when("/Encuesta", {
 			templateUrl: "Views/Encuesta.html",

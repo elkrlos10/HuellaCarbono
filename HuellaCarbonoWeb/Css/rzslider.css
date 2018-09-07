@@ -7,7 +7,9 @@
   display: inline-block;
   width:30%;
   height: 4px;
-  margin: 35px 0 15px 0;
+  right:0px;
+  left:0px;
+  margin: 35px auto;
   vertical-align: middle;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -48,6 +50,7 @@
   position: absolute;
   display: inline-block;
   white-space: nowrap;
+  font-size:18px;
 }
 
 .rzslider .rz-base {
@@ -71,12 +74,12 @@
 }
 
 .rzslider .rz-bar {
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 4px;
-  background: #d8e0f3;
-  border-radius: 2px;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 17px;
+	background: #545454;
+	border-radius: 13px;
 }
 
 .rzslider .rz-bar-wrapper.rz-transparent .rz-bar {
@@ -94,7 +97,7 @@
 .rzslider .rz-selection {
   z-index: 2;
   background: #0db9f0;
-  border-radius: 2px;
+  border-radius: 17px;
 }
 
 .rzslider .rz-restricted {
@@ -104,13 +107,14 @@
 }
 
 .rzslider .rz-pointer {
-  top: -14px;
-  z-index: 3;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  background-color: #0db9f0;
-  border-radius: 16px;
+	top: -7px;
+	z-index: 3;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	background-color:white;
+	border-radius: 16px;
+	border: 2px solid #5f5f5f;
 }
 
 .rzslider .rz-pointer:after {
@@ -119,13 +123,13 @@
   left: 12px;
   width: 8px;
   height: 8px;
-  background: #ffffff;
+  background: none;
   border-radius: 4px;
   content: '';
 }
 
 .rzslider .rz-pointer:hover:after {
-  background-color: #ffffff;
+  background-color: none;
 }
 
 .rzslider .rz-pointer.rz-active {
@@ -133,10 +137,11 @@
 }
 
 .rzslider .rz-pointer.rz-active:after {
-  background-color: #451aff;
+  background-color: none;
 }
 
 .rzslider .rz-bubble {
+  visibility:visible;
   bottom: 16px;
   padding: 1px 3px;
   color: #55637d;
@@ -147,16 +152,21 @@
   color: #55637d;
 }
 
+
+.rzslider .rz-model-value {
+	visibility: hidden !important;
+}
+
 .rzslider .rz-ticks {
-  position: absolute;
-  top: -3px;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 0;
-  margin: 0;
-  list-style: none;
-  box-sizing: border-box;
+	position: absolute;
+	top: -3px;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 0;
+	margin: 0;
+	list-style: none;
+	box-sizing: border-box;
 }
 
 .rzslider .rz-ticks-values-under .rz-tick-value {

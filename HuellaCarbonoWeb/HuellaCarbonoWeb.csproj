@@ -100,6 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\angular-material.min.css" />
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\estilos.css" />
     <Content Include="Css\examples.css" />
@@ -130,6 +131,11 @@
     <Content Include="Models\Principal.js" />
     <Content Include="Models\Prueba.js" />
     <Content Include="Models\Prueba2.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-material.min.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />

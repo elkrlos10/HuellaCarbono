@@ -43,9 +43,7 @@ namespace HuellaCarbonoWeb.Controllers
             }
             catch (Exception e)
             {
-
-                return false;
-
+                throw;
             }
         }
 

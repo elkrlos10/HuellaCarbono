@@ -1,124 +1,312 @@
 ﻿<div id="sigue" class="contenedor">
-		<section class="index">
-			<div class="slide">
-				<div class="logo justify-content-center">
-					<img class="center-block" src="../Images/logo.png" alt="Logo Huella de Carbono" />
-				</div>
-				<div>
-					<p class="txtInicio">
-						Calcula la huella de carbono <br />
-						de tu organización
-					</p>
-					<div class="selectCargo">
-						<form>
-							<input class="radio" type="radio" name="cargo" value="Funcionario" />Funcionario
-							<input class="radio" type="radio" name="cargo" value="Aprendiz" />Estudiante
-							<button type="submit"  id="botonPasar" class="botonPasar center-block btn btn-success boton" enlace=".transporte">
-								CALCULAR
-							</button>
-						</form>
-					</div>
-				</div>
-				<div class="bgAnimado justify-content-center">
-					<div class="tierra">
-						<img src="../Images/tierra.gif" />
-					</div>
-					<div class="nubes">
-						<img id="nube1" src="../Images/nube1.png" />
-						<img id="nube2" src="../Images/nube2.png" />
-						<img id="nube3" src="../Images/nube3.png" />
-						<img id="nube4" src="../Images/nube4.png" />
-					</div>
-				</div>
+	<section class="index">
+		<div class="slide">
+			<div class="logo justify-content-center">
+				<img class="center-block" src="../Images/logo.png" alt="Logo Huella de Carbono" />
 			</div>
-		</section>
-
-		<section class="transporte">
-			<div class="logoEncuesta">
-				<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
-			</div>
-			<div class="pasar">
-				<div class="izq">
-					<img id="ant1" src="../Images/anterior.png" alt="Anterior"  enlace=".index" />
-				</div>
-				<div class="der botonPasar">
-					<img  id="sig1" src="../Images/siguiente.png" alt="Siguiente"  enlace=".vuelos"/>
-				</div>
-			</div>
-			<div class="preguntas">
-				<p class="txtPregunta">
-					¿Cuál medio de transporte usa para llegar a la
-					<br />
-					institución?
+			<div>
+				<p class="txtInicio">
+					Calcula la huella de carbono <br />
+					de tu organización
 				</p>
-				<select class="mediosTrans">
-					<option value="Bicicleta">Bicicleta</option>
-					<option value="Automovil">Automovil</option>
-					<option value="N/A">N/A</option>
-				</select>
-				<p class="txtPregunta">
-					¿Cuantos kilometros recorre diariamente en
-					<br />
-					bicicleta?
-				</p>
-				<div>
-					<diV>
-						<p>Price: {{priceSlider.value}}</p>
-						<rzslider rz-slider-model="priceSlider.value"
-								  rz-slider-options="priceSlider.options">
-						</rzslider>
-					</diV>
-					<!--div ng-controller="TestController as vm">
-						
-						<rzslider rz-slider-model="vm.priceSlider.value" rz-slider-options="vm.priceSlider.options"></rzslider>
-					</div>-->
-				</div>
-						<!--<div class="bar" id="bar">
-				<div class="gris"></div>
-				<div class="degradado"></div>
-				<div class="circulo" id="circulo"></div>
-			</div>-->
-					</div>
-</section>
-
-		<section class="vuelos">
-			<div class="logoEncuesta">
-				<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
-			</div>
-			<div class="pasar">
-				<div class="izq">
-					<img id="ant2" src="../Images/anterior.png" alt="Anterior" enlace=".transporte" />
-				</div>
-				<div class="der botonPasar">
-					<img id="sig2" src="../Images/siguiente.png" alt="Siguiente" enlace=".vuelos" />
+				<div class="selectCargo">
+					<form>
+						<input class="radio" type="radio" name="cargo" value="Funcionario" />Funcionario
+						<input class="radio" type="radio" name="cargo" value="Aprendiz" />Estudiante
+						<button type="submit" id="botonPasar" class="botonPasar center-block btn btn-success boton" enlace=".transporte">
+							CALCULAR
+						</button>
+					</form>
 				</div>
 			</div>
-			<div class="preguntas">
+			<div class="bgAnimado justify-content-center">
+				<div class="tierra">
+					<img src="../Images/tierra.gif" />
+				</div>
+				<div class="nubes">
+					<img id="nube1" src="../Images/nube1.png" />
+					<img id="nube2" src="../Images/nube2.png" />
+					<img id="nube3" src="../Images/nube3.png" />
+					<img id="nube4" src="../Images/nube4.png" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="transporte">
+		<div class="logoEncuesta">
+			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
+		</div>
+		<div class="pasar">
+			<div class="izq">
+				<img id="ant1" src="../Images/anterior.png" alt="Anterior" enlace=".index" />
+			</div>
+			<div class="der botonPasar">
+				<img id="sig1" src="../Images/siguiente.png" alt="Siguiente" enlace=".vuelos" />
+			</div>
+		</div>
+		<div class="preguntas">
+			<p class="txtPregunta">
+				¿Cuál medio de transporte usa para llegar a la
+				<br />
+				institución?
+			</p>
+			<select class="mediosTrans">
+				<option value="Bicicleta">Bicicleta</option>
+				<option value="Automovil">Automovil</option>
+				<option value="N/A">N/A</option>
+			</select>
+			<p class="txtPregunta">
+				¿Cuantos kilometros recorre diariamente en
+				<br />
+				bicicleta?
+			</p>
+			<div>
+				<diV>
+					<rzslider rz-slider-model="bici.value"
+							  rz-slider-options="bici.options">
+					</rzslider>
+					<p class="cont1SlideBar">{{bici.value}} Kilometros</p>
+				</diV>
+			</div>
+		</div>
+	</section>
+	<section class="vuelos">
+		<div class="logoEncuesta">
+			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
+		</div>
+		<div class="pasar">
+			<div class="izq">
+				<img id="ant2" src="../Images/anterior.png" alt="Anterior" enlace=".transporte" />
+			</div>
+			<div class="der botonPasar">
+				<img id="sig2" src="../Images/siguiente.png" alt="Siguiente" enlace=".papel" />
+			</div>
+		</div>
+		<div class="preguntas">
+			<div class="pregunta1 pregunta">
 				<p class="txtPregunta">
 					¿Cuántos vuelos nacionales realiza al año?
 				</p>
-				<div class="bar">
-					<div class="gris"></div>
-					<div class="degradado"></div>
-					<div class="circulo"></div>
+				<div>
+					<diV>
+						<rzslider style="margin:40px auto"
+								  rz-slider-model="vuelosNacionales.value"
+								  rz-slider-options="vuelosNacionales.options">
+						</rzslider>
+						<p class="cont1SlideBar"
+						   style="top:36%">{{vuelosNacionales.value}} Vuelos<br />Ida y Vuelta cuentan como un viaje</p>
+					</diV>
 				</div>
+			</div>
+			<div class="pregunta2 pregunta">
 				<p class="txtPregunta">
 					¿Cuántos vuelos internacionales realiza al año?
 				</p>
-				<div class="bar">
-					<div class="gris"></div>
-					<div class="degradado"></div>
-					<div class="circulo"></div>
+				<div>
+					<diV>
+						<rzslider style="margin:40px auto"
+								  rz-slider-model="vuelosInternacionales.value"
+								  rz-slider-options="vuelosInternacionales.options">
+						</rzslider>
+						<p class="cont1SlideBar"
+						   style="top:58%">{{vuelosInternacionales.value}} Vuelos<br />Ida y Vuelta cuentan como un viaje</p>
+					</diV>
 				</div>
+			</div>
+			<div class="pregunta3 pregunta">
 				<p class="txtPregunta">
 					¿Cuántas horas  promedio ha viajado en avión al año?
 				</p>
-				<div class="bar">
-					<div class="gris"></div>
-					<div class="degradado"></div>
-					<div class="circulo"></div>
+				<div>
+					<diV>
+						<rzslider style="margin:40px auto"
+								  rz-slider-model="horasVuelos.value"
+								  rz-slider-options="horasVuelos.options">
+						</rzslider>
+						<p class="cont1SlideBar"
+						   style="top:81%">{{horasVuelos.value}} Horas</p>
+					</diV>
 				</div>
-
 			</div>
-		</section>
-	</div>
+		</div>
+	</section>
+	<section class="papel">
+		<div class="logoEncuesta" style="position:absolute">
+			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
+		</div>
+		<div class="pasar">
+			<div class="izq">
+				<img id="ant3" src="../Images/anterior.png" alt="Anterior" enlace=".vuelos" />
+			</div>
+			<div class="der botonPasar">
+				<img id="sig3" src="../Images/siguiente.png" alt="Siguiente" enlace=".conciencia1" />
+			</div>
+		</div>
+		<div class="preguntas" style="margin:103px;">
+			<div class="pregunta1 pregunta"
+				 style="margin-bottom:120px">
+				<p class="txtPregunta">
+					¿Qué cantidad de resmas de papel está utilizando en un semestre?
+				</p>
+				<div>
+					<diV>
+						<rzslider style="margin:40px auto"
+								  rz-slider-model="resmas.value"
+								  rz-slider-options="resmas.options">
+						</rzslider>
+						<p class="cont1SlideBar"
+						   style="top:25%">{{resmas.value}} Resmas</p>
+					</diV>
+				</div>
+			</div>
+			<div class="pregunta2 pregunta"
+				 style="margin-bottom:120px">
+				<p class="txtPregunta">
+					¿Qué cantidad de sobres de papel está utilizando en un semestre?
+				</p>
+				<div>
+					<diV>
+						<rzslider style="margin:40px auto"
+								  rz-slider-model="sobres.value"
+								  rz-slider-options="sobres.options">
+						</rzslider>
+						<p class="cont1SlideBar"
+						   style="top:43%">{{sobres.value}} Sobres</p>
+					</diV>
+				</div>
+			</div>
+			<div class="pregunta3 pregunta"
+				 style="margin-bottom:120px">
+				<p class="txtPregunta">
+					¿Qué cantidad de cuadernos o libretas está utilizando en un año?
+				</p>
+				<div>
+					<diV>
+						<rzslider style="margin:40px auto"
+								  rz-slider-model="cuadernos.value"
+								  rz-slider-options="cuadernos.options">
+						</rzslider>
+						<p class="cont1SlideBar"
+						   style="top:61%">{{cuadernos.value}} Cuadernos</p>
+					</diV>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="conciencia1">
+		<div class="logoEncuesta"
+			 style="position:absolute">
+			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
+		</div>
+		<div class="pasar">
+			<div class="izq">
+				<img id="ant4" src="../Images/anterior.png" alt="Anterior" enlace=".papel" />
+			</div>
+			<div class="der botonPasar">
+				<img id="sig4" src="../Images/siguiente.png" alt="Siguiente" enlace=".conciencia2" />
+			</div>
+		</div>
+		<div class="preguntas"
+			 style="margin:190px">
+			<div class="pregunta1 pregunta"
+				 style="margin-bottom:5px">
+				<p class="txtPregunta">
+					¿Sabes en dónde están ubicados los puntos ecológicos (Cubos de <br />
+					basura de colores) de tu institución?
+				</p>
+				<div class="inset switchdemoBasicUsage" ng-cloak>
+					<md-switch style="margin: 0px auto;display: block; width: 0%;" aria-label="Switch 1" ng-model="puntos.cb1">
+						Switch 1: {{ puntos.cb1 }}
+					</md-switch>
+				</div>
+			</div>
+			<div class="pregunta2 pregunta"
+				 style="margin-bottom:5px">
+				<p class="txtPregunta">
+					¿Separas adecuadamente los residuos cuando los depositas en los <br />
+					cubos de basura de colores?
+				</p>
+				<div class="inset switchdemoBasicUsage" ng-cloak>
+					<md-switch style="margin: 0px auto;display: block; width: 0%;" aria-label="Switch 2" ng-model="residuos.cb1">
+						Switch 2: {{ residuos.cb1 }}
+					</md-switch>
+				</div>
+			</div>
+				<div class="pregunta3 pregunta"
+					 style="margin-bottom:5px">
+					<p class="txtPregunta">
+						¿Has visto algún aviso o comunicado de ahorro de agua, energía o <br />
+						relacionado con temas ambientales en tu institución?
+					</p>
+					<div class="inset switchdemoBasicUsage" ng-cloak>
+						<md-switch style="margin: 0px auto; display: block; width: 0%;" aria-label="Switch 3" ng-model="aviso.cb1">
+							Switch 3: {{ aviso.cb1 }}
+						</md-switch>
+					</div>
+				</div>
+			</div>
+	</section>
+	<section class="conciencia2">
+		<div class="logoEncuesta"
+			 style="position:absolute">
+			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
+		</div>
+		<div class="pasar">
+			<div class="izq">
+				<img id="ant5" src="../Images/anterior.png" alt="Anterior" enlace=".conciencia1" />
+			</div>
+		</div>
+		<div class="preguntas"
+			 style="margin:190px">
+			<div class="pregunta1 pregunta"
+				 style="margin-bottom:5px">
+				<p class="txtPregunta">
+					¿Apagas la luz cuando sales de una ambiente de formación,<br />
+					oficina o de un aula?
+				</p>
+				<select class="luz">
+					<option value="si">Sí</option>
+					<option value="no">No</option>
+					<option value="A veces">A Veces</option>
+				</select>
+			</div>
+			<div class="pregunta2 pregunta"
+				 style="margin-bottom:5px">
+				<p class="txtPregunta">
+					¿Desconectas los aparatos eléctricos cuando no los estás usando?
+				</p>
+				<select class="aparatos">
+					<option value="si">Sí</option>
+					<option value="no">No</option>
+					<option value="A veces">A Veces</option>
+				</select>
+			</div>
+			<div class="pregunta3 pregunta"
+				 style="margin-bottom:15px">
+				<p class="txtPregunta">
+					¿Apagas el computador cuando no lo estás usando?
+				</p>
+				<select class="computador">
+					<option value="si">Sí</option>
+					<option value="no">No</option>
+					<option value="A veces">A Veces</option>
+				</select>
+			</div>
+			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" enlace=".final">
+				ENVIAR
+			</button>
+		</div>
+		
+	</section>
+	<section class="final">
+		<div class="logo" style="margin-top:10%;">
+			<img src="../Images/logo.png" alt="Logo Huella de Carbono" class="enlaceLogo" enlace=".index" />
+		</div>
+		<p class="txtPregunta">
+			Gracias por realizar la encuesta,<br />
+			nos estás ayudando a conocer la <br />
+			marca que deja sobre el planeta la <br />
+			organización a la cual  perteneces <br />
+		</p>
+	</section>
+</div>

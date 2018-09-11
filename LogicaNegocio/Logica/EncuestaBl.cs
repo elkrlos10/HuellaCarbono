@@ -12,24 +12,63 @@
 
         public Task<bool> RegristarVehiculos(Vehiculos oVehiculos)
         {
-            entity.Vehiculos.Add(oVehiculos);
-            entity.SaveChanges();
+            var vehiculo = (from i in entity.Vehiculos
+                           where i.IdProyecto == oVehiculos.IdProyecto
+                           select i).FirstOrDefault();
+
+            if (vehiculo == null)
+            {
+                entity.Vehiculos.Add(oVehiculos);
+                entity.SaveChanges();
+            }
+            else
+            {
+                entity.Vehiculos.Remove(vehiculo);
+                entity.Vehiculos.Add(oVehiculos);
+                entity.SaveChanges();
+            }
 
             return Task.FromResult<bool>(true);
         }
 
         public Task<bool> RegristarMaquinas(Maquinas oMaquinas)
         {
-            entity.Maquinas.Add(oMaquinas);
-            entity.SaveChanges();
+            var maquina = (from i in entity.Maquinas
+                           where i.IdProyecto == oMaquinas.IdProyecto
+                           select i).FirstOrDefault();
+
+            if (maquina == null)
+            {
+                entity.Maquinas.Add(oMaquinas);
+                entity.SaveChanges();
+            }
+            else
+            {
+                entity.Maquinas.Remove(maquina);
+                entity.Maquinas.Add(oMaquinas);
+                entity.SaveChanges();
+            }
 
             return Task.FromResult<bool>(true);
         }
 
         public Task<bool> RegristarResiduos(Residuos oResiduos)
         {
-            entity.Residuos.Add(oResiduos);
-            entity.SaveChanges();
+            var residuo = (from i in entity.Residuos
+                           where i.IdProyecto == oResiduos.IdProyecto
+                           select i).FirstOrDefault();
+
+            if (residuo == null)
+            {
+                entity.Residuos.Add(oResiduos);
+                entity.SaveChanges();
+            }
+            else
+            {
+                entity.Residuos.Remove(residuo);
+                entity.Residuos.Add(oResiduos);
+                entity.SaveChanges();
+            }
 
             return Task.FromResult<bool>(true);
         }

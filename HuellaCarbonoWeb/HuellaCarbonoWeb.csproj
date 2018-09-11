@@ -108,6 +108,7 @@
     <Content Include="Css\rzslider.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\anterior.png" />
+    <Content Include="Images\checkbox.png" />
     <Content Include="Images\fondoConciencia.png" />
     <Content Include="Images\fondoConciencia2.png" />
     <Content Include="Images\fondoFinal.png" />

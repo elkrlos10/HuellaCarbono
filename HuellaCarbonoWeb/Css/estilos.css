@@ -26,6 +26,20 @@ section{
 	overflow:auto;
 }
 
+/*input[type="checkbox"] {
+	display: none;
+}
+	input[type="checkbox"] + label span {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background: url('../Images/checkbox.png') left top no-repeat;
+	}
+
+	input[type="checkbox"]:checked + label span {
+		background: url('../Images/checkbox.png') -20px top no-repeat;
+	}*/
+
 md-switch.md-checked .md-bar {
 	background-color: rgba(130,162,13,0.54) !important;
 }
@@ -79,7 +93,7 @@ md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb 
 
 .boton {
 	background: #82A20D;
-	border-radius: 20px;
+	border-radius: 20px 0px 20px 0px;
 	padding: 5px;
 	border: none;
 	width: 156px;

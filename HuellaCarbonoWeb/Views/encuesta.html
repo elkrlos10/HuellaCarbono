@@ -11,8 +11,8 @@
 				</p>
 				<div class="selectCargo">
 					<form>
-						<input class="radio" type="radio" name="cargo" value="Funcionario" />Funcionario
-						<input class="radio" type="radio" name="cargo" value="Aprendiz" />Estudiante
+						<input class="radio" ng-model="TipoPersona" type="radio" name="cargo" value="1" id="funcionario" /> <!--<label for="funcionario"><span></span> </label>-->Funcionario
+						<input class="radio" ng-model="TipoPersona" type="radio" name="cargo" value="2" id="aprendiz"  ng-click="aprendiz()"/> <!--<label for="aprendiz"> <span> </span> </label>-->Estudiante
 						<button type="submit" id="botonPasar" class="botonPasar center-block btn btn-success boton" enlace=".transporte">
 							CALCULAR
 						</button>
@@ -50,23 +50,89 @@
 				<br />
 				institución?
 			</p>
-			<select class="mediosTrans">
+			<select class="mediosTrans" ng-model="TipoTransporte" ng-change="CambiarTransporte()">
+				<option value="" disabled>Seleccione transporte</option>
 				<option value="Bicicleta">Bicicleta</option>
 				<option value="Automovil">Automovil</option>
+				<option value="Motocicleta">Motocicleta</option>
 				<option value="N/A">N/A</option>
 			</select>
-			<p class="txtPregunta">
-				¿Cuantos kilometros recorre diariamente en
-				<br />
-				bicicleta?
-			</p>
-			<div>
-				<diV>
-					<rzslider rz-slider-model="bici.value"
-							  rz-slider-options="bici.options">
-					</rzslider>
-					<p class="cont1SlideBar">{{bici.value}} Kilometros</p>
-				</diV>
+			<div class="preguntasTransporte">
+				<div id="cicla">
+					<p class="txtPregunta">
+						¿Cuantos kilometros recorre diariamente en
+						<br />
+						bicicleta?
+					</p>
+					<div>
+						<diV>
+							<rzslider rz-slider-model="bici.value"
+									  rz-slider-options="bici.options">
+							</rzslider>
+							<p class="cont1SlideBar"  style="top:59%;">{{bici.value}} Kilometros</p>
+						</diV>
+					</div>
+				</div>
+				<div id="publico">
+					<p class="txtPregunta">
+						Usted viene a la institución en (Transporte público):
+					</p>
+					<select class="medioPublico mediosTrans">
+						<option value="value">Taxi</option>
+						<option value="value">Bus</option>
+						<option value="value">Metro</option>
+						<option value="value">Metrocable</option>
+						<option value="value">Tranvía</option>
+						<option value="value">Metro Plus</option>
+						<option value="value">Otro</option>
+					</select>
+					<p class="txtPregunta">
+						Distancia en kilometros recorridos en trasporte público
+						<br />
+						en un día hábil?
+					</p>
+					<div>
+						<div>
+							<rzslider rz-slider-model="publico.value"
+									  rz-slider-options="publico.options">
+							</rzslider>
+							<p class="cont1SlideBar" style="top:70%;">{{publico.value}} Kilometros</p>
+						</div>
+					</div>
+				</div>
+				<div id="particular">
+					<p class="txtPregunta">
+						Tipo de combustible que usa el vehículo
+					</p>
+					<select class="combustible mediosTrans">
+						<option value="Gas">Gas Natural</option>
+						<option value="Gasolina">Gasolina</option>
+						<option value="Diesel">Diesel</option>
+					</select>
+					<p class="txtPregunta">
+						¿Con cuántas personas comparte usted su vehículo?
+					</p>
+					<select class="combustible mediosTrans">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<p class="txtPregunta">
+						Distancia en kilometros recorridos en Automovil/Moto
+						<br />
+						en un día hábil?
+					</p>
+					<div>
+						<div>
+							<rzslider style="margin:20px auto !important;" rz-slider-model="particular.value"
+									  rz-slider-options="particular.options">
+							</rzslider>
+							<p class="cont1SlideBar" style="top:81%;">{{particular.value}} Kilometros</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -142,40 +208,8 @@
 				<img id="sig3" src="../Images/siguiente.png" alt="Siguiente" enlace=".conciencia1" />
 			</div>
 		</div>
-		<div class="preguntas" style="margin:103px;">
-			<div class="pregunta1 pregunta"
-				 style="margin-bottom:120px">
-				<p class="txtPregunta">
-					¿Qué cantidad de resmas de papel está utilizando en un semestre?
-				</p>
-				<div>
-					<diV>
-						<rzslider style="margin:40px auto"
-								  rz-slider-model="resmas.value"
-								  rz-slider-options="resmas.options">
-						</rzslider>
-						<p class="cont1SlideBar"
-						   style="top:25%">{{resmas.value}} Resmas</p>
-					</diV>
-				</div>
-			</div>
-			<div class="pregunta2 pregunta"
-				 style="margin-bottom:120px">
-				<p class="txtPregunta">
-					¿Qué cantidad de sobres de papel está utilizando en un semestre?
-				</p>
-				<div>
-					<diV>
-						<rzslider style="margin:40px auto"
-								  rz-slider-model="sobres.value"
-								  rz-slider-options="sobres.options">
-						</rzslider>
-						<p class="cont1SlideBar"
-						   style="top:43%">{{sobres.value}} Sobres</p>
-					</diV>
-				</div>
-			</div>
-			<div class="pregunta3 pregunta"
+		<div class="preguntas" id="papelPregunta" style="margin:103px;">
+			<div class="pregunta1 pregunta preguntaPapel"
 				 style="margin-bottom:120px">
 				<p class="txtPregunta">
 					¿Qué cantidad de cuadernos o libretas está utilizando en un año?
@@ -186,9 +220,43 @@
 								  rz-slider-model="cuadernos.value"
 								  rz-slider-options="cuadernos.options">
 						</rzslider>
-						<p class="cont1SlideBar"
-						   style="top:61%">{{cuadernos.value}} Cuadernos</p>
+						<p class="cont1SlideBar barraPapel"
+						   style="top:25%">{{cuadernos.value}} Cuadernos</p>
 					</diV>
+				</div>
+			</div>
+			<div id="ocultar">
+				<div class="pregunta2 pregunta"
+					 style="margin-bottom:120px">
+					<p class="txtPregunta">
+						¿Qué cantidad de sobres de papel está utilizando en un semestre?
+					</p>
+					<div>
+						<diV>
+							<rzslider style="margin:40px auto"
+									  rz-slider-model="sobres.value"
+									  rz-slider-options="sobres.options">
+							</rzslider>
+							<p class="cont1SlideBar"
+							   style="top:43%">{{sobres.value}} Sobres</p>
+						</diV>
+					</div>
+				</div>
+				<div class="pregunta3 pregunta"
+					 style="margin-bottom:120px">
+					<p class="txtPregunta" ng-model="Preguntas">
+						¿Qué cantidad de resmas de papel está utilizando en un semestre?
+					</p>
+					<div>
+						<diV>
+							<rzslider style="margin:40px auto"
+									  rz-slider-model="resmas.value"
+									  rz-slider-options="resmas.options">
+							</rzslider>
+							<p class="cont1SlideBar"
+							   style="top:61%">{{resmas.value}} Resmas</p>
+						</diV>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -215,9 +283,7 @@
 					basura de colores) de tu institución?
 				</p>
 				<div class="inset switchdemoBasicUsage" ng-cloak>
-					<md-switch style="margin: 0px auto;display: block; width: 0%;" aria-label="Switch 1" ng-model="puntos.cb1">
-						Switch 1: {{ puntos.cb1 }}
-					</md-switch>
+					<md-switch style="margin: 0px auto;display: block; width: 0%;" aria-label="Switch 1" ng-model="puntos.cb1"></md-switch>
 				</div>
 			</div>
 			<div class="pregunta2 pregunta"
@@ -227,9 +293,7 @@
 					cubos de basura de colores?
 				</p>
 				<div class="inset switchdemoBasicUsage" ng-cloak>
-					<md-switch style="margin: 0px auto;display: block; width: 0%;" aria-label="Switch 2" ng-model="residuos.cb1">
-						Switch 2: {{ residuos.cb1 }}
-					</md-switch>
+					<md-switch style="margin: 0px auto;display: block; width: 0%;" aria-label="Switch 2" ng-model="residuos.cb1"></md-switch>
 				</div>
 			</div>
 				<div class="pregunta3 pregunta"
@@ -239,9 +303,7 @@
 						relacionado con temas ambientales en tu institución?
 					</p>
 					<div class="inset switchdemoBasicUsage" ng-cloak>
-						<md-switch style="margin: 0px auto; display: block; width: 0%;" aria-label="Switch 3" ng-model="aviso.cb1">
-							Switch 3: {{ aviso.cb1 }}
-						</md-switch>
+						<md-switch style="margin: 0px auto; display: block; width: 0%;" aria-label="Switch 3" ng-model="aviso.cb1"></md-switch>
 					</div>
 				</div>
 			</div>

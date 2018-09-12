@@ -11,7 +11,6 @@
 			}, 1000, "easeOutExpo")
 		}
 
-
 		$scope.TipoPersona = 0;
 		$("#botonPasar").click(function () {
 			var enlace = $(this).attr("enlace");
@@ -372,18 +371,20 @@
 				}
 
 			}
-		}
 
-		//Verificar si selecciono rol
-		$scope.verificarRol = function () {
-			if ($('.radio').is(':checked')) {
-				alert('Seleccionado');
+			else {
+				cicla.style.display = "none";
+				particular.style.display = "none";
+				publico.style.display = "none";
 			}
 		}
 
+		//Verificar si seleccionó rol
+		$scope.seleccionarRol = function () {
+			var boton = document.getElementById("botonPasar");
+			boton.style.display = "block";
+		}
 	}
-
-
 
     //inyectar las dependencias que se esta usando
 	encuesta.$inject = ["$scope"];

@@ -75,8 +75,21 @@
 
         public Task<bool> RegristarEnergia(Energia oEnergia)
         {
-            entity.Energia.Add(oEnergia);
-            entity.SaveChanges();
+            var energia = (from i in entity.Energia
+                           where i.IdProyecto == oEnergia.IdProyecto
+                           select i).FirstOrDefault();
+
+            if (energia == null)
+            {
+                entity.Energia.Add(oEnergia);
+                entity.SaveChanges();
+            }
+            else
+            {
+                entity.Energia.Remove(energia);
+                entity.Energia.Add(oEnergia);
+                entity.SaveChanges();
+            }
 
             return Task.FromResult<bool>(true);
         }

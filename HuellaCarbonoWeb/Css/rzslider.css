@@ -3,13 +3,12 @@
  https://github.com/angular-slider/angularjs-slider - 
  2018-06-30 */
 .rzslider {
-  position: absolute;
-  display: inline-block;
+  position: relative;
   width:30%;
   height: 4px;
   right:0px;
   left:0px;
-  margin: 35px auto;
+  margin: 10px auto;
   vertical-align: middle;
   -webkit-user-select: none;
      -moz-user-select: none;

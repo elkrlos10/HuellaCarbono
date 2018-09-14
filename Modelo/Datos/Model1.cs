@@ -20,6 +20,7 @@ namespace Modelo.Datos
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Vehiculos> Vehiculos { get; set; }
+        public virtual DbSet<FactorEmision> FactorEmision { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

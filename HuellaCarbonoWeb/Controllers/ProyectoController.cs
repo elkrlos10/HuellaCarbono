@@ -2,6 +2,7 @@
 namespace HuellaCarbonoWeb.Controllers
 {
     using LogicaNegocio.Logica;
+    using Modelo.DTO;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -12,16 +13,16 @@ namespace HuellaCarbonoWeb.Controllers
     public class ProyectoController: ApiController
     {
         [HttpPost]
-        public async Task<double> RegristarVehiculos(int IdProyecto)
+        public async Task<ParametrosDTO> CalculoHuella(ParametrosDTO oParametros)
         {
             try
             {
                 ProyectoBl oProyectoBl = new ProyectoBl();
-                var response = await oProyectoBl.CalculoHuella(IdProyecto);
+                var response = await oProyectoBl.CalculoHuella(int.Parse(oParametros.Paramatro1));
 
                 return response;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

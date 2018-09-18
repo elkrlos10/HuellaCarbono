@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\Empresa.cs" />
+    <Compile Include="Datos\Encuesta.cs" />
     <Compile Include="Datos\Energia.cs" />
     <Compile Include="Datos\FactorEmision.cs" />
     <Compile Include="Datos\Maquinas.cs" />

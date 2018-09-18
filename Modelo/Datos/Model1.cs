@@ -21,6 +21,7 @@ namespace Modelo.Datos
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Vehiculos> Vehiculos { get; set; }
         public virtual DbSet<FactorEmision> FactorEmision { get; set; }
+        public virtual DbSet<Encuesta> Encuesta { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

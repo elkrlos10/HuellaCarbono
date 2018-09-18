@@ -9,7 +9,7 @@
     using System.Web;
     using System.Web.Http;
 
-    public class EncuestasController: ApiController
+    public class EncuestasController : ApiController
     {
         [HttpPost]
         public async Task<bool> RegristarVehiculos(Vehiculos oVehiculos)
@@ -70,6 +70,22 @@
                 return true;
             }
             catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public async Task<bool> RegistarEncuesta(Encuesta oEncuesta)
+        {
+            try
+            {
+                EncuestaBl oEncuestaBl = new EncuestaBl();
+                var response = await oEncuestaBl.RegistarEncuesta(oEncuesta);
+
+                return true;
+            }
+            catch (Exception e)
             {
                 return false;
             }

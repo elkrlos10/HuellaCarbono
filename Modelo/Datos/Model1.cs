@@ -22,8 +22,12 @@ namespace Modelo.Datos
         public virtual DbSet<Vehiculos> Vehiculos { get; set; }
         public virtual DbSet<FactorEmision> FactorEmision { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
         public virtual DbSet<Huella> Huella { get; set; }
         public virtual DbSet<DetalleHuella> DetalleHuella { get; set; }
+=======
+        public virtual DbSet<Encuesta> Encuesta { get; set; }
+>>>>>>> cbfd8286b7736b9a6ad4fc01fc31ee03c0a56bf3
 =======
         public virtual DbSet<Encuesta> Encuesta { get; set; }
 >>>>>>> cbfd8286b7736b9a6ad4fc01fc31ee03c0a56bf3

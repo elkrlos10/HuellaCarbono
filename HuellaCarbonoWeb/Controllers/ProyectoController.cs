@@ -2,6 +2,7 @@
 namespace HuellaCarbonoWeb.Controllers
 {
     using LogicaNegocio.Logica;
+    using Modelo.Datos;
     using Modelo.DTO;
     using System;
     using System.Collections.Generic;
@@ -28,5 +29,20 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<bool> Guardarcalculo(HuellaDTO oHuella)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = await oProyectoBl.Guardarcalculo(oHuella);
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

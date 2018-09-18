@@ -20,5 +20,6 @@ namespace Modelo.Datos
         public double Diesel_Ltr { get; set; }
         public double ResiduoSolido { get; set; }
         public double Energia { get; set; }
+        public double EmisionAvion { get; set; }
     }
 }

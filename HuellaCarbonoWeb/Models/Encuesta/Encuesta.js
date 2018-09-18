@@ -1,7 +1,52 @@
 ﻿//controlador angular de personas
 (function () {
     //var personas = function ($scope, nombre del servicio) {
-    var encuesta = function ($scope) {
+    var encuesta = function ($scope, EncuestaService, $location) {
+
+        $scope.Encuesta = {
+            IdEncuesta: "",
+            IdProyecto: $location.search().IdProyecto,
+            TipoPersona: "",
+            TipoTransporte: "",
+            KilometrosBicicleta: 0,
+            TipoCombustible: "",
+            DistanciaAutoMoto: 0,
+            DistanciaPublico: "",
+            CantidadPersonas: "",
+            VuelosNacionales: 0,
+            VuelosInternacionales: 0,
+            HorasVuelo: 0,
+            CantidadCuadernos: "",
+            CantidadSobres: "",
+            CantidadResmas: "",
+            Puntos: "",
+            Residuos: "",
+            Aviso: "",
+            Luz: "",
+            Aparatos: "",
+            Computador: "",
+
+        };
+
+        $scope.RegistarEncuesta = function () {
+            $scope.Encuesta.TipoPersona = $scope.TipoPersona;
+            $scope.Encuesta.TipoTransporte = $scope.TipoTransporte;
+            $scope.Encuesta.KilometrosBicicleta = $scope.bici.value;
+            $scope.Encuesta.DistanciaAutoMoto = $scope.particular.value;
+            $scope.Encuesta.DistanciaPublico = $scope.publico.value;
+            $scope.Encuesta.VuelosNacionales = $scope.vuelosNacionales.value;
+            $scope.Encuesta.VuelosInternacionales = $scope.vuelosInternacionales.value;
+            $scope.Encuesta.HorasVuelo = $scope.horasVuelos.value;
+            $scope.Encuesta.CantidadCuadernos = $scope.cuadernos.value;
+            $scope.Encuesta.CantidadSobres = $scope.sobres.value;
+            $scope.Encuesta.CantidadResmas = $scope.resmas.value;
+            $scope.Encuesta.Puntos = $scope.puntos.cb1;
+            $scope.Encuesta.Residuos = $scope.residuos.cb1;
+            $scope.Encuesta.Aviso = $scope.aviso.cb1;
+            EncuestaService.RegistarEncuesta($scope.Encuesta, function (response) {
+
+            });
+        };
 
         window.onload = function () {
             var posX = $(".index").position().left;
@@ -387,7 +432,7 @@
     }
 
     //inyectar las dependencias que se esta usando
-    encuesta.$inject = ["$scope"];
+    encuesta.$inject = ["$scope", "EncuestaService", "$location"];
     //para declarar que este es mi controlador
     AngularApp.controller("EncuestaController", encuesta);
 

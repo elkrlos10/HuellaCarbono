@@ -1,11 +1,13 @@
 ﻿namespace LogicaNegocio.Logica
 {
     using Modelo.Datos;
+    using Modelo.DTO;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+
     public class EncuestaBl
     {
         Model1 entity = new Model1();
@@ -91,6 +93,39 @@
                 entity.SaveChanges();
             }
 
+            return Task.FromResult<bool>(true);
+        }
+
+        public Task<bool>RegistarEncuesta(Encuesta oEncuesta)
+        {
+            var FactorEmision = (from i in entity.FactorEmision
+                                 select i).FirstOrDefault();
+
+            if (oEncuesta.TipoTransporte == "Automovil" || oEncuesta.TipoTransporte == "Motocicleta")
+            {
+                if (oEncuesta.TipoCombustible == "Gas")
+                {
+                    oEncuesta.FactorAuto = (oEncuesta.DistanciaAutoMoto * FactorEmision.Gas_M3 * 260);
+                }
+                else if (oEncuesta.TipoCombustible == "Gasolina")
+                {
+                    oEncuesta.FactorAuto = (oEncuesta.DistanciaAutoMoto * FactorEmision.Gasolina_Km * 260);
+                }
+                else if (oEncuesta.TipoCombustible == "Diesel")
+                {
+                    oEncuesta.FactorAuto = (oEncuesta.DistanciaAutoMoto * FactorEmision.Diesel_Km * 260);
+                }
+            }
+            else if (oEncuesta.TipoTransporte == "N/A")
+            {
+                oEncuesta.FactorAuto = (oEncuesta.DistanciaPublico * FactorEmision.Gas_M3 * 260);
+            }
+
+            oEncuesta.FactorBicicleta = (oEncuesta.KilometrosBicicleta * 0);
+            //oEncuesta.FactorAvion = (())
+
+            entity.Encuesta.Add(oEncuesta);
+            entity.SaveChanges();
             return Task.FromResult<bool>(true);
         }
     }

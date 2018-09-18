@@ -49,9 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\DetalleHuella.cs" />
     <Compile Include="Datos\Empresa.cs" />
+    <Compile Include="Datos\Encuesta.cs" />
     <Compile Include="Datos\Energia.cs" />
     <Compile Include="Datos\FactorEmision.cs" />
+    <Compile Include="Datos\Huella.cs" />
     <Compile Include="Datos\Maquinas.cs" />
     <Compile Include="Datos\Model1.cs" />
     <Compile Include="Datos\Proyecto.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Datos\Usuario.cs" />
     <Compile Include="Datos\Vehiculos.cs" />
     <Compile Include="DTO\EmpresaDTO.cs" />
+    <Compile Include="DTO\HuellaDTO.cs" />
     <Compile Include="DTO\ParametrosDTO.cs" />
     <Compile Include="DTO\PersonaDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />

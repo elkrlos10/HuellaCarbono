@@ -77,14 +77,14 @@
 					<p class="txtPregunta">
 						Usted viene a la institución en (Transporte público):
 					</p>
-					<select class="medioPublico mediosTrans">
-						<option value="value">Taxi</option>
-						<option value="value">Bus</option>
-						<option value="value">Metro</option>
-						<option value="value">Metrocable</option>
-						<option value="value">Tranvía</option>
-						<option value="value">Metro Plus</option>
-						<option value="value">Otro</option>
+					<select class="medioPublico mediosTrans"  ng-model="Encuesta.MedioPublico">
+						<option value="Taxi">Taxi</option>
+						<option value="Bus">Bus</option>
+						<option value="Metro">Metro</option>
+						<option value="Metrocable">Metrocable</option>
+						<option value="Tranvia">Tranvía</option>
+						<option value="MetroPlus">Metro Plus</option>
+						<option value="Otro">Otro</option>
 					</select>
 					<p class="txtPregunta">
 						Distancia en kilometros recorridos en trasporte público	en un día hábil?
@@ -102,7 +102,7 @@
 					<p class="txtPregunta">
 						Tipo de combustible que usa el vehículo
 					</p>
-					<select class="combustible mediosTrans">
+					<select class="combustible mediosTrans" ng-model="Encuesta.TipoCombustible">
 						<option value="Gas">Gas Natural</option>
 						<option value="Gasolina">Gasolina</option>
 						<option value="Diesel">Diesel</option>
@@ -110,7 +110,7 @@
 					<p class="txtPregunta">
 						¿Con cuántas personas comparte usted su vehículo?
 					</p>
-					<select class="combustible mediosTrans">
+					<select class="combustible mediosTrans" ng-model="Encuesta.CantidadPersonas">
 						<option value="0">0</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -314,7 +314,7 @@
 				<p class="txtPregunta">
 					¿Apagas la luz cuando sales de una ambiente de formación, oficina o de un aula?
 				</p>
-				<select class="luz">
+				<select class="luz" ng-model="Encuesta.Luz">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
@@ -325,7 +325,7 @@
 				<p class="txtPregunta">
 					¿Desconectas los aparatos eléctricos cuando no los estás usando?
 				</p>
-				<select class="aparatos">
+				<select class="aparatos" ng-model="Encuesta.Aparatos">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
@@ -336,13 +336,13 @@
 				<p class="txtPregunta">
 					¿Apagas el computador cuando no lo estás usando?
 				</p>
-				<select class="computador">
+				<select class="computador" ng-model="Encuesta.Computador">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
 				</select>
 			</div>
-			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" enlace=".final">
+			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" enlace=".final" ng-click="RegistarEncuesta()">
 				ENVIAR
 			</button>
 		</div>

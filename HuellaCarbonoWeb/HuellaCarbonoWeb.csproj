@@ -127,7 +127,8 @@
     <Content Include="Images\spriteTierra.png" />
     <Content Include="Images\tierra.gif" />
     <Content Include="index.html" />
-    <Content Include="Models\Encuesta.js" />
+    <Content Include="Models\Encuesta\Encuesta.js" />
+    <Content Include="Models\Encuesta\EncuestaService.js" />
     <Content Include="Models\General.js" />
     <Content Include="Models\Principal.js" />
     <Content Include="Models\Prueba.js" />

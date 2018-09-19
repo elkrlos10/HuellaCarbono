@@ -184,6 +184,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\ApiHuella - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\HuellaCarbonoWeb20180918120510 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

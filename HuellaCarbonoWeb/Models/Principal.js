@@ -1,19 +1,24 @@
 ﻿//Inicializamos el modulo de angular e injectamos las dependencias que necesite
-var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule","ngMaterial"]);
+var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial", "ui.knob"]);
 
 //Configuración de las rutas (vistas)
 (function () {
 
     var rutas = function ($routeProvider) {
 
-        $routeProvider.when("/Prueba", {
-            templateUrl: "Views/Prueba.html",
-            controller: "PersonasController"
-        })
-
 		$routeProvider.when("/Encuesta", {
 			templateUrl: "Views/Encuesta.html",
 			controller: "EncuestaController"
+		})
+
+		$routeProvider.when("/Login", {
+			templateUrl: "Views/Login.html",
+			controller: "LoginController"
+		})
+
+		$routeProvider.when("/Dashboard", {
+			templateUrl: "Views/Dashboard.html",
+			controller: "DashboardController"
 		})
         //Indicamos que cuando copien una ruta que no existe redireccione al index
         $routeProvider.otherwise({ redirecTo: "/" });

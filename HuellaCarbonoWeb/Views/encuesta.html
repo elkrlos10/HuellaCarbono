@@ -1,5 +1,8 @@
 ﻿<div id="aviso-movil-horizontal">
-	<h1>Por favor gira la pantalla</h1>
+	<p class="aviso">
+		Por favor gira la pantalla
+	</p>
+	<img class="imgGirar" src="../Images/girar.png" />
 </div>
 <div id="sigue" class="contenedor">
 	<section class="index">
@@ -14,8 +17,8 @@
 				</p>
 				<div class="selectCargo">
 					<form>
-						<input class="radio" ng-model="TipoPersona" type="radio" name="cargo" value="1" id="funcionario" ng-click="seleccionarRol()" /> <!--<label for="funcionario"><span></span> </label>-->Funcionario
-						<input class="radio" ng-model="TipoPersona" type="radio" name="cargo" value="2" id="aprendiz" ng-click="seleccionarRol()" /> <!--<label for="aprendiz"> <span> </span> </label>-->Estudiante
+						<input class="radio" ng-model="TipoPersona" type="radio" name="cargo" value="1" id="funcionario" ng-click="seleccionarRol()" /> <label class="txtRol" for="funcionario">Funcionario </label>
+						<input class="radio" ng-model="TipoPersona" type="radio" name="cargo" value="2" id="aprendiz" ng-click="seleccionarRol()" /> <label class="txtRol" for="aprendiz"> Estudiante</label>
 						<button type="submit" id="botonPasar" class="botonPasar center-block btn btn-success boton" enlace=".transporte">
 							CALCULAR
 						</button>
@@ -77,14 +80,14 @@
 					<p class="txtPregunta">
 						Usted viene a la institución en (Transporte público):
 					</p>
-					<select class="medioPublico mediosTrans"  ng-model="Encuesta.MedioPublico">
-						<option value="Taxi">Taxi</option>
-						<option value="Bus">Bus</option>
-						<option value="Metro">Metro</option>
-						<option value="Metrocable">Metrocable</option>
-						<option value="Tranvia">Tranvía</option>
-						<option value="MetroPlus">Metro Plus</option>
-						<option value="Otro">Otro</option>
+					<select class="medioPublico mediosTrans">
+						<option value="value">Taxi</option>
+						<option value="value">Bus</option>
+						<option value="value">Metro</option>
+						<option value="value">Metrocable</option>
+						<option value="value">Tranvía</option>
+						<option value="value">Metro Plus</option>
+						<option value="value">Otro</option>
 					</select>
 					<p class="txtPregunta">
 						Distancia en kilometros recorridos en trasporte público	en un día hábil?
@@ -102,7 +105,7 @@
 					<p class="txtPregunta">
 						Tipo de combustible que usa el vehículo
 					</p>
-					<select class="combustible mediosTrans" ng-model="Encuesta.TipoCombustible">
+					<select class="combustible mediosTrans">
 						<option value="Gas">Gas Natural</option>
 						<option value="Gasolina">Gasolina</option>
 						<option value="Diesel">Diesel</option>
@@ -110,7 +113,7 @@
 					<p class="txtPregunta">
 						¿Con cuántas personas comparte usted su vehículo?
 					</p>
-					<select class="combustible mediosTrans" ng-model="Encuesta.CantidadPersonas">
+					<select class="combustible mediosTrans">
 						<option value="0">0</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -190,7 +193,7 @@
 		</div>
 	</section>
 	<section class="papel">
-		<div class="logoEncuesta" style="position:absolute">
+		<div class="logoEncuesta">
 			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
 		</div>
 		<div class="pasar">
@@ -202,7 +205,7 @@
 			</div>
 		</div>
 		<div class="preguntas" id="papelPregunta" style="margin-bottom:20px !important;">
-			<div class="pregunta1 pregunta preguntaPapel">
+			<div class="pregunta1 pregunta preguntaPapel" style="margin-top:50px;">
 				<p class="txtPregunta">
 					¿Qué cantidad de cuadernos o libretas está utilizando en un año?
 				</p>
@@ -249,8 +252,7 @@
 		</div>
 	</section>
 	<section class="conciencia1">
-		<div class="logoEncuesta"
-			 style="position:absolute">
+		<div class="logoEncuesta">
 			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
 		</div>
 		<div class="pasar">
@@ -287,7 +289,7 @@
 			<div class="pregunta3 pregunta"
 				 style="margin-bottom:5px">
 				<p class="txtPregunta">
-					¿Has visto algún aviso o comunicado de ahorro de agua, energía o relacionado con temas ambientales en tu institución?
+					¿Has visto algún aviso o comunicado de ahorro de agua, <br /> energía o relacionado con temas ambientales en tu institución?
 				</p>
 				<div class="contSwitch inset switchdemoBasicUsage" ng-cloak>
 					<h2 class="siNo">No</h2>
@@ -298,8 +300,7 @@
 		</div>
 	</section>
 	<section class="conciencia2">
-		<div class="logoEncuesta"
-			 style="position:absolute">
+		<div class="logoEncuesta">
 			<img src="../Images/logo.png" alt="Logo Huella de Carbono" />
 		</div>
 		<div class="pasar">
@@ -314,7 +315,7 @@
 				<p class="txtPregunta">
 					¿Apagas la luz cuando sales de una ambiente de formación, oficina o de un aula?
 				</p>
-				<select class="luz" ng-model="Encuesta.Luz">
+				<select class="luz">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
@@ -325,7 +326,7 @@
 				<p class="txtPregunta">
 					¿Desconectas los aparatos eléctricos cuando no los estás usando?
 				</p>
-				<select class="aparatos" ng-model="Encuesta.Aparatos">
+				<select class="aparatos">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
@@ -336,13 +337,13 @@
 				<p class="txtPregunta">
 					¿Apagas el computador cuando no lo estás usando?
 				</p>
-				<select class="computador" ng-model="Encuesta.Computador">
+				<select class="computador">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
 				</select>
 			</div>
-			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" enlace=".final" ng-click="RegistarEncuesta()">
+			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" enlace=".final">
 				ENVIAR
 			</button>
 		</div>

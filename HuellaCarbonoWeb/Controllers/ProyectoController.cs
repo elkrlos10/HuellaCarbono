@@ -44,5 +44,21 @@ namespace HuellaCarbonoWeb.Controllers
                 throw;
             }
         }
+
+        [HttpGet]
+        public async Task<List<HuellaDTO>> ConsultarProyectos(int id)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = await oProyectoBl.ListaProyectos(id);
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

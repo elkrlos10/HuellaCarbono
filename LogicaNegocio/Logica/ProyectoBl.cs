@@ -60,10 +60,11 @@
             var huellaGas = (energia.Gas * factores.Gas_M3)*12;
 
             var totalHuella = (huellaVehiculosGasolina + huellaVehiculosDiesel + huellaVehiculosGas + huellaMaquinasGasolina +
-                              huellaMaquinasDiesel + huellamaquinasGas + huellaresiduosSolidos + huellaEnergia + huellaGas)/1000;
+                              huellaMaquinasDiesel + huellamaquinasGas + huellaresiduosSolidos + huellaEnergia + huellaGas);
             var oparametros = new ParametrosDTO
             {
-                Paramatro1= totalHuella.ToString(),
+                Paramatro1 = Math.Round((totalHuella), 0).ToString()
+
             }; 
 
             return Task.FromResult<ParametrosDTO>(oparametros);
@@ -86,8 +87,8 @@
 
             var detalle = new DetalleHuella
             {
-                IdHuella= huella.IdHuella,
-                Porcentaje= oHuella.Porcentaje
+                IdHuella = huella.IdHuella,
+                Porcentaje = oHuella.Porcentaje
             };
 
             entity.DetalleHuella.Add(detalle);
@@ -95,5 +96,28 @@
 
             return Task.FromResult<bool>(true);
         }
+
+        public Task<List<HuellaDTO>> ListaProyectos(int IdEmpresa)
+        {
+            var Proyectos = (from h in entity.Huella
+                             join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+                             join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
+                             where p.IdEmpresa == IdEmpresa
+                             select new HuellaDTO {
+
+                                 IdHuella= h.IdHuella,
+                                 IdProyecto=h.IdProyecto,
+                                 Fecha= h.Fecha,
+                                 TipoArbol= h.TipoArbol,
+                                 Zona= h.Zona,
+                                 Precisar= h.Precisar,
+                                 Toneledas= h.Toneledas,
+                                 Porcentaje= d.Porcentaje,
+
+                             }).ToList();
+            return Task.FromResult<List<HuellaDTO>>(Proyectos);
+
+        }
+
     }
 }

@@ -17,5 +17,7 @@
         public int IdHuella { get; set; }
 
         public double Porcentaje { get; set; }
+
+        public bool Estado { get; set; }
     }
 }

@@ -15,8 +15,8 @@
         public Task<ParametrosDTO> CalculoHuella(int IdProyecto)
         {
             var vehiculos = (from i in entity.Vehiculos
-                            where i.IdProyecto == IdProyecto
-                            select i).FirstOrDefault();
+                             where i.IdProyecto == IdProyecto
+                             select i).FirstOrDefault();
 
             var maquinas = (from i in entity.Maquinas
                             where i.IdProyecto == IdProyecto
@@ -27,37 +27,37 @@
                             select i).FirstOrDefault();
 
             var energia = (from i in entity.Energia
-                            where i.IdProyecto == IdProyecto
-                            select i).FirstOrDefault();
+                           where i.IdProyecto == IdProyecto
+                           select i).FirstOrDefault();
 
             var factores = (from i in entity.FactorEmision
-                           select i).FirstOrDefault();
+                            select i).FirstOrDefault();
 
 
             //var vehiculosGasolina_Km = vehiculos.Can_Gasolina * ;
-            var huellaVehiculosGasolina = (vehiculos.Km_Gasolina * factores.Gasolina_Km)*52; 
+            var huellaVehiculosGasolina = (vehiculos.Km_Gasolina * factores.Gasolina_Km) * 52;
 
             //var vehiculosDiesel_Km = vehiculos.Can_Diesel *
-            var huellaVehiculosDiesel = (vehiculos.Km_Diesel * factores.Diesel_Km)* 52;
+            var huellaVehiculosDiesel = (vehiculos.Km_Diesel * factores.Diesel_Km) * 52;
 
             //var vehiculosGas_Km = vehiculos.Can_GasNatural * ;
-            var huellaVehiculosGas = (vehiculos.Km_GasNatural * factores.Gas_M3)* 52;
+            var huellaVehiculosGas = (vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
 
             //var maquinasGasolina = maquinas.Can_Gasolina * maquinas.Lts_Gasolina;
-            var huellaMaquinasGasolina = (maquinas.Lts_Gasolina * factores.Gasolina_Ltr)* 52;
+            var huellaMaquinasGasolina = (maquinas.Lts_Gasolina * factores.Gasolina_Ltr) * 52;
 
             //var maquinasDiesel = maquinas.Can_Diesel * maquinas.Lts_Diesel;
-            var huellaMaquinasDiesel = (maquinas.Lts_Diesel * factores.Diesel_Ltr) *52;
+            var huellaMaquinasDiesel = (maquinas.Lts_Diesel * factores.Diesel_Ltr) * 52;
 
             //var maquinasGas = maquinas.Can_GasNatural * maquinas.Lts_GasNatural;
-            var huellamaquinasGas = (maquinas.Lts_GasNatural * factores.Gas_M3)*52;
+            var huellamaquinasGas = (maquinas.Lts_GasNatural * factores.Gas_M3) * 52;
 
             var residuosSolidos = residuos.Can_ResiduosSolidos * 1000;
-            var huellaresiduosSolidos = (residuosSolidos * factores.ResiduoSolido)*12;
-          
-            var huellaEnergia = (energia.EnergiaKwh * factores.Energia)*12;
-            
-            var huellaGas = (energia.Gas * factores.Gas_M3)*12;
+            var huellaresiduosSolidos = (residuosSolidos * factores.ResiduoSolido) * 12;
+
+            var huellaEnergia = (energia.EnergiaKwh * factores.Energia) * 12;
+
+            var huellaGas = (energia.Gas * factores.Gas_M3) * 12;
 
             var totalHuella = (huellaVehiculosGasolina + huellaVehiculosDiesel + huellaVehiculosGas + huellaMaquinasGasolina +
                               huellaMaquinasDiesel + huellamaquinasGas + huellaresiduosSolidos + huellaEnergia + huellaGas);
@@ -65,7 +65,7 @@
             {
                 Paramatro1 = Math.Round((totalHuella), 0).ToString()
 
-            }; 
+            };
 
             return Task.FromResult<ParametrosDTO>(oparametros);
         }
@@ -75,11 +75,12 @@
             var huella = new Huella
             {
                 IdProyecto = oHuella.IdProyecto,
-                Toneledas= oHuella.Toneledas,
-                Fecha= oHuella.Fecha,
-                Precisar= oHuella.Precisar,
-                TipoArbol=oHuella.TipoArbol,
-                Zona=oHuella.Zona
+                Toneledas = oHuella.Toneledas,
+                Fecha = oHuella.Fecha,
+                Precisar = oHuella.Precisar,
+                TipoArbol = oHuella.TipoArbol,
+                Zona = oHuella.Zona,
+
             };
 
             entity.Huella.Add(huella);
@@ -88,7 +89,8 @@
             var detalle = new DetalleHuella
             {
                 IdHuella = huella.IdHuella,
-                Porcentaje = oHuella.Porcentaje
+                Porcentaje = oHuella.Porcentaje,
+                Estado = oHuella.Estado
             };
 
             entity.DetalleHuella.Add(detalle);
@@ -103,18 +105,24 @@
                              join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
                              join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
                              where p.IdEmpresa == IdEmpresa
-                             select new HuellaDTO {
-
-                                 IdHuella= h.IdHuella,
-                                 IdProyecto=h.IdProyecto,
-                                 Fecha= h.Fecha,
-                                 TipoArbol= h.TipoArbol,
-                                 Zona= h.Zona,
-                                 Precisar= h.Precisar,
-                                 Toneledas= h.Toneledas,
-                                 Porcentaje= d.Porcentaje,
-
+                             select new HuellaDTO
+                             {
+                                 IdHuella = h.IdHuella,
+                                 IdProyecto = h.IdProyecto,
+                                 Fecha = h.Fecha,
+                                 TipoArbol = h.TipoArbol,
+                                 Zona = h.Zona,
+                                 Precisar = h.Precisar,
+                                 Toneledas = h.Toneledas,
+                                 Porcentaje = d.Porcentaje,
+                                 Estado = d.Estado,
+                                 Estado1= d.Estado == false ? "Pendiente" : "En ejecución"
                              }).ToList();
+
+            for (int i = 0; i < Proyectos.Count; i++)
+            {
+                Proyectos[i].Index = i+1;
+            }
             return Task.FromResult<List<HuellaDTO>>(Proyectos);
 
         }

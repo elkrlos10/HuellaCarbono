@@ -21,5 +21,6 @@ namespace Modelo.Datos
         public string Zona { get; set; }
         public bool Precisar { get; set; }
         public double Toneledas { get; set; }
+       
     }
 }

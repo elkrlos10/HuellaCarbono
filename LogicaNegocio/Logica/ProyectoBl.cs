@@ -80,7 +80,7 @@
                 Precisar = oHuella.Precisar,
                 TipoArbol = oHuella.TipoArbol,
                 Zona = oHuella.Zona,
-
+                EstadoCompensacion= false
             };
 
             entity.Huella.Add(huella);
@@ -101,30 +101,122 @@
 
         public Task<List<HuellaDTO>> ListaProyectos(int IdEmpresa)
         {
-            var Proyectos = (from h in entity.Huella
-                             join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
-                             join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
-                             where p.IdEmpresa == IdEmpresa
-                             select new HuellaDTO
-                             {
-                                 IdHuella = h.IdHuella,
-                                 IdProyecto = h.IdProyecto,
-                                 Fecha = h.Fecha,
-                                 TipoArbol = h.TipoArbol,
-                                 Zona = h.Zona,
-                                 Precisar = h.Precisar,
-                                 Toneledas = h.Toneledas,
-                                 Porcentaje = d.Porcentaje,
-                                 Estado = d.Estado,
-                                 Estado1= d.Estado == false ? "Pendiente" : "En ejecución"
-                             }).ToList();
+            //var Proyectos = (from d in entity.DetalleHuella
+            //                 join h in entity.Huella on d.IdHuella equals h.IdHuella
+            //                 join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+            //                 where p.IdEmpresa == IdEmpresa
+            //                 select new HuellaDTO
+            //                 {
+            //                     IdHuella = h.IdHuella,
+            //                     IdProyecto = h.IdProyecto,
+            //                     Fecha = h.Fecha,
+            //                     TipoArbol = h.TipoArbol,
+            //                     Zona = h.Zona,
+            //                     Precisar = h.Precisar,
+            //                     Toneledas = h.Toneledas,
+            //                     Porcentaje = d.Porcentaje,
+            //                     Estado = d.Estado,
+            //                     Estado1= d.Estado == false ? "Pendiente" : "En ejecución",
+            //                     EstadoCompensacion=h.EstadoCompensacion
+            //                 }).ToList();
 
-            for (int i = 0; i < Proyectos.Count; i++)
+            var detalles = (from i in entity.DetalleHuella
+                            join h in entity.Huella on i.IdHuella equals h.IdHuella
+                            join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+                            where p.IdEmpresa == IdEmpresa
+                            select i.IdHuella).Distinct();
+
+            var Proyectos = new List<HuellaDTO>();
+
+            foreach (var item in detalles)
             {
-                Proyectos[i].Index = i+1;
+                 var proyecto = (from d in entity.DetalleHuella
+                                 join h in entity.Huella on d.IdHuella equals h.IdHuella
+                                 where d.IdHuella == item
+                                 orderby d.IdHuella
+                                 select new HuellaDTO
+                                 {
+                                     IdHuella = h.IdHuella,
+                                     IdProyecto = h.IdProyecto,
+                                     Fecha = h.Fecha,
+                                     TipoArbol = h.TipoArbol,
+                                     Zona = h.Zona,
+                                     Precisar = h.Precisar,
+                                     Toneledas = h.Toneledas,
+                                     Porcentaje = d.Porcentaje,
+                                     Estado = d.Estado,
+                                     Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
+                                     EstadoCompensacion = h.EstadoCompensacion
+                                 }).ToList();
+
+                foreach (var item1 in proyecto.Select((value, i) => new { i, value }))
+                {
+                    var index = item1.i;
+                    proyecto[index].NumCompensacion = index + 1;
+                }
+                Proyectos.AddRange(proyecto);
             }
+
+
+            foreach (var item in Proyectos.Select((value, i) => new { i, value }))
+            {
+                var value = item.value;
+                var index = item.i;
+
+                if (index > 0)
+                {
+                    if (value.IdHuella == Proyectos[index - 1].IdHuella)
+                    {
+                        Proyectos[index].Index = Proyectos[index - 1].Index;
+                       
+                    }
+                    else
+                    {
+                        Proyectos[index].Index = index+1;
+                        
+                    }
+                }
+                else
+                {
+                    Proyectos[index].Index = index + 1;
+                   
+                }
+            }
+
             return Task.FromResult<List<HuellaDTO>>(Proyectos);
 
+        }
+
+        public Task<List<HuellaDTO>> CompletarCompensacion(HuellaDTO oHuella)
+        {
+            var huella = (from i in entity.DetalleHuella
+                            join h in entity.Huella on i.IdHuella equals h.IdHuella
+                            join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+                            where p.IdProyecto == oHuella.IdProyecto
+                            select i).FirstOrDefault();
+
+
+            var detalle = new DetalleHuella
+            {
+                IdHuella = huella.IdHuella,
+                Porcentaje = 100 - huella.Porcentaje,
+                Estado = oHuella.Estado
+            };
+
+            var proye = (from i in entity.Huella
+                            where i.IdProyecto == oHuella.IdProyecto
+                            select i).FirstOrDefault();
+
+            var empresa = (from i in entity.Proyecto
+                         where i.IdProyecto == oHuella.IdProyecto
+                         select i.IdEmpresa).FirstOrDefault();
+
+            proye.EstadoCompensacion = true;
+
+            entity.DetalleHuella.Add(detalle);
+            entity.SaveChanges();
+
+            return ListaProyectos(empresa);
         }
 
     }

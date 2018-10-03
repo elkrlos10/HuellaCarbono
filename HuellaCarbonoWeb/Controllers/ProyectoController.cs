@@ -60,5 +60,21 @@ namespace HuellaCarbonoWeb.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public async Task<List<HuellaDTO>> CompletarCompensacion(HuellaDTO oHuella)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = await oProyectoBl.CompletarCompensacion(oHuella);
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

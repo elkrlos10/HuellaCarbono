@@ -20,6 +20,11 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
 			templateUrl: "Views/Dashboard.html",
 			controller: "DashboardController"
 		})
+
+		$routeProvider.when("/ProyectoInt", {
+			templateUrl: "Views/ProyectoInt.html",
+			controller: "ProyectoIntController"
+		})
         //Indicamos que cuando copien una ruta que no existe redireccione al index
         $routeProvider.otherwise({ redirecTo: "/" });
     }

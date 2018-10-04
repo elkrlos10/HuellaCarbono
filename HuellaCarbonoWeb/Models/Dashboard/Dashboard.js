@@ -2,13 +2,13 @@
 (function () {
 	//var personas = function ($scope, nombre del servicio) {
 	var dashboard = function ($scope) {
-		$scope.value = 30;
+		$scope.value = 67;
 		$scope.options = {
-			bgColor: '#2C3E50',
-			trackWidth: 50,
-			barWidth: 30,
-			barColor: '#FFAE1A',
-			textColor: 'white',
+			size: 250,
+			barColor: '#82A20D',
+			trackColor: '#182430',
+			trackWidth: 15,
+			barWidth: 23,
 			subText: {
 				enabled: true,
 				text: 'En proceso'
@@ -23,11 +23,11 @@
 
 		$scope.value2 = 5;
 		$scope.options2 = {
-			bgColor: '#2C3E50',
-			trackWidth: 50,
-			barWidth: 30,
-			barColor: '#FFAE1A',
-			textColor: 'white',
+			size: 250,
+			barColor: '#82A20D',
+			trackColor: '#182430',
+			trackWidth: 15,
+			barWidth: 23,
 			subText: {
 				enabled: true,
 				text: 'Terminados'
@@ -42,11 +42,11 @@
 
 		$scope.value3 = 10;
 		$scope.options3 = {
-			bgColor: '#2C3E50',
-			trackWidth: 50,
-			barWidth: 30,
-			barColor: '#FFAE1A',
-			textColor: 'white',
+			size: 250,
+			barColor: '#82A20D',
+			trackColor: '#182430',
+			trackWidth: 15,
+			barWidth: 23,
 			subText: {
 				enabled: true,
 				text: 'Cancelados'
@@ -58,6 +58,26 @@
 				ease: 'bounce'
 			}
 		}
+
+		$scope.value4 = 50;
+		$scope.options4 = {
+			size: 250,
+			barColor: '#82A20D',
+			trackColor: '#182430',
+			trackWidth: 15,
+			barWidth: 23,
+			subText: {
+				enabled: true,
+				text: 'Inactivos'
+			},
+			readOnly: true,
+			animate: {
+				enabled: true,
+				duration: 1000,
+				ease: 'bounce'
+			}
+		}
+
 	}
 	//inyectar las dependencias que se esta usando
 	dashboard.$inject = ["$scope"];

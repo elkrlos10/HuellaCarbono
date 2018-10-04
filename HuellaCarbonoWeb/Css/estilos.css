@@ -41,7 +41,8 @@ md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb 
 .index {
 	width: 100%;
 	background-image: url('../Images/FondoIncio.png');
-	overflow-y: scroll;
+	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 .logo img {
@@ -458,6 +459,16 @@ md-switch {
 
 /*Medium devices (tablets, 768px and up)*/
 @media (max-width: 768px) {
+	.index {
+		overflow-y: scroll;
+	}
+	
+	.col-md-3 {
+		-ms-flex: 0 0 25%;
+		flex: 0 0 25%;
+		max-width: 24% !important;
+	}
+
 	.logoEncuesta {
 		position: inherit !important;
 	}
@@ -506,7 +517,14 @@ md-switch {
 }
 
 /*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
+@media (max-width: 992px) {
+	.index {
+		overflow-y: scroll;
+	}
+
+	.tierra img {
+		width:500px;
+	}
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
@@ -592,7 +610,7 @@ md-switch {
 	overflow: hidden;
 	height: 100vh;
 	width: 100%;
-	background: rgba(130,162,13,0.4);
+	background: rgba(130,162,13,0.6);
 	z-index: 999;
 }
 
@@ -615,8 +633,12 @@ md-switch {
 
 .logoAdmin img {
 	display: block;
-	margin: 20px auto;
-	width: 180px;
+	position: absolute;
+	margin: 5px auto;
+	width: 120px;
+	top: -50px;
+	right: 0px;
+	left: 0px;
 }
 
 .contenido {
@@ -625,14 +647,16 @@ md-switch {
 }
 
 .barraNotificaciones {
-	background: #fafafa;
-	height: 70px;
+	background: #182430;
+	width: 100%;
+	height: 130px;
 	margin: 0px;
 	box-shadow: 4px 2px 10px #dedede;
+	line-height: 70px;
 }
 
 .iconos {
-	color: #2c2c2c;
+	color: white;
 	font-size: 25px;
 	margin: 10px;
 }
@@ -679,6 +703,23 @@ md-switch {
 	margin: 20px auto;
 }
 
-.col-md-4 {
-	max-width: 33.1%;
+.col-md-3 {
+	max-width: 24.8% !important;
 }
+
+.derIcon {
+	float: right;
+	line-height: 70px;
+	margin-top:20px;
+}
+
+footer {
+	box-shadow: 1px -4px 10px #dedede;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 75px;
+	line-height: 70px;
+	background: #182430;
+}
+

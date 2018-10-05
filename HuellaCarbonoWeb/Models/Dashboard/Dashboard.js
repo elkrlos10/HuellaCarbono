@@ -78,6 +78,7 @@
 			}
 		}
 
+
 	}
 	//inyectar las dependencias que se esta usando
 	dashboard.$inject = ["$scope"];

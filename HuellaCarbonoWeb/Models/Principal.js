@@ -32,9 +32,26 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
     //Injectamos las dependencias que utilizamos
     rutas.$inject = ["$routeProvider"];
 
-    //Indicamos que será configuración de la app
-    AngularApp.config(rutas);
 
+    //Indicamos que será configuración de la app
+	AngularApp.config(rutas);
+
+
+	//var directives = angular.module('directives');
+
+	AngularApp.directive('showtab',
+		function () {
+			return {
+				link: function (scope, element, attrs) {
+					element.click(function (e) {
+						e.preventDefault();
+						$(element).tab('show');
+					});
+				}
+			};
+			var href = $(this).attr("href");
+			href.removeClass("fade");  
+		});
 })();
 
 

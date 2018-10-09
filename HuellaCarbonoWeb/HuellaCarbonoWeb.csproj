@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Css\angular-material.min.css" />
+    <Content Include="Css\bootstrap.css" />
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\estilos.css" />
     <Content Include="Css\examples.css" />
@@ -144,7 +145,7 @@
     <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\examples.js" />
     <Content Include="Scripts\jquery-ui.js" />

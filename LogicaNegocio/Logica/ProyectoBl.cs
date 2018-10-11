@@ -70,6 +70,37 @@
             return Task.FromResult<ParametrosDTO>(oparametros);
         }
 
+        public Task<ParametrosDTO> CalculoHuellaTransporte(int IdProyecto)
+        {
+            var vehiculos = (from i in entity.Vehiculos
+                             where i.IdProyecto == IdProyecto
+                             select i).FirstOrDefault();
+
+            var factores = (from i in entity.FactorEmision
+                            select i).FirstOrDefault();
+
+
+            //var vehiculosGasolina_Km = vehiculos.Can_Gasolina * ;
+            var huellaVehiculosGasolina = (vehiculos.Km_Gasolina * factores.Gasolina_Km) * 52;
+
+            //var vehiculosDiesel_Km = vehiculos.Can_Diesel *
+            var huellaVehiculosDiesel = (vehiculos.Km_Diesel * factores.Diesel_Km) * 52;
+
+            //var vehiculosGas_Km = vehiculos.Can_GasNatural * ;
+            var huellaVehiculosGas = (vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
+
+           
+
+            var totalHuella = (huellaVehiculosGasolina + huellaVehiculosDiesel + huellaVehiculosGas);
+            var oparametros = new ParametrosDTO
+            {
+                Paramatro1 = Math.Round((totalHuella), 0).ToString()
+
+            };
+
+            return Task.FromResult<ParametrosDTO>(oparametros);
+        }
+
         public Task<bool> Guardarcalculo(HuellaDTO oHuella)
         {
             var huella = new Huella

@@ -30,6 +30,22 @@ namespace HuellaCarbonoWeb.Controllers
         }
 
         [HttpPost]
+        public async Task<ParametrosDTO> CalculoHuellaTransporte(ParametrosDTO oParametros)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = await oProyectoBl.CalculoHuellaTransporte(int.Parse(oParametros.Paramatro1));
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
         public async Task<bool> Guardarcalculo(HuellaDTO oHuella)
         {
             try

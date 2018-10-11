@@ -49,8 +49,6 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
 					});
 				}
 			};
-			var href = $(this).attr("href");
-			href.removeClass("fade");  
 		});
 })();
 

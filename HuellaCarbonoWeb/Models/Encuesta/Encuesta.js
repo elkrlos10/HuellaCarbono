@@ -31,9 +31,7 @@
         $scope.RegistarEncuesta = function () {
             $scope.Encuesta.TipoPersona = $scope.TipoPersona;
             $scope.Encuesta.TipoTransporte = $scope.TipoTransporte;
-            $scope.Encuesta.KilometrosBicicleta = $scope.bici.value;
-            $scope.Encuesta.DistanciaAutoMoto = $scope.particular.value;
-            $scope.Encuesta.DistanciaPublico = $scope.publico.value;
+			$scope.Encuesta.KilometrosDia = $scope.distancia.value;
             $scope.Encuesta.VuelosNacionales = $scope.vuelosNacionales.value;
             $scope.Encuesta.VuelosInternacionales = $scope.vuelosInternacionales.value;
             $scope.Encuesta.HorasVuelo = $scope.horasVuelos.value;
@@ -78,9 +76,15 @@
             }, 1000, "easeOutExpo")
         })
 
-        $("#sig1").click(function () {
-            var enlace = $(this).attr("enlace");
-            var posX = $(enlace).position().left;
+		$("#sig1").click(function () {
+			var enlace = $(this).attr("enlace");
+			var posX = $(enlace).position().left;
+
+			if ($scope.TipoTransporte != "Caminando") {
+				if ($scope.TipoTransporte == undefined || $scope.distancia.value == 0) {
+					return;
+				}
+			}
 
             $("html,body").stop(true, true).animate({
                 scrollLeft: posX + "px"
@@ -180,7 +184,7 @@
         var vm = this;
 
         //Bicicleta
-        $scope.bici = {
+		$scope.distancia = {
             value: 0,
             options: {
                 floor: 0,
@@ -193,33 +197,6 @@
             }
         }
 
-        //Publico
-        $scope.publico = {
-            value: 0,
-            options: {
-                floor: 0,
-                ceil: 200,
-                showSelectionBar: true,
-                selectionBarGradient: {
-                    from: '#FFAA3B',
-                    to: '#FF5A19'
-                }
-            }
-        }
-
-        //particular
-        $scope.particular = {
-            value: 0,
-            options: {
-                floor: 0,
-                ceil: 200,
-                showSelectionBar: true,
-                selectionBarGradient: {
-                    from: '#FFAA3B',
-                    to: '#FF5A19'
-                }
-            }
-        }
 
         //Vuelos Nacionales
         $scope.vuelosNacionales = {
@@ -356,9 +333,7 @@
                 particular.style.display = "none";
                 publico.style.display = "none";
                 cicla.style.display = "block";
-                $scope.publico = { value: 0 };
-                $scope.particular = { value: 0 };
-                $scope.bici = {
+				$scope.distancia = {
                     value: 0,
                     options: {
                         floor: 0,
@@ -373,14 +348,25 @@
 
             }
 
-            else if ($scope.TipoTransporte == "Automovil" || $scope.TipoTransporte == "Motocicleta") {
+            else if ($scope.TipoTransporte == "Automovil") {
 
                 cicla.style.display = "none";
-                publico.style.display = "none";
-                particular.style.display = "block";
-                $scope.bici = { value: 0 };
-                $scope.publico = { value: 0 };
-                $scope.particular = {
+				publico.style.display = "none";
+				particular.style.display = "none";
+
+				particular.style.display = "block";
+				$(".auto").remove();
+				$('<option class="auto" value="0">0</option> \
+					<option class= "auto" value = "1" > 1</option > \
+					<option class="auto" value = "2" > 2</option> \
+					<option class="auto" value ="3"> 3</option> \
+					<option class="auto" value = "4"> 4</option> ').appendTo("#personas");
+				$(".comb").remove();
+				$('<option class="comb" value="Gas">Gas Natural</option>\
+					<option class="comb" value = "Gasolina" > Gasolina</option >\
+					<option class="comb" value="Diesel">Diesel</option>').appendTo(".medioCombustible");
+
+				$scope.distancia = {
                     value: 0,
                     options: {
                         floor: 0,
@@ -393,16 +379,41 @@
                     }
                 }
 
-            }
+			}
+
+			else if ($scope.TipoTransporte == "Motocicleta") {
+
+				cicla.style.display = "none";
+				publico.style.display = "none";
+				particular.style.display = "none";
+				particular.style.display = "block";
+				$(".auto").remove();
+				$('<option class="auto" value="0">0</option> \
+					<option class="auto" value = "1" > 1</option>').appendTo("#personas");
+				$(".comb").remove();
+				$('<option class="comb" value = "Gasolina" > Gasolina</option >\
+					<option class="comb" value="Diesel">Diesel</option>').appendTo(".medioCombustible");
+				$scope.distancia = {
+					value: 0,
+					options: {
+						floor: 0,
+						ceil: 200,
+						showSelectionBar: true,
+						selectionBarGradient: {
+							from: '#FFAA3B',
+							to: '#FF5A19'
+						}
+					}
+				}
+
+			}
 
             else if ($scope.TipoTransporte == "N/A") {
 
                 cicla.style.display = "none";
                 particular.style.display = "none";
                 publico.style.display = "block";
-                $scope.bici = { value: 0 };
-                $scope.particular = { value: 0 };
-                $scope.publico = {
+				$scope.distancia = {
                     value: 0,
                     options: {
                         floor: 0,

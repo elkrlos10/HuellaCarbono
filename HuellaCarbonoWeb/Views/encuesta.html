@@ -69,10 +69,10 @@
 					</p>
 					<div>
 						<diV>
-							<rzslider rz-slider-model="bici.value"
-									  rz-slider-options="bici.options">
+							<rzslider rz-slider-model="distancia.value"
+									  rz-slider-options="distancia.options">
 							</rzslider>
-							<p class="cont1SlideBar">{{bici.value}} Kilometros</p>
+							<p class="cont1SlideBar">{{distancia.value}} Kilometros</p>
 						</diV>
 					</div>
 				</div>
@@ -90,14 +90,14 @@
 						<option value="value">Otro</option>
 					</select>
 					<p class="txtPregunta">
-						Distancia en kilometros recorridos en trasporte público	en un día hábil?
+						Distancia en kilometros recorridos en trasporte público	en un día hábil
 					</p>
 					<div>
 						<div>
-							<rzslider rz-slider-model="publico.value"
-									  rz-slider-options="publico.options">
+							<rzslider rz-slider-model="distancia.value"
+									  rz-slider-options="distancia.options">
 							</rzslider>
-							<p class="cont1SlideBar">{{publico.value}} Kilometros</p>
+							<p class="cont1SlideBar">{{distancia.value}} Kilometros</p>
 						</div>
 					</div>
 				</div>
@@ -105,30 +105,24 @@
 					<p class="txtPregunta">
 						Tipo de combustible que usa el vehículo
 					</p>
-					<select class="combustible mediosTrans">
-						<option value="Gas">Gas Natural</option>
-						<option value="Gasolina">Gasolina</option>
-						<option value="Diesel">Diesel</option>
+					<select class="combustible medioCombustible mediosTrans">
+						
 					</select>
 					<p class="txtPregunta">
 						¿Con cuántas personas comparte usted su vehículo?
 					</p>
-					<select class="combustible mediosTrans">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
+					<select id="personas" class="combustible  mediosTrans">
+
 					</select>
 					<p class="txtPregunta">
-						Distancia en kilometros recorridos en Automovil/Moto en un día hábil?
+						Distancia en kilometros recorridos en un día hábil
 					</p>
 					<div>
 						<div>
-							<rzslider style="margin:20px auto !important;" rz-slider-model="particular.value"
-									  rz-slider-options="particular.options">
+							<rzslider style="margin:20px auto !important;" rz-slider-model="distancia.value"
+									  rz-slider-options="distancia.options">
 							</rzslider>
-							<p class="cont1SlideBar">{{particular.value}} Kilometros</p>
+							<p class="cont1SlideBar">{{distancia.value}} Kilometros</p>
 						</div>
 					</div>
 				</div>

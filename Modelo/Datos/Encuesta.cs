@@ -18,18 +18,12 @@ namespace Modelo.Datos
         public int TipoPersona { get; set; }
 
         public string TipoTransporte { get; set; }
-
-        public int KilometrosBicicleta { get; set; }
-
+     
         public string TipoCombustible { get; set; }
 
-        public string MedioPublico { get; set; }
+        public int Km { get; set; }
 
-        public int DistanciaPublico { get; set; }
-
-        public double DistanciaAutoMoto { get; set; }
-
-        public int CantidadPersonas { get; set; }
+        public int Nun_Acopanantes { get; set; }
 
         public int VuelosNacionales { get; set; }
 
@@ -43,7 +37,7 @@ namespace Modelo.Datos
 
         public int CantidadResmas { get; set; }
 
-        public bool Puntos { get; set; }
+        public bool Puntos_Eco { get; set; }
 
         public bool Residuos { get; set; }
 
@@ -54,11 +48,6 @@ namespace Modelo.Datos
         public string Aparatos { get; set; }
 
         public string Computador { get; set; }
-
-        public double FactorAuto { get; set; }
-
-        public double FactorAvion { get; set; }
-
-        public double FactorBicicleta { get; set; }
+       
     }
 }

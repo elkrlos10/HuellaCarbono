@@ -12,7 +12,7 @@
             TipoCombustible: "",
             DistanciaAutoMoto: 0,
             DistanciaPublico: "",
-            CantidadPersonas: "",
+            Nun_Acopanantes: 0,
             VuelosNacionales: 0,
             VuelosInternacionales: 0,
             HorasVuelo: 0,
@@ -31,7 +31,9 @@
         $scope.RegistarEncuesta = function () {
             $scope.Encuesta.TipoPersona = $scope.TipoPersona;
             $scope.Encuesta.TipoTransporte = $scope.TipoTransporte;
-			$scope.Encuesta.KilometrosDia = $scope.distancia.value;
+            $scope.Encuesta.TipoCombustible = $("#Combustible").val(); 
+            $scope.Encuesta.Nun_Acopanantes = $("#personas").val();
+			$scope.Encuesta.Km = $scope.distancia.value;
             $scope.Encuesta.VuelosNacionales = $scope.vuelosNacionales.value;
             $scope.Encuesta.VuelosInternacionales = $scope.vuelosInternacionales.value;
             $scope.Encuesta.HorasVuelo = $scope.horasVuelos.value;
@@ -41,6 +43,9 @@
             $scope.Encuesta.Puntos = $scope.puntos.cb1;
             $scope.Encuesta.Residuos = $scope.residuos.cb1;
             $scope.Encuesta.Aviso = $scope.aviso.cb1;
+            $scope.Encuesta.Luz = $scope.Luz;
+            $scope.Encuesta.Aparatos = $scope.Aparatos;
+            $scope.Encuesta.Computador = $scope.Computador;
             EncuestaService.RegistarEncuesta($scope.Encuesta, function (response) {
 
             });
@@ -197,7 +202,6 @@
             }
         }
 
-
         //Vuelos Nacionales
         $scope.vuelosNacionales = {
             value: 0,
@@ -353,8 +357,8 @@
                 cicla.style.display = "none";
 				publico.style.display = "none";
 				particular.style.display = "none";
+                particular.style.display = "block";
 
-				particular.style.display = "block";
 				$(".auto").remove();
 				$('<option class="auto" value="0">0</option> \
 					<option class= "auto" value = "1" > 1</option > \
@@ -362,8 +366,8 @@
 					<option class="auto" value ="3"> 3</option> \
 					<option class="auto" value = "4"> 4</option> ').appendTo("#personas");
 				$(".comb").remove();
-				$('<option class="comb" value="Gas">Gas Natural</option>\
-					<option class="comb" value = "Gasolina" > Gasolina</option >\
+				$('<option class="comb" value="Gas">Gas Natural</option> \
+					<option class="comb" value = "Gasolina" > Gasolina</option > \
 					<option class="comb" value="Diesel">Diesel</option>').appendTo(".medioCombustible");
 
 				$scope.distancia = {

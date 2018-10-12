@@ -105,13 +105,13 @@
 					<p class="txtPregunta">
 						Tipo de combustible que usa el vehículo
 					</p>
-					<select class="combustible medioCombustible mediosTrans">
+					<select class="combustible medioCombustible mediosTrans" id="Combustible" ng-model="TipoCombustible">
 						
 					</select>
 					<p class="txtPregunta">
 						¿Con cuántas personas comparte usted su vehículo?
 					</p>
-					<select id="personas" class="combustible  mediosTrans">
+					<select id="personas" class="combustible  mediosTrans"  ng-model="Nun_Acopanantes">
 
 					</select>
 					<p class="txtPregunta">
@@ -309,7 +309,7 @@
 				<p class="txtPregunta">
 					¿Apagas la luz cuando sales de una ambiente de formación, oficina o de un aula?
 				</p>
-				<select class="luz">
+				<select class="luz" ng-model="Luz">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
@@ -320,7 +320,7 @@
 				<p class="txtPregunta">
 					¿Desconectas los aparatos eléctricos cuando no los estás usando?
 				</p>
-				<select class="aparatos">
+				<select class="aparatos" ng-model="Aparatos">
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
@@ -331,13 +331,13 @@
 				<p class="txtPregunta">
 					¿Apagas el computador cuando no lo estás usando?
 				</p>
-				<select class="computador">
+				<select class="computador" ng-model="Computador" >
 					<option value="si">Sí</option>
 					<option value="no">No</option>
 					<option value="A veces">A Veces</option>
 				</select>
 			</div>
-			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" enlace=".final">
+			<button style="margin: 40px auto;" id="botonTerminar" class="botonPasar center-block btn btn-success boton" ng-click="RegistarEncuesta()" enlace=".final">
 				ENVIAR
 			</button>
 		</div>

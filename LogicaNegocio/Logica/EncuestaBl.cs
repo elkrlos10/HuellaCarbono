@@ -123,6 +123,14 @@
 
             //oEncuesta.FactorBicicleta = (oEncuesta.KilometrosBicicleta * 0);
             //oEncuesta.FactorAvion = (())
+            var FechaProyecto = (from i in entity.Proyecto
+                          where i.IdProyecto == oEncuesta.IdProyecto
+                          select i).FirstOrDefault();
+            var fecha = FechaProyecto.FechaProyecto.AddDays(15);
+            if (fecha < DateTime.Now)
+            {
+                return Task.FromResult<bool>(false);
+            }
 
             entity.Encuesta.Add(oEncuesta);
             entity.SaveChanges();

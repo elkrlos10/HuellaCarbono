@@ -92,5 +92,21 @@ namespace HuellaCarbonoWeb.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public async Task<ParametrosDTO> PrecisarCalculoHuella(ParametrosDTO oParametros)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = await oProyectoBl.PrecisarCalculoHuella(int.Parse(oParametros.Paramatro1));
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

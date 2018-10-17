@@ -22,5 +22,7 @@ namespace Modelo.Datos
         public bool Precisar { get; set; }
         public double Toneledas { get; set; }
         public bool EstadoCompensacion { get; set; }
+        public double Cant_arboles { get; set; }
+        public double Area { get; set; }
     }
 }

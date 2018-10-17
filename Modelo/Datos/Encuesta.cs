@@ -21,7 +21,7 @@ namespace Modelo.Datos
      
         public string TipoCombustible { get; set; }
 
-        public int Km { get; set; }
+        public double Km { get; set; }
 
         public int Nun_Acopanantes { get; set; }
 

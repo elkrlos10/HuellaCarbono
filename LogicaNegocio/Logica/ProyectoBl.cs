@@ -89,7 +89,7 @@
             //var vehiculosGas_Km = vehiculos.Can_GasNatural * ;
             var huellaVehiculosGas = (vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
 
-           
+
 
             var totalHuella = (huellaVehiculosGasolina + huellaVehiculosDiesel + huellaVehiculosGas);
             var oparametros = new ParametrosDTO
@@ -111,7 +111,9 @@
                 Precisar = oHuella.Precisar,
                 TipoArbol = oHuella.TipoArbol,
                 Zona = oHuella.Zona,
-                EstadoCompensacion= false
+                EstadoCompensacion = false,
+                Area = oHuella.Area,
+                Cant_arboles = oHuella.Cant_arboles
             };
 
             entity.Huella.Add(huella);
@@ -161,24 +163,24 @@
 
             foreach (var item in detalles)
             {
-                 var proyecto = (from d in entity.DetalleHuella
-                                 join h in entity.Huella on d.IdHuella equals h.IdHuella
-                                 where d.IdHuella == item
-                                 orderby d.IdHuella
-                                 select new HuellaDTO
-                                 {
-                                     IdHuella = h.IdHuella,
-                                     IdProyecto = h.IdProyecto,
-                                     Fecha = h.Fecha,
-                                     TipoArbol = h.TipoArbol,
-                                     Zona = h.Zona,
-                                     Precisar = h.Precisar,
-                                     Toneledas = h.Toneledas,
-                                     Porcentaje = d.Porcentaje,
-                                     Estado = d.Estado,
-                                     Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
-                                     EstadoCompensacion = h.EstadoCompensacion
-                                 }).ToList();
+                var proyecto = (from d in entity.DetalleHuella
+                                join h in entity.Huella on d.IdHuella equals h.IdHuella
+                                where d.IdHuella == item
+                                orderby d.IdHuella
+                                select new HuellaDTO
+                                {
+                                    IdHuella = h.IdHuella,
+                                    IdProyecto = h.IdProyecto,
+                                    Fecha = h.Fecha,
+                                    TipoArbol = h.TipoArbol,
+                                    Zona = h.Zona,
+                                    Precisar = h.Precisar,
+                                    Toneledas = h.Toneledas,
+                                    Porcentaje = d.Porcentaje,
+                                    Estado = d.Estado,
+                                    Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
+                                    EstadoCompensacion = h.EstadoCompensacion
+                                }).ToList();
 
                 foreach (var item1 in proyecto.Select((value, i) => new { i, value }))
                 {
@@ -199,18 +201,18 @@
                     if (value.IdHuella == Proyectos[index - 1].IdHuella)
                     {
                         Proyectos[index].Index = Proyectos[index - 1].Index;
-                       
+
                     }
                     else
                     {
-                        Proyectos[index].Index = index+1;
-                        
+                        Proyectos[index].Index = index + 1;
+
                     }
                 }
                 else
                 {
                     Proyectos[index].Index = index + 1;
-                   
+
                 }
             }
 
@@ -221,10 +223,10 @@
         public Task<List<HuellaDTO>> CompletarCompensacion(HuellaDTO oHuella)
         {
             var huella = (from i in entity.DetalleHuella
-                            join h in entity.Huella on i.IdHuella equals h.IdHuella
-                            join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
-                            where p.IdProyecto == oHuella.IdProyecto
-                            select i).FirstOrDefault();
+                          join h in entity.Huella on i.IdHuella equals h.IdHuella
+                          join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+                          where p.IdProyecto == oHuella.IdProyecto
+                          select i).FirstOrDefault();
 
 
             var detalle = new DetalleHuella
@@ -235,12 +237,12 @@
             };
 
             var proye = (from i in entity.Huella
-                            where i.IdProyecto == oHuella.IdProyecto
-                            select i).FirstOrDefault();
+                         where i.IdProyecto == oHuella.IdProyecto
+                         select i).FirstOrDefault();
 
             var empresa = (from i in entity.Proyecto
-                         where i.IdProyecto == oHuella.IdProyecto
-                         select i.IdEmpresa).FirstOrDefault();
+                           where i.IdProyecto == oHuella.IdProyecto
+                           select i.IdEmpresa).FirstOrDefault();
 
             proye.EstadoCompensacion = true;
 
@@ -248,6 +250,54 @@
             entity.SaveChanges();
 
             return ListaProyectos(empresa);
+        }
+
+        public async Task<ParametrosDTO> PrecisarCalculoHuella(int IdProyecto)
+        {
+            ParametrosDTO Huella = await CalculoHuella(IdProyecto);
+            var total_huella = double.Parse(Huella.Paramatro1);
+
+            var Encuestas = (from i in entity.Encuesta
+                             where i.IdProyecto == IdProyecto
+                             select i).ToList();
+
+            var factores = (from i in entity.FactorEmision
+                            select i).FirstOrDefault();
+
+            foreach (var item in Encuestas)
+            {
+                if (item.TipoTransporte == "N/A")
+                {
+                    var HuellaExtra = (item.Km * factores.Gas_M3) * 52;
+                    total_huella = total_huella + HuellaExtra;
+                }
+                if (item.TipoTransporte == "Automovil" || item.TipoTransporte == "Motocicleta")
+                {
+
+                    if (item.TipoCombustible == "Gasolina")
+                    {
+                        var HuellaExtra = (item.Km * factores.Gasolina_Km) * 52;
+                        total_huella = total_huella + HuellaExtra;
+                    }
+                    if (item.TipoCombustible == "Gas")
+                    {
+                        var HuellaExtra = (item.Km * factores.Gas_M3) * 52;
+                        total_huella = total_huella + HuellaExtra;
+                    }
+                    if (item.TipoCombustible == "Diesel")
+                    {
+                        var HuellaExtra = (item.Km * factores.Diesel_Km) * 52;
+                        total_huella = total_huella + HuellaExtra;
+                    }
+                }
+            }
+            var oparametros = new ParametrosDTO
+            {
+                Paramatro1 = Math.Round((total_huella), 0).ToString()
+
+            };
+
+            return await Task.FromResult<ParametrosDTO>(oparametros);
         }
 
     }

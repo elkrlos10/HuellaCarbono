@@ -118,10 +118,12 @@
     <Content Include="Images\fondoPapel.png" />
     <Content Include="Images\fondoTransporte-02.png" />
     <Content Include="Images\fondoTransporte.png" />
+    <Content Include="Images\fondoTransporte_Transporte.png" />
     <Content Include="Images\fondoVuelos.png" />
     <Content Include="Images\girar.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoBlanco.png" />
+    <Content Include="Images\MockupWebHuella_De_Carbono_Transporte.png" />
     <Content Include="Images\nube1.png" />
     <Content Include="Images\nube2.png" />
     <Content Include="Images\nube3.png" />

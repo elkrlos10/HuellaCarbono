@@ -20,6 +20,8 @@ namespace Modelo.DTO
 
         public int TipoEmpresa { get; set; }
 
+        public bool Proyectos  { get; set; }
 
+        public string NombreEmpresa { get; set; }
     }
 }

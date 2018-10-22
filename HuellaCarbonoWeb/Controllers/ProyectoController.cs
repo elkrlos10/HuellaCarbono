@@ -14,6 +14,22 @@ namespace HuellaCarbonoWeb.Controllers
     public class ProyectoController: ApiController
     {
         [HttpPost]
+        public async Task<ProyectoDTO> CrearProyecto(ProyectoDTO oProyecto)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = await oProyectoBl.CrearProyecto(oProyecto);
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost]
         public async Task<ParametrosDTO> CalculoHuella(ParametrosDTO oParametros)
         {
             try
@@ -108,5 +124,7 @@ namespace HuellaCarbonoWeb.Controllers
                 throw;
             }
         }
+
+      
     }
 }

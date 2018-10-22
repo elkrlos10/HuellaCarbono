@@ -12,6 +12,27 @@
     {
         Model1 entity = new Model1();
 
+        public Task<ProyectoDTO> CrearProyecto(ProyectoDTO oProyecto)
+        {
+            var empresa = (from e in entity.Empresa
+                            where e.IdEmpresa == oProyecto.IdEmpresa
+                            select e).FirstOrDefault();
+
+            var proyecto = new Proyecto
+            {
+                IdEmpresa = oProyecto.IdEmpresa,
+                FechaProyecto = oProyecto.FechaProyecto,
+                Etapa = oProyecto.Etapa,
+            };
+          
+            entity.Proyecto.Add(proyecto);
+            entity.SaveChanges();
+            oProyecto.NombreEmpresa = empresa.NombreEmpresa;
+            oProyecto.IdProyecto = proyecto.IdProyecto;
+            
+            return Task.FromResult<ProyectoDTO>(oProyecto);
+        }
+
         public Task<ParametrosDTO> CalculoHuella(int IdProyecto)
         {
             var vehiculos = (from i in entity.Vehiculos
@@ -227,7 +248,7 @@
                           join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
                           where p.IdProyecto == oHuella.IdProyecto
                           select i).FirstOrDefault();
-
+            
 
             var detalle = new DetalleHuella
             {

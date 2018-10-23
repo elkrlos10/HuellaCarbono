@@ -66,20 +66,6 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<Proyecto> CrearProyecto(Proyecto oProyecto)
-        {
-            try
-            {
-                UsuarioBl oUsuario = new UsuarioBl();
-                var response = await oUsuario.CrearProyecto(oProyecto);
-
-                return response;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+      
     }
 }

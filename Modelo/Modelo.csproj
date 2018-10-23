@@ -66,6 +66,7 @@
     <Compile Include="DTO\HuellaDTO.cs" />
     <Compile Include="DTO\ParametrosDTO.cs" />
     <Compile Include="DTO\PersonaDTO.cs" />
+    <Compile Include="DTO\ProyectoDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

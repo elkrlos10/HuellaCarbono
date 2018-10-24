@@ -15,8 +15,8 @@
         public Task<ProyectoDTO> CrearProyecto(ProyectoDTO oProyecto)
         {
             var empresa = (from e in entity.Empresa
-                            where e.IdEmpresa == oProyecto.IdEmpresa
-                            select e).FirstOrDefault();
+                           where e.IdEmpresa == oProyecto.IdEmpresa
+                           select e).FirstOrDefault();
 
             var proyecto = new Proyecto
             {
@@ -24,12 +24,12 @@
                 FechaProyecto = oProyecto.FechaProyecto,
                 Etapa = oProyecto.Etapa,
             };
-          
+
             entity.Proyecto.Add(proyecto);
             entity.SaveChanges();
             oProyecto.NombreEmpresa = empresa.NombreEmpresa;
             oProyecto.IdProyecto = proyecto.IdProyecto;
-            
+
             return Task.FromResult<ProyectoDTO>(oProyecto);
         }
 
@@ -181,9 +181,10 @@
                             select i.IdHuella).Distinct();
 
             var Proyectos = new List<HuellaDTO>();
-
+          
             foreach (var item in detalles)
             {
+                double sumaPorcentaje = 0;
                 var proyecto = (from d in entity.DetalleHuella
                                 join h in entity.Huella on d.IdHuella equals h.IdHuella
                                 where d.IdHuella == item
@@ -207,7 +208,19 @@
                 {
                     var index = item1.i;
                     proyecto[index].NumCompensacion = index + 1;
+                    sumaPorcentaje = item1.value.Porcentaje + sumaPorcentaje;
+
                 }
+                if (proyecto.Count>1)
+                {
+                    proyecto[0].sumaPorcentaje = sumaPorcentaje;
+                    proyecto[1].sumaPorcentaje = sumaPorcentaje;
+                }
+                else
+                {
+                    proyecto[0].sumaPorcentaje = sumaPorcentaje;
+                }
+               
                 Proyectos.AddRange(proyecto);
             }
 
@@ -248,7 +261,7 @@
                           join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
                           where p.IdProyecto == oHuella.IdProyecto
                           select i).FirstOrDefault();
-            
+
 
             var detalle = new DetalleHuella
             {
@@ -320,6 +333,46 @@
 
             return await Task.FromResult<ParametrosDTO>(oparametros);
         }
+
+        //public Task<List<HuellaDTO>> ListaProyectos1(int IdEmpresa)
+        //{
+        //    var huellas = (from p in entity.Proyecto
+        //                     join h in entity.Huella on p.IdProyecto equals h.IdProyecto
+        //                     where p.IdEmpresa == IdEmpresa
+        //                     select h).ToList();
+
+        //    double sumaPorcentaje = 0;
+        //    foreach (var item in huellas)
+        //    {
+        //        var proyecto = (from d in entity.DetalleHuella
+        //                        join h in entity.Huella on d.IdHuella equals h.IdHuella
+        //                        where d.IdHuella == item.IdHuella
+        //                        orderby d.IdHuella
+        //                        select new HuellaDTO
+        //                        {
+        //                            IdHuella = h.IdHuella,
+        //                            IdProyecto = h.IdProyecto,
+        //                            Fecha = h.Fecha,
+        //                            TipoArbol = h.TipoArbol,
+        //                            Zona = h.Zona,
+        //                            Precisar = h.Precisar,
+        //                            Toneledas = h.Toneledas,
+        //                            Porcentaje = d.Porcentaje,
+        //                            Estado = d.Estado,
+        //                            Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
+        //                            EstadoCompensacion = h.EstadoCompensacion
+        //                        }).ToList();
+
+        //        foreach (var item1 in proyecto)
+        //        {
+        //           sumaPorcentaje = item1.Porcentaje + sumaPorcentaje;
+        //        }
+        //    }
+
+     
+        //    return Task.FromResult<List<HuellaDTO>>(Proyectos);
+
+        //}
 
     }
 }

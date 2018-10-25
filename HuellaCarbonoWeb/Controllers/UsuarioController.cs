@@ -66,6 +66,22 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
-      
+        [HttpPost]
+        public async Task<bool> RecuperarContraseña(UsuarioDTO oUser)
+        {
+            try
+            {
+                UsuarioBl oUsuario = new UsuarioBl();
+                var response = await oUsuario.RecuperarContraseña(oUser);
+
+                return response;
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -56,22 +56,22 @@
 
 
             //var vehiculosGasolina_Km = vehiculos.Can_Gasolina * ;
-            var huellaVehiculosGasolina = (vehiculos.Km_Gasolina * factores.Gasolina_Km) * 52;
+            var huellaVehiculosGasolina = (vehiculos.Can_Gasolina * vehiculos.Km_Gasolina * factores.Gasolina_Km) * 52;
 
             //var vehiculosDiesel_Km = vehiculos.Can_Diesel *
-            var huellaVehiculosDiesel = (vehiculos.Km_Diesel * factores.Diesel_Km) * 52;
+            var huellaVehiculosDiesel = (vehiculos.Can_Diesel * vehiculos.Km_Diesel * factores.Diesel_Km) * 52;
 
             //var vehiculosGas_Km = vehiculos.Can_GasNatural * ;
-            var huellaVehiculosGas = (vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
+            var huellaVehiculosGas = (vehiculos.Can_GasNatural * vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
 
             //var maquinasGasolina = maquinas.Can_Gasolina * maquinas.Lts_Gasolina;
-            var huellaMaquinasGasolina = (maquinas.Lts_Gasolina * factores.Gasolina_Ltr) * 52;
+            var huellaMaquinasGasolina = (maquinas.Can_Gasolina * maquinas.Lts_Gasolina * factores.Gasolina_Ltr) * 52;
 
             //var maquinasDiesel = maquinas.Can_Diesel * maquinas.Lts_Diesel;
-            var huellaMaquinasDiesel = (maquinas.Lts_Diesel * factores.Diesel_Ltr) * 52;
+            var huellaMaquinasDiesel = (maquinas.Can_Diesel * maquinas.Lts_Diesel * factores.Diesel_Ltr) * 52;
 
             //var maquinasGas = maquinas.Can_GasNatural * maquinas.Lts_GasNatural;
-            var huellamaquinasGas = (maquinas.Lts_GasNatural * factores.Gas_M3) * 52;
+            var huellamaquinasGas = (maquinas.Can_GasNatural * maquinas.Lts_GasNatural * factores.Gas_M3) * 52;
 
             var residuosSolidos = residuos.Can_ResiduosSolidos * 1000;
             var huellaresiduosSolidos = (residuosSolidos * factores.ResiduoSolido) * 12;
@@ -102,13 +102,13 @@
 
 
             //var vehiculosGasolina_Km = vehiculos.Can_Gasolina * ;
-            var huellaVehiculosGasolina = (vehiculos.Km_Gasolina * factores.Gasolina_Km) * 52;
+            var huellaVehiculosGasolina = (vehiculos.Can_Gasolina * vehiculos.Km_Gasolina * factores.Gasolina_Km) * 52;
 
             //var vehiculosDiesel_Km = vehiculos.Can_Diesel *
-            var huellaVehiculosDiesel = (vehiculos.Km_Diesel * factores.Diesel_Km) * 52;
+            var huellaVehiculosDiesel = (vehiculos.Can_Diesel * vehiculos.Km_Diesel * factores.Diesel_Km) * 52;
 
             //var vehiculosGas_Km = vehiculos.Can_GasNatural * ;
-            var huellaVehiculosGas = (vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
+            var huellaVehiculosGas = (vehiculos.Can_GasNatural * vehiculos.Km_GasNatural * factores.Gas_M3) * 52;
 
 
 

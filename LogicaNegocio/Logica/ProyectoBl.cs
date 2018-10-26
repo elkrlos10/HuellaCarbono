@@ -334,45 +334,80 @@
             return await Task.FromResult<ParametrosDTO>(oparametros);
         }
 
-        //public Task<List<HuellaDTO>> ListaProyectos1(int IdEmpresa)
-        //{
-        //    var huellas = (from p in entity.Proyecto
-        //                     join h in entity.Huella on p.IdProyecto equals h.IdProyecto
-        //                     where p.IdEmpresa == IdEmpresa
-        //                     select h).ToList();
+		//public Task<List<HuellaDTO>> ListaProyectos1(int IdEmpresa)
+		//{
+		//    var huellas = (from p in entity.Proyecto
+		//                     join h in entity.Huella on p.IdProyecto equals h.IdProyecto
+		//                     where p.IdEmpresa == IdEmpresa
+		//                     select h).ToList();
 
-        //    double sumaPorcentaje = 0;
-        //    foreach (var item in huellas)
-        //    {
-        //        var proyecto = (from d in entity.DetalleHuella
-        //                        join h in entity.Huella on d.IdHuella equals h.IdHuella
-        //                        where d.IdHuella == item.IdHuella
-        //                        orderby d.IdHuella
-        //                        select new HuellaDTO
-        //                        {
-        //                            IdHuella = h.IdHuella,
-        //                            IdProyecto = h.IdProyecto,
-        //                            Fecha = h.Fecha,
-        //                            TipoArbol = h.TipoArbol,
-        //                            Zona = h.Zona,
-        //                            Precisar = h.Precisar,
-        //                            Toneledas = h.Toneledas,
-        //                            Porcentaje = d.Porcentaje,
-        //                            Estado = d.Estado,
-        //                            Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
-        //                            EstadoCompensacion = h.EstadoCompensacion
-        //                        }).ToList();
+		//    double sumaPorcentaje = 0;
+		//    foreach (var item in huellas)
+		//    {
+		//        var proyecto = (from d in entity.DetalleHuella
+		//                        join h in entity.Huella on d.IdHuella equals h.IdHuella
+		//                        where d.IdHuella == item.IdHuella
+		//                        orderby d.IdHuella
+		//                        select new HuellaDTO
+		//                        {
+		//                            IdHuella = h.IdHuella,
+		//                            IdProyecto = h.IdProyecto,
+		//                            Fecha = h.Fecha,
+		//                            TipoArbol = h.TipoArbol,
+		//                            Zona = h.Zona,
+		//                            Precisar = h.Precisar,
+		//                            Toneledas = h.Toneledas,
+		//                            Porcentaje = d.Porcentaje,
+		//                            Estado = d.Estado,
+		//                            Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
+		//                            EstadoCompensacion = h.EstadoCompensacion
+		//                        }).ToList();
 
-        //        foreach (var item1 in proyecto)
-        //        {
-        //           sumaPorcentaje = item1.Porcentaje + sumaPorcentaje;
-        //        }
-        //    }
+		//        foreach (var item1 in proyecto)
+		//        {
+		//           sumaPorcentaje = item1.Porcentaje + sumaPorcentaje;
+		//        }
+		//    }
 
-     
-        //    return Task.FromResult<List<HuellaDTO>>(Proyectos);
 
-        //}
+		//    return Task.FromResult<List<HuellaDTO>>(Proyectos);
 
-    }
+		//}
+
+		public List<HuellaDTO> ProyectosDashboard()
+		{
+			var proyectos = (from h in entity.Huella
+							 join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
+							 join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+							 join e in entity.Empresa on p.IdEmpresa equals e.IdEmpresa
+							 select new HuellaDTO
+							 {
+								 IdHuella = h.IdHuella,
+								 IdProyecto = h.IdProyecto,
+								 Fecha = h.Fecha,
+								 TipoArbol = h.TipoArbol,
+								 Zona = h.Zona,
+								 Precisar = h.Precisar,
+								 Toneledas = h.Toneledas,
+								 Porcentaje = d.Porcentaje,
+								 Estado = d.Estado,
+								 Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
+								 EstadoCompensacion = h.EstadoCompensacion,
+								 Area = h.Area,
+								 Cant_arboles = h.Cant_arboles,
+								 IdEmpresa = e.IdEmpresa
+							 }).ToList();
+
+			return proyectos;
+		}
+
+		public Empresa DatosEmpresa(int idEmpresa)
+		{
+			var empresa = (from e in entity.Empresa
+						   where e.IdEmpresa == idEmpresa
+						   select e).FirstOrDefault();
+			return empresa;
+		}
+
+	}
 }

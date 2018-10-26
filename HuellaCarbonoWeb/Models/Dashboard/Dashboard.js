@@ -1,7 +1,7 @@
 ﻿//controlador angular de personas
 (function () {
 	//var personas = function ($scope, nombre del servicio) {
-	var dashboard = function ($scope) {
+    var dashboard = function ($scope, DashboardService, $location) {
 		$scope.value = 67;
 		$scope.options = {
 			size: 250,
@@ -68,7 +68,7 @@
 			barWidth: 23,
 			subText: {
 				enabled: true,
-				text: 'Inactivos'
+				text: 'Pendientes'
 			},
 			readOnly: true,
 			animate: {
@@ -78,10 +78,30 @@
 			}
 		}
 
+        DashboardService.ProyectosDashboard().then(function (response) {
+            if (response.data.success) {
+                $scope.Listar = response.data.response;
+                console.log($scope.Listar)
+            }
+        });
+
+        $scope.CapIdEmpresa = function (idEmpresa) {
+            item = {
+                Paramatro1: idEmpresa.toString()
+            }
+
+            DashboardService.DatosEmpresa(item).then(function (response) {
+                if (response.data.success) {
+                    $scope.Empresa = response.data.response;
+                    console.log($scope.Empresa)
+                }
+            });
+        }
+
 
 	}
 	//inyectar las dependencias que se esta usando
-	dashboard.$inject = ["$scope"];
+    dashboard.$inject = ["$scope", "DashboardService", "$location"];
 	//para declarar que este es mi controlador
 	AngularApp.controller("DashboardController", dashboard);
 

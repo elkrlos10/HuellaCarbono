@@ -135,6 +135,7 @@
     <Content Include="Images\tierra.gif" />
     <Content Include="index.html" />
     <Content Include="Models\Dashboard\Dashboard.js" />
+    <Content Include="Models\Dashboard\DashboardService.js" />
     <Content Include="Models\Encuesta\Encuesta.js" />
     <Content Include="Models\Encuesta\EncuestaService.js" />
     <Content Include="Models\General.js" />

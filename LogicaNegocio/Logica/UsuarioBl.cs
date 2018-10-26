@@ -136,7 +136,7 @@ namespace LogicaNegocio.Logica
                 respuesta = true;
             }
 
-            return Task.FromResult<bool>(respuesta);
+            return await Task.FromResult<bool>(respuesta);
 
         }
 

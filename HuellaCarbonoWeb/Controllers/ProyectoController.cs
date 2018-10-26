@@ -125,6 +125,38 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
-      
-    }
+		[HttpPost]
+		public IHttpActionResult ProyectosDashboard()
+		{
+			try
+			{
+				ProyectoBl p = new ProyectoBl();
+				var response = p.ProyectosDashboard();
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+			}
+		}
+
+		[HttpPost]
+		public IHttpActionResult DatosEmpresa(ParametrosDTO oParametrosDTO)
+		{
+			try
+			{
+				ProyectoBl p = new ProyectoBl();
+				var response = p.DatosEmpresa(int.Parse(oParametrosDTO.Paramatro1));
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+			}
+		}
+
+
+	}
 }

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\SendMail.cs" />
     <Compile Include="Logica\EncuestaBl.cs" />
     <Compile Include="Logica\ProyectoBl.cs" />
     <Compile Include="Logica\Response.cs" />

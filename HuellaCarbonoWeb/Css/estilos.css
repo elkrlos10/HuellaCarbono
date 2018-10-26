@@ -533,9 +533,6 @@ md-switch {
 
 /*Large devices (desktops, 992px and up)*/
 @media (max-width: 992px) {
-	.index {
-		overflow-y: scroll;
-	}
 
 	.tierra img {
 		width:500px;
@@ -734,7 +731,7 @@ label{
 }
 
 footer {
-	box-shadow: 1px -4px 10px #dedede;
+	margin-top:20px;
 	width: 100%;
 	height: 75px;
 	line-height: 70px;
@@ -743,19 +740,42 @@ footer {
 
 .fase1 {
 	padding: 20px;
-	padding-left: 200px;
 }
 
 .dentro10 {
 	margin-left: 30px;
 }
 
-.nav-link {
-	color: black;
+.fasesMenu {
+	height: 100vh;
+	background: #82a20d;
 }
 
-.nav-link:hover {
-	color: #82a20d;
+.nav-link {
+	color: white;
+	font-family:Poppins-Medium;
+	display:block;
+}
+
+	.nav-link:hover {
+		color: #4e600a;
+		border: none;
+	}
+
+
+	.nav-link:active {
+		color: #4e600a;
+		border: none;
+	}
+
+	.nav-link:focus {
+		color: #4e600a;
+		border: none;
+	}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	color: #fff;
+	background-color: #4e600a;
 }
 
 
@@ -818,3 +838,59 @@ footer {
 	font-size: 15px;
 }
 
+	.btnFases:hover {
+		background: #708915;
+		border:none;
+	}
+
+	.btnFases:active {
+		background: #708915;
+	}
+	.btnFases:focus {
+		background: #708915;
+	}
+
+	input[type="checkbox"] {
+		display: none;
+	}
+
+	input[type="checkbox"] + label span {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin: -1px 4px 0 0;
+		vertical-align: middle;
+		background: url('../Images/checkbox.png') left top no-repeat;
+		cursor: pointer;
+	}
+
+	input[type="checkbox"]:checked + label span {
+		background: url('../Images/checkbox.png') -20px top no-repeat;
+	}
+
+.check10{
+	margin-left:40px;
+}
+
+.form-control2 {
+	float: inherit;
+	display: block;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 2px solid #82a328;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.inputTablaFase {
+	border: 2px solid #82a328;
+}

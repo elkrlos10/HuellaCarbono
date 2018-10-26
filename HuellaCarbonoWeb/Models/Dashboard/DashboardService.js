@@ -12,6 +12,10 @@
             return $http.post(UrlServices + "Proyecto/DatosEmpresa", item);
         }
 
+        service.CambiarEstadoProyecto = function (item) {
+            return $http.post(UrlServices + "Proyecto/CambiarEstadoProyecto", item);
+        }
+
 
 
         return service;

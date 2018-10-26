@@ -144,7 +144,7 @@
             {
                 IdHuella = huella.IdHuella,
                 Porcentaje = oHuella.Porcentaje,
-                Estado = oHuella.Estado
+                //Estado = oHuella.Estado
             };
 
             entity.DetalleHuella.Add(detalle);
@@ -408,6 +408,21 @@
 						   select e).FirstOrDefault();
 			return empresa;
 		}
+
+		public bool CambiarEstadoProyecto(int idProyecto, bool? estado)
+		{
+			var proyecto = (from h in entity.Huella
+							join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
+							where h.IdProyecto == idProyecto
+							select d).FirstOrDefault();
+
+			proyecto.Estado = estado;
+			entity.SaveChanges();
+
+			return true;
+		}
+
+
 
 	}
 }

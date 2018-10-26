@@ -18,7 +18,7 @@ namespace Modelo.DTO
         public bool Precisar { get; set; }
         public double Toneledas { get; set; }
         public double Porcentaje { get; set; }
-        public bool Estado { get; set; }
+        public bool ? Estado { get; set; }
         public string Estado1 { get; set; }
         public int NumCompensacion { get; set; }
         public bool EstadoCompensacion { get; set; }

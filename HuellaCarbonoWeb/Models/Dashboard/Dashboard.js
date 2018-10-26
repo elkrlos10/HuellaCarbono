@@ -81,11 +81,11 @@
         DashboardService.ProyectosDashboard().then(function (response) {
             if (response.data.success) {
                 $scope.Listar = response.data.response;
-                console.log($scope.Listar)
             }
         });
 
-        $scope.CapIdEmpresa = function (idEmpresa) {
+        $scope.CapIdEmpresa = function (idEmpresa, IdProyecto) {
+            $scope.IdProyecto = IdProyecto;
             item = {
                 Paramatro1: idEmpresa.toString()
             }
@@ -96,6 +96,21 @@
                     console.log($scope.Empresa)
                 }
             });
+        }
+
+        $scope.CambiarEstadoProyecto = function (estado) {
+            item = {
+                Paramatro1: $scope.IdProyecto.toString(),
+                Paramatro2: estado.toString()
+            }
+
+            DashboardService.CambiarEstadoProyecto(item).then(function (response) {
+                if (response.data.success) {
+                   // DashboardService.ProyectosDashboard();
+                }
+            });
+
+            
         }
 
 

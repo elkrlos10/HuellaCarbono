@@ -157,6 +157,22 @@ namespace HuellaCarbonoWeb.Controllers
 			}
 		}
 
+		[HttpPost]
+		public IHttpActionResult CambiarEstadoProyecto(ParametrosDTO oParametrosDTO)
+		{
+			try
+			{
+				ProyectoBl p = new ProyectoBl();
+				var response = p.CambiarEstadoProyecto(int.Parse(oParametrosDTO.Paramatro1), bool.Parse(oParametrosDTO.Paramatro2));
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+			}
+		}
+
 
 	}
 }

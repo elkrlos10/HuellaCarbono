@@ -120,6 +120,7 @@
             };
 
             return Task.FromResult<ParametrosDTO>(oparametros);
+
         }
 
         public Task<bool> Guardarcalculo(HuellaDTO oHuella)
@@ -134,7 +135,8 @@
                 Zona = oHuella.Zona,
                 EstadoCompensacion = false,
                 Area = oHuella.Area,
-                Cant_arboles = oHuella.Cant_arboles
+                Cant_arboles = oHuella.Cant_arboles,
+                DensidadArbolHectarea= oHuella.DensidadArbolHectarea
             };
 
             entity.Huella.Add(huella);
@@ -177,7 +179,7 @@
             var detalles = (from i in entity.DetalleHuella
                             join h in entity.Huella on i.IdHuella equals h.IdHuella
                             join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
-                            where p.IdEmpresa == IdEmpresa
+                            where p.IdEmpresa == IdEmpresa && i.Estado != false
                             select i.IdHuella).Distinct();
 
             var Proyectos = new List<HuellaDTO>();
@@ -200,7 +202,7 @@
                                     Toneledas = h.Toneledas,
                                     Porcentaje = d.Porcentaje,
                                     Estado = d.Estado,
-                                    Estado1 = d.Estado == false ? "Pendiente" : "En ejecución",
+                                    Estado1 = d.Estado == null ? "Pendiente" : "En ejecución",
                                     EstadoCompensacion = h.EstadoCompensacion
                                 }).ToList();
 

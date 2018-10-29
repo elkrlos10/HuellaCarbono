@@ -25,5 +25,6 @@ namespace Modelo.DTO
 		public double ? Cant_arboles { get; set; }
 		public double ? Area { get; set; }
 		public double sumaPorcentaje { get; set; }
+        public double DensidadArbolHectarea { get; set; }
     }
 }

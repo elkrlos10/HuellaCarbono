@@ -24,5 +24,7 @@ namespace Modelo.Datos
         public bool EstadoCompensacion { get; set; }
         public double ? Cant_arboles { get; set; }
         public double ? Area { get; set; }
+        public double DensidadArbolHectarea { get; set; }
+        
     }
 }

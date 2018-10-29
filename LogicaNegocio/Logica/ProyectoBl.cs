@@ -382,6 +382,7 @@
 							 join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
 							 join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
 							 join e in entity.Empresa on p.IdEmpresa equals e.IdEmpresa
+							 where d.Estado == null
 							 select new HuellaDTO
 							 {
 								 IdHuella = h.IdHuella,
@@ -397,7 +398,8 @@
 								 EstadoCompensacion = h.EstadoCompensacion,
 								 Area = h.Area,
 								 Cant_arboles = h.Cant_arboles,
-								 IdEmpresa = e.IdEmpresa
+								 IdEmpresa = e.IdEmpresa,
+								 DensidadArbolHectarea = h.DensidadArbolHectarea
 							 }).ToList();
 
 			return proyectos;
@@ -424,6 +426,33 @@
 			return true;
 		}
 
+		public List<HuellaDTO> FiltroProyectos(bool? estado)
+		{
+			var proyectos = (from h in entity.Huella
+							join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
+							join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+							join e in entity.Empresa on p.IdEmpresa equals e.IdEmpresa
+							where d.Estado == estado
+							 select new HuellaDTO
+							{
+								IdHuella = h.IdHuella,
+								IdProyecto = h.IdProyecto,
+								Fecha = h.Fecha,
+								TipoArbol = h.TipoArbol,
+								Zona = h.Zona,
+								Precisar = h.Precisar,
+								Toneledas = h.Toneledas,
+								Porcentaje = d.Porcentaje,
+								Estado = d.Estado,
+								Area = h.Area,
+								Cant_arboles = h.Cant_arboles,
+								IdEmpresa = e.IdEmpresa,
+								DensidadArbolHectarea = h.DensidadArbolHectarea
+							}).ToList();
+
+			return proyectos;
+			
+		}
 
 
 	}

@@ -173,6 +173,29 @@ namespace HuellaCarbonoWeb.Controllers
 			}
 		}
 
+		[HttpPost]
+		public IHttpActionResult FiltroProyectos(ParametrosDTO oParametrosDTO)
+		{
+			try
+			{
+				ProyectoBl p = new ProyectoBl();
+				var response = new List<HuellaDTO>();
+				if (oParametrosDTO.Paramatro1 == null)
+				{
+					response = p.FiltroProyectos(null);
+				}
+				else { 
+					response = p.FiltroProyectos(bool.Parse(oParametrosDTO.Paramatro1));
+				}
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+			}
+		}
+
 
 	}
 }

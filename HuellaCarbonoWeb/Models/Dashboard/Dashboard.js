@@ -2,16 +2,35 @@
 (function () {
 	//var personas = function ($scope, nombre del servicio) {
     var dashboard = function ($scope, DashboardService, $location) {
-		$scope.value = 67;
+
+       
+        DashboardService.ProyectosDashboard().then(function (response) {
+            if (response.data.success) {
+                $scope.Listar = response.data.response;
+                $scope.TotalProyecto = $scope.Listar.length;
+                $scope.value4 = $scope.TotalProyecto;
+                console.log();
+
+                //$scope.FiltroProyectos(false)
+                //$scope.value3 = $scope.Listar.length;
+                //$scope.FiltroProyectos(true)
+                //$scope.value2 = $scope.Listar.length;
+
+            }
+        });
+
+
+
+       // $scope.value = $scope.TotalProyecto;
 		$scope.options = {
-			size: 250,
+			size: 200,
 			barColor: '#82A20D',
 			trackColor: '#182430',
 			trackWidth: 15,
 			barWidth: 23,
 			subText: {
 				enabled: true,
-				text: 'En proceso'
+				text: 'Total Proyectos'
 			},
 			readOnly: true,
 			animate: {
@@ -19,18 +38,17 @@
 				duration: 1000,
 				ease: 'bounce'
 			}
-		}
+        }
 
-		$scope.value2 = 5;
 		$scope.options2 = {
-			size: 250,
+			size: 200,
 			barColor: '#82A20D',
 			trackColor: '#182430',
 			trackWidth: 15,
 			barWidth: 23,
 			subText: {
 				enabled: true,
-				text: 'Terminados'
+                text: 'En proceso'
 			},
 			readOnly: true,
 			animate: {
@@ -39,10 +57,9 @@
 				ease: 'bounce'
 			}
 		}
-
-		$scope.value3 = 10;
+		//$scope.value3 = 10;
 		$scope.options3 = {
-			size: 250,
+			size: 200,
 			barColor: '#82A20D',
 			trackColor: '#182430',
 			trackWidth: 15,
@@ -58,10 +75,9 @@
 				ease: 'bounce'
 			}
 		}
-
-		$scope.value4 = 50;
+        //$scope.value4 = $scope.TotalProyecto;
 		$scope.options4 = {
-			size: 250,
+			size:200,
 			barColor: '#82A20D',
 			trackColor: '#182430',
 			trackWidth: 15,
@@ -77,12 +93,6 @@
 				ease: 'bounce'
 			}
 		}
-
-        DashboardService.ProyectosDashboard().then(function (response) {
-            if (response.data.success) {
-                $scope.Listar = response.data.response;
-            }
-        });
 
         $scope.CapIdEmpresa = function (idEmpresa, IdProyecto) {
             $scope.IdProyecto = IdProyecto;
@@ -106,11 +116,28 @@
 
             DashboardService.CambiarEstadoProyecto(item).then(function (response) {
                 if (response.data.success) {
-                   // DashboardService.ProyectosDashboard();
+                   DashboardService.ProyectosDashboard();
                 }
             });
+        }
 
-            
+        $scope.FiltroProyectos = function (estado) {
+            if (estado == null) {
+                item = {
+                    Paramatro1: null
+                }
+            }
+            else {
+            item = {
+                Paramatro1: estado.toString()
+                }
+            }
+
+            DashboardService.FiltroProyectos(item).then(function (response) {
+                if (response.data.success) {
+                    $scope.Listar = response.data.response;
+                }
+            });
         }
 
 

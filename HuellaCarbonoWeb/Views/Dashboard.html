@@ -46,7 +46,11 @@
 			<h2 style="text-align: center;margin: 20px;font-size: 25px;">
 				Proyectos presentados
 			</h2>
-
+			<div class="filtro">
+				<button class="btn btn-danger"ng-click="FiltroProyectos(false)">Cancelados</button>
+				<button class="btn btn-info"  ng-click="FiltroProyectos(true)">En Ejecución</button>
+				<button class="btn btn-success" ng-click="FiltroProyectos(null)">Por aprobar</button>
+			</div>
 			<div class="tabla table-responsive col-md-12">
 				<table class="table table-striped">
 					<thead>
@@ -69,8 +73,8 @@
 							<td>{{ ListaData.Toneledas }}</td>
 							<td>{{ ListaData.Porcentaje }}</td>
 							<td>{{ ListaData.Area }}</td>
+							<td>{{ ListaData.DensidadArbolHectarea }}</td>
 							<td>{{ ListaData.Cant_arboles }}</td>
-							<td>{{ ListaData.Cant_arboles * ListaData.Area }}</td>
 							<td>{{ ListaData.TipoArbol }}</td>
 							<td>
 								<h2 ng-if="ListaData.Estado == false">Cancelado</h2>
@@ -97,22 +101,25 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h3 class="modal-title" ng-if="Empresa.TipoEmpresa == 1">Institución Educativa</h3>
-							<h3 class="modal-title" ng-if="Empresa.TipoEmpresa == 2">Transporte</h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<div class="row">
+							<p class="col-md-11" style="font-size:16px">A continuación encontrarás la información acerca de la empresa que ha solicitado la compensación, donde debes aprobar o cancelar dicha compensación en tu zona</p>
+							<button  type="button" class="close col-md-1" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
+							</div>
 						</div>
 						<div class="modal-body">
-							<p>A continuación encontrarás la información repectiva acerca de la empresa que ha solicitado la compensación, donde debes aprobar o cancelar dicha compensación en tu zona</p>
-							<h3 class="modal-title" id="exampleModalLabel">{{Empresa.NombreEmpresa | uppercase}}</h3>
-							<h4 class="modalData"><b>Direccion:</b> {{Empresa.Direccion}}</h4>
-							<h4 class="modalData"><b>Email:</b> {{Empresa.Email}}</h4>
-							<h4 class="modalData"><b>Nit:</b> {{Empresa.Nit}}</h4>
+							<h3 style="font-size:20px" class="modal-title" id="exampleModalLabel">{{Empresa.NombreEmpresa | uppercase}}</h3>
+							<h3 style="font-size:18px" class="modal-title" ng-if="Empresa.TipoEmpresa == 1">Institución Educativa</h3>
+							<h3 style="font-size:18px" class="modal-title" ng-if="Empresa.TipoEmpresa == 2">Transporte</h3>
+							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Direccion:</b> {{Empresa.Direccion}}</h4>
+							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Email:</b> {{Empresa.Email}}</h4>
+							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Nit:</b> {{Empresa.Nit}}</h4>
 						</div> 
 						<div class="modal-footer">
 							<button type="button" ng-click="CambiarEstadoProyecto(true)" class="btn btn-success">Aprobar</button>
 							<button type="button" ng-click="CambiarEstadoProyecto(false)" class="btn btn-danger">Cancelar</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Cerrar</button>
 						</div>
 					</div>
 				</div>

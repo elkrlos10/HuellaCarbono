@@ -16,6 +16,10 @@
             return $http.post(UrlServices + "Proyecto/CambiarEstadoProyecto", item);
         }
 
+        service.FiltroProyectos = function (item) {
+            return $http.post(UrlServices + "Proyecto/FiltroProyectos", item);
+        }
+
 
 
         return service;

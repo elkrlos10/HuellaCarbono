@@ -6,16 +6,13 @@
        
         DashboardService.ProyectosDashboard().then(function (response) {
             if (response.data.success) {
-                $scope.Listar = response.data.response;
-                $scope.TotalProyecto = $scope.Listar.length;
-                $scope.value4 = $scope.TotalProyecto;
-                console.log();
-
-                //$scope.FiltroProyectos(false)
-                //$scope.value3 = $scope.Listar.length;
-                //$scope.FiltroProyectos(true)
-                //$scope.value2 = $scope.Listar.length;
-
+                $scope.Listar = response.data.Lista;
+              
+                //Valores de los Circulos 
+                $scope.value4 = response.data.Lista.length;
+                $scope.value3 = response.data.Cancelados;
+                $scope.value2 = response.data.EnProceso;
+                $scope.value = $scope.value2 + $scope.value3 + $scope.value4;
             }
         });
 
@@ -116,7 +113,20 @@
 
             DashboardService.CambiarEstadoProyecto(item).then(function (response) {
                 if (response.data.success) {
-                   DashboardService.ProyectosDashboard();
+                    $("#exampleModal").modal("hide");
+
+                    //Actualizar la tabla
+                    DashboardService.ProyectosDashboard().then(function (response) {
+                        if (response.data.success) {
+                            $scope.Listar = response.data.Lista;
+
+                            //Valores de los Circulos 
+                            $scope.value4 = response.data.Lista.length;
+                            $scope.value3 = response.data.Cancelados;
+                            $scope.value2 = response.data.EnProceso;
+                            $scope.value = $scope.value2 + $scope.value3 + $scope.value4;
+                        }
+                    });
                 }
             });
         }

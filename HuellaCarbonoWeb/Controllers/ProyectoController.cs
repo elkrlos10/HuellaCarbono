@@ -131,9 +131,10 @@ namespace HuellaCarbonoWeb.Controllers
 			try
 			{
 				ProyectoBl p = new ProyectoBl();
-				var response = p.ProyectosDashboard();
-
-				return Ok(new { success = true, response });
+				var Lista = p.ProyectosDashboard().Item1;
+                var Cancelados= p.ProyectosDashboard().Item2;
+                var EnProceso = p.ProyectosDashboard().Item3;
+                return Ok(new { success = true, Lista, Cancelados, EnProceso });
 			}
 			catch (Exception e)
 			{

@@ -376,7 +376,7 @@
 
 		//}
 
-		public List<HuellaDTO> ProyectosDashboard()
+		public Tuple<List<HuellaDTO>, int, int> ProyectosDashboard()
 		{
 			var proyectos = (from h in entity.Huella
 							 join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
@@ -402,7 +402,13 @@
 								 DensidadArbolHectarea = h.DensidadArbolHectarea
 							 }).ToList();
 
-			return proyectos;
+            var totalProyecto = (from i in entity.DetalleHuella
+                                 select i).ToList();
+
+            var Cancelados = totalProyecto.Where(x => x.Estado == false).Count();
+            var EnProceso = totalProyecto.Where(x => x.Estado == true).Count();
+
+            return new Tuple<List<HuellaDTO>, int, int>(proyectos, Cancelados, EnProceso);
 		}
 
 		public Empresa DatosEmpresa(int idEmpresa)

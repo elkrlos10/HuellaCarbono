@@ -2,8 +2,8 @@
 (function () {
 	//var personas = function ($scope, nombre del servicio) {
     var dashboard = function ($scope, DashboardService, $location, $rootScope) {
-        $rootScope.value;
-        $scope.hol;
+
+        setTimeout(function () { 
         DashboardService.ProyectosDashboard().then(function (response) {
             if (response.data.success) {
                 $scope.Listar = response.data.Lista;
@@ -12,11 +12,11 @@
                 $scope.value4 = response.data.Lista.length;
                 $scope.value3 = response.data.Cancelados;
                 $scope.value2 = response.data.EnProceso;   
-                $rootScope.value = $scope.value2 + $scope.value3 + $scope.value4;  
-                $scope.hol = $scope.value2 + $scope.value3 + $scope.value4;  
+                $scope.value = $scope.value2 + $scope.value3 + $scope.value4;               
             }
         });
-          
+        }, 1000);
+
         $scope.CapIdEmpresa = function (idEmpresa, IdProyecto) {
             $scope.IdProyecto = IdProyecto;
             item = {
@@ -74,77 +74,78 @@
                     $scope.Listar = response.data.response;
                 }
             });
-        }  
-        $rootScope.value = 4;
-        $scope.hol;
-        $scope.options = {
-            size: 200,
-            barColor: '#82A20D',
-            trackColor: '#182430',
-            trackWidth: 15,
-            barWidth: 23,
-            subText: {
-                enabled: true,
-                text: 'Total Proyectos'
-            },
-            readOnly: true,
-            animate: {
-                enabled: true,
-                duration: 1000,
-                ease: 'bounce'
-            }
         }
-        $scope.options2 = {
-            size: 200,
-            barColor: '#82A20D',
-            trackColor: '#182430',
-            trackWidth: 15,
-            barWidth: 23,
-            subText: {
-                enabled: true,
-                text: 'En proceso'
-            },
-            readOnly: true,
-            animate: {
-                enabled: true,
-                duration: 1000,
-                ease: 'bounce'
+
+            $scope.options = {
+                size: 200,
+                barColor: '#82A20D',
+                trackColor: '#182430',
+                trackWidth: 15,
+                barWidth: 23,
+                subText: {
+                    enabled: true,
+                    text: 'Total Proyectos'
+                },
+                readOnly: true,
+                animate: {
+                    enabled: true,
+                    duration: 1000,
+                    ease: 'bounce'
+                }
             }
-        }
-        $scope.options3 = {
-            size: 200,
-            barColor: '#82A20D',
-            trackColor: '#182430',
-            trackWidth: 15,
-            barWidth: 23,
-            subText: {
-                enabled: true,
-                text: 'Cancelados'
-            },
-            readOnly: true,
-            animate: {
-                enabled: true,
-                duration: 1000,
-                ease: 'bounce'
+            $scope.options2 = {
+                size: 200,
+                barColor: '#82A20D',
+                trackColor: '#182430',
+                trackWidth: 15,
+                barWidth: 23,
+                subText: {
+                    enabled: true,
+                    text: 'En proceso'
+                },
+                readOnly: true,
+                animate: {
+                    enabled: true,
+                    duration: 1000,
+                    ease: 'bounce'
+                }
             }
-        }
-        $scope.options4 = {
-            size: 200,
-            barColor: '#82A20D',
-            trackColor: '#182430',
-            trackWidth: 15,
-            barWidth: 23,
-            subText: {
-                enabled: true,
-                text: 'Pendientes'
-            },
-            readOnly: true,
-            animate: {
-                enabled: true,
-                duration: 1000,
-                ease: 'bounce'
+            $scope.options3 = {
+                size: 200,
+                barColor: '#82A20D',
+                trackColor: '#182430',
+                trackWidth: 15,
+                barWidth: 23,
+                subText: {
+                    enabled: true,
+                    text: 'Cancelados'
+                },
+                readOnly: true,
+                animate: {
+                    enabled: true,
+                    duration: 1000,
+                    ease: 'bounce'
+                }
             }
-        }
+            $scope.options4 = {
+                size: 200,
+                barColor: '#82A20D',
+                trackColor: '#182430',
+                trackWidth: 15,
+                barWidth: 23,
+                subText: {
+                    enabled: true,
+                    text: 'Pendientes'
+                },
+                readOnly: true,
+                animate: {
+                    enabled: true,
+                    duration: 1000,
+                    ease: 'bounce'
+                }
+            }
+        
+       
 
         //Notificaciones
         $scope.notificacionesMostrar = false;

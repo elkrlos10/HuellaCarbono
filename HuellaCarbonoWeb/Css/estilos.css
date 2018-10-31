@@ -653,7 +653,7 @@ label{
 	position: absolute;
 	margin: 5px auto;
 	width: 120px;
-	top: -130px;
+	top: -65px;
 	right: 0px;
 	left: 0px;
 }
@@ -922,7 +922,7 @@ h1 {
 
 ul.dots * {
 	/* disable border-box from bootstrap */
-	margin:5px;
+	
 	box-sizing: content-box;
 	list-style-type: none;
 }
@@ -1028,7 +1028,7 @@ ul.dots li span {
 			background-color: #3498db;
 		}
 
-ul.dots > li > a > span > mark {
+ul.dots > li > a  > mark {
 	-webkit-animation-name: bounceIn;
 	animation-name: bounceIn;
 	-webkit-transform-origin: center bottom;
@@ -1042,18 +1042,18 @@ ul.dots > li > a > span > mark {
 	animation-iteration-count: 1;
 }
 
-ul.dots > li:hover > a > span > mark {
+ul.dots > li:hover > a > mark {
 	-webkit-animation-name: bounce;
 	animation-name: bounce;
 }
 
-	ul.dots > li:hover > a > span > mark.rubberBand {
+	ul.dots > li:hover > a > mark.rubberBand {
 		-webkit-animation-name: rubberBand;
 		animation-name: rubberBand;
 		cursor:pointer;
 	}
 
-	ul.dots > li:hover > a > span > mark.swing {
+	ul.dots > li:hover > a > mark.swing {
 		-webkit-transform-origin: top center;
 		-ms-transform-origin: top center;
 		transform-origin: top center;
@@ -1061,12 +1061,12 @@ ul.dots > li:hover > a > span > mark {
 		animation-name: swing;
 	}
 
-	ul.dots > li:hover > a > span > mark.tada {
+	ul.dots > li:hover > a > mark.tada {
 		-webkit-animation-name: tada;
 		animation-name: tada;
 	}
 
-	ul.dots > li:hover > a > span > mark.wobble {
+	ul.dots > li:hover > a > mark.wobble {
 		-webkit-animation-name: wobble;
 		animation-name: wobble;
 	}
@@ -1480,4 +1480,9 @@ code {
 .buscarProyecto::placeholder {
 	color: #82a20d;
 	font-weight:200;
+}
+
+.filtro ul li{
+	display:inline-block;
+	width:inherit;
 }

@@ -142,6 +142,7 @@
     <Content Include="Models\Login\Login.js" />
     <Content Include="Models\Principal.js" />
     <Content Include="Models\ProyectoInt\ProyectoInt.js" />
+    <Content Include="Models\ProyectoInt\ProyectoIntService.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.min.js" />
     <Content Include="Scripts\angular-material.min.js" />

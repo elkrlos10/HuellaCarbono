@@ -197,6 +197,39 @@ namespace HuellaCarbonoWeb.Controllers
 			}
 		}
 
+		[HttpPost]
+		public IHttpActionResult GuardarEstablecimiento(Establecimiento oEstablecimiento)
+		{
+			try
+			{
+				ProyectoBl oProyectoBl = new ProyectoBl();
+				var response = oProyectoBl.GuardarEstablecimiento(oEstablecimiento);
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+
+			}
+		}
+
+		[HttpPost]
+		public IHttpActionResult ConsultarEstablecimiento(Establecimiento oEstablecimiento)
+		{
+			try
+			{
+				ProyectoBl oProyectoBl = new ProyectoBl();
+				var response = oProyectoBl.ConsultarEstablecimiento(oEstablecimiento.IdProyeto);
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+
+			}
+		}
 
 	}
 }

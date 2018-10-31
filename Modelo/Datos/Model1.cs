@@ -23,7 +23,8 @@ namespace Modelo.Datos
         public virtual DbSet<FactorEmision> FactorEmision { get; set; }
         public virtual DbSet<Huella> Huella { get; set; }
         public virtual DbSet<DetalleHuella> DetalleHuella { get; set; }
-        public virtual DbSet<Encuesta> Encuesta { get; set; }
+		public virtual DbSet<Encuesta> Encuesta { get; set; }
+		public virtual DbSet<Establecimiento> Establecimiento { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

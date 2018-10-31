@@ -460,6 +460,32 @@
 			
 		}
 
+		public Establecimiento GuardarEstablecimiento(Establecimiento oEstablecimiento)
+		{
+			if (oEstablecimiento.IdEstablecimiento != 0)
+			{
+				var idEstablecimiento = (from e in entity.Establecimiento
+										 where e.IdEstablecimiento == oEstablecimiento.IdEstablecimiento
+										 select e).FirstOrDefault();
+				entity.Establecimiento.Remove(idEstablecimiento);
+			}
+			entity.Establecimiento.Add(oEstablecimiento);
+			entity.SaveChanges();
+
+			return oEstablecimiento;
+
+		}
+
+		public Establecimiento ConsultarEstablecimiento(int IdProyecto)
+		{
+			var idEstablecimiento = (from e in entity.Establecimiento
+									where e.IdProyeto == IdProyecto
+									select e).FirstOrDefault();
+			return idEstablecimiento;
+
+		}
+
+
 
 	}
 }

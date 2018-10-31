@@ -12,7 +12,8 @@
                 $scope.value4 = response.data.Lista.length;
                 $scope.value3 = response.data.Cancelados;
                 $scope.value2 = response.data.EnProceso;   
-                $scope.value = $scope.value2 + $scope.value3 + $scope.value4;               
+                $scope.value = $scope.value2 + $scope.value3 + $scope.value4;
+               
             }
         });
         }, 1000);
@@ -148,26 +149,40 @@
        
 
         //Notificaciones
+        setInterval(function () {
+            DashboardService.ProyectosDashboard().then(function (response) {
+                if (response.data.success) {
+
+                    $scope.value4 = response.data.Lista.length;
+                    $scope.value = $scope.value2 + $scope.value3 + $scope.value4;
+                }
+            })
+            }, 1000)
+
+
+
         $scope.notificacionesMostrar = false;
         $scope.mostrarNotificaciones = function () {
             if ($scope.notificacionesMostrar == false) {
-                $(".notificacionesCont").css(
-                    "display", "block"
-                )
+                $scope.value4 = 0;
                 $scope.notificacionesMostrar = true;
             }
             else {
-                $(".notificacionesCont").css(
-                    "display", "none"
-                )
+                $scope.value4 = $scope.value4;
+
                 $scope.notificacionesMostrar = false;
             }
 
+        }
+
+        $scope.CapIdInt = function (idProyectoInt) {
+            $rootScope.idProyectoInt = idProyectoInt;
+            $location.url("ProyectoInt");
         }
 	}
 	//inyectar las dependencias que se esta usando
     dashboard.$inject = ["$scope", "DashboardService", "$location", "$rootScope"];
 	//para declarar que este es mi controlador
-	AngularApp.controller("DashboardController", dashboard);
+    AngularApp.controller("DashboardController", dashboard);
 
 })()

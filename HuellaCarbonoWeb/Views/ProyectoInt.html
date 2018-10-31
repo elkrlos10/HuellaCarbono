@@ -38,46 +38,46 @@
 
 
 	<div class="tab-content col-md-10" id="nav-tabContent">
-		<div class="tab-pane fade active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+		<div class="tab-pane fade in active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 			<div class="row fase1"> 
 				<div>
 					<form class="col-md-4">
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a1" />
+							<input class="form-check-input" type="checkbox" id="a1" ng-model="Establecimiento.Preparacion"/>
 							<label for="a1"><span></span>A.1 Preparación del terreno</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a2" />
+							<input class="form-check-input" type="checkbox" id="a2" ng-model="Establecimiento.Roceria"/>
 							<label for="a2"><span></span>A.2 Rocería y control químico</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a3" />
+							<input class="form-check-input" type="checkbox" id="a3" ng-model="Establecimiento.Trazado" />
 							<label for="a3"><span></span>A.3 Trazado</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a4" />
+							<input class="form-check-input" type="checkbox" id="a4" ng-model="Establecimiento.Plateo"/>
 							<label for="a4"><span></span>A.4 Plateo y Ahoyado</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a5" />
+							<input class="form-check-input" type="checkbox" id="a5" ng-model="Establecimiento.Transporte" />
 							<label for="a5"><span></span>A.5 Transporte de plantas</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a6" />
+							<input class="form-check-input" type="checkbox" id="a6" ng-model="Establecimiento.Plantacion" />
 							<label for="a6"><span></span>A.6 Plantación</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a7" />
+							<input class="form-check-input" type="checkbox" id="a7" ng-model="Establecimiento.Fertilizacion"/>
 							<label for="a7"><span></span>A.7 Fertilización</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a8" />
+							<input class="form-check-input" type="checkbox" id="a8" ng-model="Establecimiento.Replantes"/>
 							<label for="a8"><span></span>A.8 Replantes</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a9" />
+							<input class="form-check-input" type="checkbox" id="a9" ng-model="Establecimiento.Cercos"/>
 							<label for="a9"><span></span>A.9 Cercos</label>
 						</div>
 
@@ -212,7 +212,7 @@
 							</tbody>
 						</table>
 					</div>
-					<button type="submit" class="btn btn-success btnFases btn-block">
+					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarEstablecimiento()">
 						Guardar
 					</button>
 				</div>
@@ -614,7 +614,7 @@
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" name="name" value="" id="d7" />
-							<label for="d7"><span></span>D.7 Segundo Raleo (50 % población Inicial)</label>
+							<label for="d7"><span></span>D.7 Primer Raleo (50 % población Inicial)</label>
 						</div>
 					</form>
 					<div class="col-md-8">
@@ -787,7 +787,7 @@
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" name="name" value="" id="e7" />
-							<label for="e7"><span></span>E.7 Primer Raleo (50 % población restante)</label>
+							<label for="e7"><span></span>E.7 Segundo Raleo (50 % población restante)</label>
 						</div>
 					</form>
 					<div class="col-md-8">

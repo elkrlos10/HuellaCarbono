@@ -3,8 +3,28 @@
 		<div class="col-md-12 barraNotificaciones">
 			<div class="row">
 				<div class="iconosNot  col-md-12">
-					<i class="fas fa-sign-out-alt iconos derIcon"></i>
-					<i class="far fa-bell iconos derIcon"></i>
+					
+					<nav id="sidebar">
+						<ul class="dots">
+							<li>
+								<span class="fas fa-sign-out-alt iconos derIcon"></span>
+							</li>
+							<li ng-click="mostrarNotificaciones()">
+								<a><span class="far fa-bell iconos derIcon"><mark class="rubberBand">99</mark></span></a>
+							</li>
+						</ul>
+					</nav>
+					<div class="notificacionesCont row">
+						<div class="Notificacionestitulo col-md-12">
+							<div class="col-md-10">
+								<p>Notificaciones</p>
+							</div>
+							<button type="button" class="close col-md-2" style="margin-top: 6px;" ng-click="mostrarNotificaciones()">
+								<i class="fas fa-times"></i>
+							</button>
+						</div>
+						<hr style="margin:0px;" class="col-md-12" />
+					</div>
 				</div>
 				<div class="logoAdmin col-md-12">
 					<img src="../Images/logoBlanco.png" />
@@ -46,9 +66,15 @@
 			<h2 style="text-align: center;margin: 20px;font-size: 25px;">
 				Proyectos presentados
 			</h2>
+			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<input type="text" class="form-control buscarProyecto" placeholder="Buscar Proyecto">
+				</div>
+				<button type="submit" class="btn btn-default">Buscar</button>
+			</form>
 			<div class="filtro">
-				<button class="btn btn-danger"ng-click="FiltroProyectos(false)">Cancelados</button>
-				<button class="btn btn-info"  ng-click="FiltroProyectos(true)">En Ejecución</button>
+				<button class="btn btn-danger" ng-click="FiltroProyectos(false)">Cancelados</button>
+				<button class="btn btn-info" ng-click="FiltroProyectos(true)">En Ejecución</button>
 				<button class="btn btn-success" ng-click="FiltroProyectos(null)">Por aprobar</button>
 			</div>
 			<div class="tabla table-responsive col-md-12">
@@ -102,10 +128,10 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<div class="row">
-							<p class="col-md-11" style="font-size:16px">A continuación encontrarás la información acerca de la empresa que ha solicitado la compensación, donde debes aprobar o cancelar dicha compensación en tu zona</p>
-							<button  type="button" class="close col-md-1" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+								<p class="col-md-11" style="font-size:16px">A continuación encontrarás la información acerca de la empresa que ha solicitado la compensación, donde debes aprobar o cancelar dicha compensación en tu zona</p>
+								<button type="button" class="close col-md-1" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
 							</div>
 						</div>
 						<div class="modal-body">
@@ -115,7 +141,7 @@
 							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Direccion:</b> {{Empresa.Direccion}}</h4>
 							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Email:</b> {{Empresa.Email}}</h4>
 							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Nit:</b> {{Empresa.Nit}}</h4>
-						</div> 
+						</div>
 						<div class="modal-footer">
 							<button type="button" ng-click="CambiarEstadoProyecto(true)" class="btn btn-success">Aprobar</button>
 							<button type="button" ng-click="CambiarEstadoProyecto(false)" class="btn btn-danger">Cancelar</button>

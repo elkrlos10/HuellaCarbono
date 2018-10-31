@@ -11,10 +11,28 @@
                 //Valores de los Circulos 
                 $scope.value4 = response.data.Lista.length;
                 $scope.value3 = response.data.Cancelados;
-                $scope.value2 = response.data.EnProceso;
+                $scope.value2 = response.data.EnProceso;   
                 $scope.value = $scope.value2 + $scope.value3 + $scope.value4;
             }
         });
+
+//Notificaciones
+        $scope.notificacionesMostrar = false;
+        $scope.mostrarNotificaciones = function () {
+            if ($scope.notificacionesMostrar == false) {
+                $(".notificacionesCont").css(
+                    "display", "block"
+                )
+                $scope.notificacionesMostrar = true;
+            }
+            else {
+                $(".notificacionesCont").css(
+                    "display", "none"
+                )
+                $scope.notificacionesMostrar = false;
+            }
+            
+        }
 
 
 

@@ -25,9 +25,11 @@ namespace Modelo.Datos
         public virtual DbSet<DetalleHuella> DetalleHuella { get; set; }
 		public virtual DbSet<Encuesta> Encuesta { get; set; }
 		public virtual DbSet<Establecimiento> Establecimiento { get; set; }
+		public virtual DbSet<Mantenimiento2> Mantenimiento2 { get; set; }
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Empresa>()
             //    .Property(e => e.NombreEmpresa)

@@ -151,6 +151,7 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\cookies.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\examples.js" />
     <Content Include="Scripts\jquery-ui.js" />

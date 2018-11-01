@@ -1,5 +1,5 @@
 ﻿//Inicializamos el modulo de angular e injectamos las dependencias que necesite
-var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial", "ui.knob"]);
+var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial", "ui.knob","ngCookies"]);
 
 //Configuración de las rutas (vistas)
 (function () {

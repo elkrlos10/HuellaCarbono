@@ -465,7 +465,7 @@
 			if (oEstablecimiento.IdEstablecimiento != 0)
 			{
 				var idEstablecimiento = (from e in entity.Establecimiento
-										 where e.IdEstablecimiento == oEstablecimiento.IdEstablecimiento
+										 where e.IdProyeto == oEstablecimiento.IdProyeto
 										 select e).FirstOrDefault();
 				entity.Establecimiento.Remove(idEstablecimiento);
 			}
@@ -482,6 +482,29 @@
 									where e.IdProyeto == IdProyecto
 									select e).FirstOrDefault();
 			return idEstablecimiento;
+
+		}
+
+		public Mantenimiento2 GuardarMantenimiento2(Mantenimiento2 oMantenimiento2)
+		{
+			if (oMantenimiento2.IdMantenimiento2 != 0)
+			{
+				var IdMantenimiento2 = (from m in entity.Mantenimiento2
+										 where m.IdProyecto == oMantenimiento2.IdProyecto
+										select m).FirstOrDefault();
+				entity.Mantenimiento2.Remove(IdMantenimiento2);
+			}
+			entity.Mantenimiento2.Add(oMantenimiento2);
+			entity.SaveChanges();
+			return oMantenimiento2;
+		}
+
+		public Mantenimiento2 ConsultarMantenimiento2(int IdProyecto)
+		{
+			var IdMantenimiento2 = (from e in entity.Mantenimiento2
+									where e.IdProyecto == IdProyecto
+									select e).FirstOrDefault();
+			return IdMantenimiento2;
 
 		}
 

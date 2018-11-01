@@ -11,6 +11,13 @@
             return $http.post(UrlServices + "Proyecto/ConsultarEstablecimiento", item);
         }
 
+        service.GuardarMantenimiento2 = function (item) {
+            return $http.post(UrlServices + "Proyecto/GuardarMantenimiento2", item);
+        }
+
+        service.ConsultarMantenimiento2 = function (item) {
+            return $http.post(UrlServices + "Proyecto/ConsultarMantenimiento2", item);
+        }
         return service;
     }
 

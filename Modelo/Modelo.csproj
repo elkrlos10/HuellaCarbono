@@ -57,6 +57,7 @@
     <Compile Include="Datos\FactorEmision.cs" />
     <Compile Include="Datos\Huella.cs" />
     <Compile Include="Datos\Mantenimiento2.cs" />
+    <Compile Include="Datos\Mantenimiento3.cs" />
     <Compile Include="Datos\Maquinas.cs" />
     <Compile Include="Datos\Model1.cs" />
     <Compile Include="Datos\Proyecto.cs" />

@@ -462,13 +462,17 @@
 
 		public Establecimiento GuardarEstablecimiento(Establecimiento oEstablecimiento)
 		{
-			if (oEstablecimiento.IdEstablecimiento != 0)
-			{
+			
 				var idEstablecimiento = (from e in entity.Establecimiento
 										 where e.IdProyeto == oEstablecimiento.IdProyeto
 										 select e).FirstOrDefault();
-				entity.Establecimiento.Remove(idEstablecimiento);
-			}
+            if (idEstablecimiento != null)
+            {
+                entity.Establecimiento.Remove(idEstablecimiento);
+                entity.SaveChanges();
+            }
+				
+            
 			entity.Establecimiento.Add(oEstablecimiento);
 			entity.SaveChanges();
 
@@ -487,28 +491,61 @@
 
 		public Mantenimiento2 GuardarMantenimiento2(Mantenimiento2 oMantenimiento2)
 		{
-			if (oMantenimiento2.IdMantenimiento2 != 0)
-			{
+			
 				var IdMantenimiento2 = (from m in entity.Mantenimiento2
-										 where m.IdProyecto == oMantenimiento2.IdProyecto
+										 where m.IdProyecto == oMantenimiento2.IdProyecto 
+                                         && m.Etapa == oMantenimiento2.Etapa
 										select m).FirstOrDefault();
-				entity.Mantenimiento2.Remove(IdMantenimiento2);
-			}
+            if (IdMantenimiento2 != null)
+            {
+                entity.Mantenimiento2.Remove(IdMantenimiento2);
+                entity.SaveChanges();
+            }
+            
 			entity.Mantenimiento2.Add(oMantenimiento2);
 			entity.SaveChanges();
 			return oMantenimiento2;
 		}
 
-		public Mantenimiento2 ConsultarMantenimiento2(int IdProyecto)
+		public Mantenimiento2 ConsultarMantenimiento2(int IdProyecto, int Etapa)
 		{
-			var IdMantenimiento2 = (from e in entity.Mantenimiento2
-									where e.IdProyecto == IdProyecto
-									select e).FirstOrDefault();
+			var IdMantenimiento2 = (from m in entity.Mantenimiento2
+									where m.IdProyecto == IdProyecto 
+                                    && m.Etapa == Etapa
+									select m).FirstOrDefault();
 			return IdMantenimiento2;
 
 		}
 
+        public Mantenimiento3 GuardarMantenimiento3(Mantenimiento3 oMantenimiento3)
+        {
+
+            var IdMantenimiento3 = (from m in entity.Mantenimiento3
+                                    where m.IdProyecto == oMantenimiento3.IdProyecto
+                                    && m.Etapa == oMantenimiento3.Etapa
+                                    select m).FirstOrDefault();
+            if (IdMantenimiento3 != null)
+            {
+                entity.Mantenimiento3.Remove(IdMantenimiento3);
+                entity.SaveChanges();
+            }
+
+            entity.Mantenimiento3.Add(oMantenimiento3);
+            entity.SaveChanges();
+            return oMantenimiento3;
+        }
+
+        public Mantenimiento3 ConsultarMantenimiento3(int IdProyecto, int Etapa)
+        {
+            var IdMantenimiento3 = (from m in entity.Mantenimiento3
+                                    where m.IdProyecto == IdProyecto
+                                    && m.Etapa == Etapa
+                                    select m).FirstOrDefault();
+            return IdMantenimiento3;
+
+        }
 
 
-	}
+
+    }
 }

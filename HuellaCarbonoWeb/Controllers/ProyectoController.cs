@@ -255,7 +255,7 @@ namespace HuellaCarbonoWeb.Controllers
 			try
 			{
 				ProyectoBl oProyectoBl = new ProyectoBl();
-				var response = oProyectoBl.ConsultarMantenimiento2(oMantenimiento2.IdProyecto);
+				var response = oProyectoBl.ConsultarMantenimiento2(oMantenimiento2.IdProyecto, oMantenimiento2.Etapa);
 
 				return Ok(new { success = true, response });
 			}
@@ -266,5 +266,39 @@ namespace HuellaCarbonoWeb.Controllers
 			}
 		}
 
-	}
+        [HttpPost]
+        public IHttpActionResult GuardarMantenimiento3(Mantenimiento3 oMantenimiento3)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = oProyectoBl.GuardarMantenimiento3(oMantenimiento3);
+
+                return Ok(new { success = true, response });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { success = false, e.Message });
+
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult ConsultarMantenimiento3(Mantenimiento3 oMantenimiento3)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = oProyectoBl.ConsultarMantenimiento3(oMantenimiento3.IdProyecto, oMantenimiento3.Etapa);
+
+                return Ok(new { success = true, response });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { success = false, e.Message });
+
+            }
+        }
+
+    }
 }

@@ -18,6 +18,14 @@
         service.ConsultarMantenimiento2 = function (item) {
             return $http.post(UrlServices + "Proyecto/ConsultarMantenimiento2", item);
         }
+
+        service.ConsultarMantenimiento3 = function (item) {
+            return $http.post(UrlServices + "Proyecto/ConsultarMantenimiento3", item);
+        }
+
+        service.GuardarMantenimiento3 = function (item) {
+            return $http.post(UrlServices + "Proyecto/GuardarMantenimiento3", item);
+        }
         return service;
     }
 

@@ -545,7 +545,30 @@
 
         }
 
+		public List<Dasometria> GuardarDasometria(List<Dasometria> oDasometria)
+		{
+			foreach (var item in oDasometria)
+			{
+				if (item.Altura != 0 && item.IdDasometria ==0)
+				{
+					item.Fecha = DateTime.Now;
+					entity.Dasometria.Add(item);
+					entity.SaveChanges();
+				}
+				
+			}
+
+			var IdProyecto = oDasometria[0].IdProyecto;
+			var Etapa = oDasometria[0].Etapa;
+			var dasometria = (from d in entity.Dasometria
+							  where d.IdProyecto == IdProyecto
+							  && d.Etapa == Etapa
+							  select d).ToList();
+
+			return dasometria;
+		}
 
 
-    }
+
+	}
 }

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\Dasometria.cs" />
     <Compile Include="Datos\DetalleHuella.cs" />
     <Compile Include="Datos\Empresa.cs" />
     <Compile Include="Datos\Encuesta.cs" />

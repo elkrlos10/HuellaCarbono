@@ -27,12 +27,10 @@ namespace Modelo.Datos
 		public virtual DbSet<Establecimiento> Establecimiento { get; set; }
 		public virtual DbSet<Mantenimiento2> Mantenimiento2 { get; set; }
         public virtual DbSet<Mantenimiento3> Mantenimiento3 { get; set; }
+		public virtual DbSet<Dasometria> Dasometria { get; set; }
+		
 
-        
-
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Empresa>()
             //    .Property(e => e.NombreEmpresa)

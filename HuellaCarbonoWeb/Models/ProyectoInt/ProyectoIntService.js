@@ -26,6 +26,11 @@
         service.GuardarMantenimiento3 = function (item) {
             return $http.post(UrlServices + "Proyecto/GuardarMantenimiento3", item);
         }
+
+        service.GuardarDasometria = function (item) {
+            return $http.post(UrlServices + "Proyecto/GuardarDasometria", item);
+        }
+
         return service;
     }
 

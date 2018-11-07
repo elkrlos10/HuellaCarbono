@@ -160,6 +160,7 @@
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\ng-knob.js" />
+    <Content Include="Scripts\ng-validate.js" />
     <Content Include="Scripts\rzslider.min.js" />
     <Content Include="Scripts\sweetalert2.all.js" />
     <Content Include="Scripts\waitingDialog.js" />

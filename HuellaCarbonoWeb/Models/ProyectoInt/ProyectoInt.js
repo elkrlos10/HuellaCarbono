@@ -18,7 +18,7 @@
             Plantacion: "",
             Fertilizacion: "",
             Replantes: "",
-            Cercos: ""
+            Cercos: "",
         }
 
         $scope.Mantenimiento2 = {
@@ -128,26 +128,68 @@
             Diametro: "",
             Observaciones: "",
             Etapa: ""
-        }];
+            }];
 
-        $scope.GuardarEstablecimiento = function () {
+        $scope.ConfirmarCheck = function (campo) {
+            console.log($scope.establecimiento);
+            swal({
+                title: '¿está seguro?',
+                text: "desea guardar la etapa " + campo,
+                type: 'warning',
+                showCancelButton: true,
+                confirmbuttoncolor: '#3085d6',
+                cancelbuttoncolor: '#d33',
+                confirmbuttontext: 'si, guardar',
+                cancelbuttontext: 'no, cancelar',
+                confirmbuttonclass: 'btn btn-success',
+                cancelbuttonclass: 'btn btn-danger',
+                buttonsstyling: true
+            }).then((result) => {
+                if (result.value) {
+                    $scope.GuardarEstablecimiento()
+                } else {
+                    //$scope.establecimiento = $scope.establecimiento;
+                    settimeout(function () {
+                        $("#" + campo).prop('checked', false);
 
-            for (const prop in $scope.Establecimiento) {
-
-                if ((prop) != "IdEstablecimiento") {
-                    if ((prop) != "IdProyeto") {
-                        var isVisible = $("#" + prop+"1").is(":visible");
-                        console.log(isVisible);
-                        if (!isVisible) {
-                            //$("#" + prop).attr("disabled", true);
-                            $scope.Establecimiento[prop] = "";
+                        for (const prop in $scope.establecimiento) {
+                            if (prop == campo) {
+                                $scope.establecimiento[prop] = false;
+                                
+                                //$("#" + campo + 1).css('display', 'none');
+                            }
                         }
-                    }
+                        document.getelementbyid("plateo").reset();
+                        console.log($scope.establecimiento)
+                    },1000)
+                    swal(
+                        'cancelado',
+                        'no se ha guardado la etapa ' + campo,
+                        'error'
+                    )
                 }
-               
+            })
+        }
+
+        $scope.seleccionado = false;
+        $scope.ChequearBoton = function () {
+            if ($scope.seleccionado == false) {
+                $(".btnCheck").css("background", "url('../Images/checkbox.png') -20px top no-repeat")
+                $scope.ConfirmarCheck();
+                $scope.seleccionado = true;
+                return;
 
             }
+            else if ($scope.seleccionado == true) {
+                $(".btnCheck").css("background", "url('../Images/checkbox.png') left top no-repeat")
+                $scope.seleccionado = false;
+                return;
 
+            }
+           
+        }
+
+        $scope.GuardarEstablecimiento = function () {
             $scope.Establecimiento.IdProyeto = $rootScope.IdProyecto;
             ProyectoIntService.GuardarEstablecimiento($scope.Establecimiento).then(function (response) {
                 if (response.data.success) {
@@ -158,29 +200,30 @@
                         'success'
                     )
                 }
+                $scope.posicion = 0;
+                for (const prop in $scope.Establecimiento) {
+                    if ($scope.Establecimiento[prop] == true) {
+                        $("#" + prop).attr("disabled", true);
+                        $scope.posicion++;
+                    }
+                }
             })
+
         }
 
         $scope.Establecimiento.IdProyeto = $rootScope.IdProyecto;
+        $scope.posicion = 0;
         ProyectoIntService.ConsultarEstablecimiento($scope.Establecimiento).then(function (response) {
-
             if (response.data.success) {
-              $scope.Establecimiento = response.data.response;
-            //    if ($scope.Establecimiento.Preparacion == true) {
-            //        $("#a1").attr("disabled", true);
-            //    } 
-            //    if ($scope.Establecimiento.Roceria == true) {
-            //        $("#a2").attr("disabled", true);
-            //    }
+                $scope.Establecimiento = response.data.response;
                 for (const prop in $scope.Establecimiento) {
-
                     if ($scope.Establecimiento[prop] == true) {
-                        $("#" + prop).attr("disabled", true);
+                        $("#" + prop).prop("disabled", true);
+                        $scope.posicion++;
+                       
                     }
-
                 }
             }
-
         })
 
         $scope.GuardarMantenimiento2 = function (Etapa) {

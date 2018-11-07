@@ -44,41 +44,41 @@
 					<form class="col-md-12" style="margin-bottom: 15px;">
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
-						<div class="form-check check">
-							<input class="form-check-input" type="checkbox" id="a1" ng-model="Establecimiento.Preparacion"/>
-							<label for="a1"><span></span>A.1 Preparación del terreno</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a1" ng-model="Establecimiento.Preparacion" />
+							<label for="a1"><span id="span"></span>A.1 Preparación del terreno</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input check2" type="checkbox" id="a2" ng-model="Establecimiento.Roceria" ng-click="validar()"/>
-							<label for="a2"><span id="span"></span>A.2 Rocería y control químico</label>
+							<input class="form-check-input" type="checkbox" id="a2" ng-model="Establecimiento.Roceria" ng-if="Establecimiento.Preparacion"/>
+							<label for="a2"><span></span>A.2 Rocería y control químico</label>
 						</div>
-						<div class="form-check check3">
-							<input class="form-check-input" type="checkbox" id="a3" ng-model="Establecimiento.Trazado"/>
-							<label for="a3"><span id="span3"></span>A.3 Trazado</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a3" ng-model="Establecimiento.Trazado" ng-if="Establecimiento.Roceria"/>
+							<label for="a3"><span></span>A.3 Trazado</label>
 						</div>
-						<div class="form-check check4">
-							<input class="form-check-input" type="checkbox" id="a4" ng-model="Establecimiento.Plateo"/>
-							<label for="a4"><span id="span4"></span>A.4 Plateo y Ahoyado</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a4" ng-model="Establecimiento.Plateo" ng-if="Establecimiento.Trazado"/>
+							<label for="a4"><span></span>A.4 Plateo y Ahoyado</label>
 						</div>
-						<div class="form-check check5">
-							<input class="form-check-input" type="checkbox" id="a5" ng-model="Establecimiento.Transporte"/>
-							<label for="a5"><span id="span5"></span>A.5 Transporte de plantas</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a5" ng-model="Establecimiento.Transporte" ng-if="Establecimiento.Plateo"/>
+							<label for="a5"><span></span>A.5 Transporte de plantas</label>
 						</div>
-						<div class="form-check check6">
-							<input class="form-check-input" type="checkbox" id="a6" ng-model="Establecimiento.Plantacion"/>
-							<label for="a6"><span id="span6"></span>A.6 Plantación</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a6" ng-model="Establecimiento.Plantacion" ng-if="Establecimiento.Transporte"/>
+							<label for="a6"><span></span>A.6 Plantación</label>
 						</div>
-						<div class="form-check check7">
-							<input class="form-check-input" type="checkbox" id="a7" ng-model="Establecimiento.Fertilizacion"/>
-							<label for="a7"><span id="span7"></span>A.7 Fertilización</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a7" ng-model="Establecimiento.Fertilizacion" ng-if="Establecimiento.Plantacion"/>
+							<label for="a7"><span></span>A.7 Fertilización</label>
 						</div>
-						<div class="form-check check8">
-							<input class="form-check-input" type="checkbox" id="a8" ng-model="Establecimiento.Replantes"/>
-							<label for="a8"><span id="span8"></span>A.8 Replantes</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a8" ng-model="Establecimiento.Replantes" ng-if="Establecimiento.Fertilizacion"/>
+							<label for="a8"><span></span>A.8 Replantes</label>
 						</div>
-						<div class="form-check check9">
-							<input class="form-check-input" type="checkbox" id="a9" ng-model="Establecimiento.Cercos"/>
-							<label for="a9"><span id="span9"></span>A.9 Cercos</label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="a9" ng-model="Establecimiento.Cercos" ng-if="Establecimiento.Replantes"/>
+							<label for="a9"><span></span>A.9 Cercos</label>
 						</div>
 
 					</form>
@@ -153,17 +153,17 @@
 										<th scope="row">{{dasometria.Mes}}</th>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" min="0" name="altura"  ng-model="dasometria.Altura" />
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="dasometria.Altura" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="dap"  id="numeros" ng-model="dasometria.Dap" />
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="dasometria.Dap" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="perimetro"  id="numeros" ng-model="dasometria.Perimetro" />
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="dasometria.Perimetro" />
 											</div>
 										</td>
 										<td>
@@ -486,5 +486,5 @@
 </div>
 
 <footer>
-<h3 style="text-align:center; color:white;padding-top:20px;">Fábrica de software 2018 &copy;</h3>
+<h3 style="text-align:center; color:white; padding-top:25px">Fábrica de software 2018 &copy;</h3>
 </footer>

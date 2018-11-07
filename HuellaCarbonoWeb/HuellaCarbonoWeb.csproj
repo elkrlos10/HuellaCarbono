@@ -111,6 +111,7 @@
     <Content Include="Images\802.jpg" />
     <Content Include="Images\anterior.png" />
     <Content Include="Images\checkbox.png" />
+    <Content Include="Images\checkboxgris.png" />
     <Content Include="Images\fondoConciencia.png" />
     <Content Include="Images\fondoConciencia2.png" />
     <Content Include="Images\fondoFinal.png" />
@@ -162,6 +163,7 @@
     <Content Include="Scripts\ng-knob.js" />
     <Content Include="Scripts\rzslider.min.js" />
     <Content Include="Scripts\sweetalert2.all.js" />
+    <Content Include="Scripts\validCampoFranz.js" />
     <Content Include="Scripts\waitingDialog.js" />
     <Content Include="Videos\tierra.mov" />
     <Content Include="Videos\tierra.mp4" />

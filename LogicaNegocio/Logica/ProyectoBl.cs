@@ -489,6 +489,7 @@
 
 		}
 
+
 		public Mantenimiento2 GuardarMantenimiento2(Mantenimiento2 oMantenimiento2)
 		{
 			

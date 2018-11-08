@@ -82,72 +82,55 @@
             Mes1: "Sexto Mes",
             Mes2: "Noveno Mes",
             Mes3: "Doceavo Mes"
-        }
+        } 
 
         $scope.Dasometria = [{
 
             IdDasometria: "",
             Mes: "Tercer Mes",
-            IdProyecto: "",
+            IdProyecto:"",
             Altura: "",
             Dap: "",
             Perimetro: "",
             Diametro: "",
             Observaciones: "",
-            Etapa: ""
+            Etapa:""
         },
-        {
-            IdDasometria: "",
-            Mes: "Sexto Mes",
-            IdProyecto: "",
-            Altura: "",
-            Dap: "",
-            Perimetro: "",
-            Diametro: "",
-            Observaciones: "",
-            Etapa: ""
-        },
-        {
-            IdDasometria: "",
-            Mes: "Noveno Mes",
-            IdProyecto: "",
-            Altura: "",
-            Dap: "",
-            Perimetro: "",
-            Diametro: "",
-            Observaciones: "",
-            Etapa: ""
-        },
-        {
-            IdDasometria: "",
-            Mes: "Doceavo Mes",
-            IdProyecto: "",
-            Altura: "",
-            Dap: "",
-            Perimetro: "",
-            Diametro: "",
-            Observaciones: "",
-            Etapa: ""
-        }];
-
+            {
+                IdDasometria:"",
+                Mes: "Sexto Mes",
+                IdProyecto: "",
+                Altura: "",
+                Dap: "",
+                Perimetro: "",
+                Diametro: "",
+                Observaciones: "",
+                Etapa: ""
+            },
+            {
+                IdDasometria: "",
+                Mes: "Noveno Mes",
+                IdProyecto: "",
+                Altura: "",
+                Dap: "",
+                Perimetro: "",
+                Diametro: "",
+                Observaciones: "",
+                Etapa: ""
+            },
+            {
+                IdDasometria: "",
+                Mes: "Doceavo Mes",
+                IdProyecto: "",
+                Altura: "",
+                Dap: "",
+                Perimetro: "",
+                Diametro: "",
+                Observaciones: "",
+                Etapa: ""
+            }];
+          
         $scope.GuardarEstablecimiento = function () {
-
-            for (const prop in $scope.Establecimiento) {
-
-                if ((prop) != "IdEstablecimiento") {
-                    if ((prop) != "IdProyeto") {
-                        var isVisible = $("#" + prop+"1").is(":visible");
-                        console.log(isVisible);
-                        if (!isVisible) {
-                            //$("#" + prop).attr("disabled", true);
-                            $scope.Establecimiento[prop] = "";
-                        }
-                    }
-                }
-               
-
-            }
-
             $scope.Establecimiento.IdProyeto = $rootScope.IdProyecto;
             ProyectoIntService.GuardarEstablecimiento($scope.Establecimiento).then(function (response) {
                 if (response.data.success) {
@@ -165,22 +148,8 @@
         ProyectoIntService.ConsultarEstablecimiento($scope.Establecimiento).then(function (response) {
 
             if (response.data.success) {
-              $scope.Establecimiento = response.data.response;
-            //    if ($scope.Establecimiento.Preparacion == true) {
-            //        $("#a1").attr("disabled", true);
-            //    } 
-            //    if ($scope.Establecimiento.Roceria == true) {
-            //        $("#a2").attr("disabled", true);
-            //    }
-                for (const prop in $scope.Establecimiento) {
-
-                    if ($scope.Establecimiento[prop] == true) {
-                        $("#" + prop).attr("disabled", true);
-                    }
-
-                }
+                $scope.Establecimiento = response.data.response;
             }
-
         })
 
         $scope.GuardarMantenimiento2 = function (Etapa) {
@@ -279,37 +248,30 @@
             })
         }
 
-        $scope.GuardarDasometria = function (Etapa, form) {
-            if (!form.validate()) {
-                swal(
-                    'Algo salio mal',
-                    'El error puede deberse a que ingresaste letras en campos no permitidos o dejaste campos vacios',
-                    'error'
-                )
-                return;
-            }
+        $scope.GuardarDasometria = function (Etapa) {
             $.each($scope.Dasometria, function (index, value) {
                 $scope.Dasometria[index].Etapa = Etapa;
                 $scope.Dasometria[index].IdProyecto = $rootScope.IdProyecto;
             });
             ProyectoIntService.GuardarDasometria($scope.Dasometria).then(function (response) {
                 if (response.data.success) {
-                    var DasometriaValue = response.data.response;
+                   var DasometriaValue = response.data.response;
                     $.each(DasometriaValue, function (index, value) {
                         $scope.Dasometria[index] = value;
-                        if (index == 0) {
-                            $scope.Dasometria[index].Mes = "Tercer Mes"
-                        }
-                        else if (index == 1) {
-                            $scope.Dasometria[index].Mes = "Sexto Mes"
-                        }
-                        else if (index == 2) {
-                            $scope.Dasometria[index].Mes = "Noveno Mes"
-                        }
-                        else if (index == 3) {
-                            $scope.Dasometria[index].Mes = "Doceavo Mes"
-                        }
-
+                            if (index == 0) {
+                                $scope.Dasometria[index].Mes = "Tercer Mes"
+                            }
+                            else if (index == 1)
+                            {
+                                $scope.Dasometria[index].Mes = "Sexto Mes"
+                            }
+                            else if (index == 2) {
+                                $scope.Dasometria[index].Mes = "Noveno Mes"
+                            }
+                            else if (index == 3) {
+                                $scope.Dasometria[index].Mes = "Doceavo Mes"
+                            }
+                         
                     });
                     console.log($scope.Dasometria);
                     swal(
@@ -321,53 +283,56 @@
             })
         }
 
-        $scope.validationOptions = {
-            rules: {
-                altura: {
-                    required: true,
-                    number: true
+        $(document).ready(function(){
+            $("#tablaDasometria").validate({
+                rules: {
+                    altura: {
+                        required: true,
+                        number: true
+                    },
+                    dap: {
+                        required: true,
+                        number: true
+                    },
+                    perimetro: {
+                        required: true,
+                        number: true
+                    },
+                    diametro: {
+                        required: true,
+                        number: true
+                    },
+                    observaciones: {
+                        required: true,
+                        string: true
+                    },
                 },
-                dap: {
-                    required: true,
-                    number: true
-                },
-                perimetro: {
-                    required: true,
-                    number: true
-                },
-                diametro: {
-                    required: true,
-                    number: true
-                },
-                observaciones: {
-                    required: true
-                },
-            },
-            messages: {
-                altura: {
-                    required: "El campo es requerido",
-                    number: "Deben ser numeros"
-                },
-                dap: {
-                    required: "El campo es requerido",
-                    number: "Deben ser numeros"
-                },
-                perimetro: {
-                    required: "El campo es requerido",
-                    number: "Deben ser numeros"
-                },
-                diametro: {
-                    required: "El campo es requerido",
-                    number: "Deben ser numeros"
-                },
-                observaciones: {
-                    required: "El campo es requerido"
-                },
-            }
-
-        };
+                messages: {
+                    altura: {
+                        required: "El campo es requerido",
+                        number: "Deben ser numeros"
+                    },
+                    dap: {
+                        required: "El campo es requerido",
+                        number: "Deben ser numeros"
+                    },
+                    perimetro: {
+                        required: "El campo es requerido",
+                        number: "Deben ser numeros"
+                    },
+                    diametro: {
+                        required: "El campo es requerido",
+                        number: "Deben ser numeros"
+                    },
+                    observaciones: {
+                        required: "El campo es requerido",
+                        string: "Bien"
+                    },
+                }
+            });
+        });
+       
     }
-    
     //inyectar las dependencias que se esta usando
     proyectoInt.$inject = ["$scope", "$rootScope", "ProyectoIntService", "$cookies", "$cookieStore"];
     //para declarar que este es mi controlador

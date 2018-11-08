@@ -3,15 +3,9 @@
 	font-family: Poppins-Regular;
 }
 
-.red {
-    background: red;
-    height:100px;
-    width:100px;
-}
-
 .container-fluid {
-    margin: 0px;
-    padding: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 .contenedor {

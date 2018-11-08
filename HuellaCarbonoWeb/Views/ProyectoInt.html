@@ -41,44 +41,52 @@
 		<div class="tab-pane fade in active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 			<div class="row fase1"> 
 				<div>
-                    <form class="col-md-12" style="margin-bottom: 15px;" id="Establecimiento">
+                    <form class="col-md-12" style="margin-bottom: 15px;">
+
+                        Show HTML: <input type="checkbox" style="display:block !important" ng-model="myVar">
+
+                        <div class="red" ng-show="myVar">
+                            <h1>Welcome</h1>
+                            <p>Welcome to my home.</p>
+                        </div>
+
                         <h2 style="font-size:20px"> Seguimiento de cultivo</h2>
                         <hr />
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Preparacion" ng-model="Establecimiento.Preparacion" ng-click="ConfirmarCheck('Preparacion')"/>
-                            <label>A.1 Preparación del terreno</label>
+                            <input class="form-check-input" type="checkbox" id="Preparacion" ng-model="Establecimiento.Preparacion" />
+                            <label for="Preparacion"><span id="span"></span>A.1 Preparación del terreno</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Roceria" ng-model="Establecimiento.Roceria"  ng-click="ConfirmarCheck('Roceria')"  ng-show="Establecimiento.Preparacion && posicion>=1" />
-                            <label>A.2 Rocería y control químico</label>
+                            <input class="form-check-input" type="checkbox" id="Roceria" ng-model="Establecimiento.Roceria"  />
+                            <label for="Roceria"><span ng-show="Establecimiento.Preparacion" id="Roceria1"></span>A.2 Rocería y control químico</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Trazado" ng-model="Establecimiento.Trazado" ng-click="ConfirmarCheck('Trazado')" ng-show="Establecimiento.Roceria && posicion>=2"/>
-                            <label>A.3 Trazado</label>
+                            <input class="form-check-input" type="checkbox" id="Trazado" ng-model="Establecimiento.Trazado" />
+                            <label for="Trazado"><span  ng-show="Establecimiento.Roceria"  id="Trazado1"></span>A.3 Trazado</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Plateo" ng-model="Establecimiento.Plateo"  ng-click="ConfirmarCheck('Plateo')" ng-show="Establecimiento.Trazado  && posicion>=3"/>
-                            <label>A.4 Plateo y Ahoyado</label>
+                            <input class="form-check-input" type="checkbox" id="Plateo" ng-model="Establecimiento.Plateo"  />
+                            <label for="Plateo"><span ng-show="Establecimiento.Trazado"  id="Plateo1" ></span>A.4 Plateo y Ahoyado</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Transporte" ng-model="Establecimiento.Transporte" ng-click="ConfirmarCheck('Transporte')" ng-show="Establecimiento.Plateo && posicion>=4"/>
-                            <label>A.5 Transporte de plantas</label>
+                            <input class="form-check-input" type="checkbox" id="Transporte" ng-model="Establecimiento.Transporte" />
+                            <label for="Transporte"><span  ng-show="Establecimiento.Plateo" id="Transporte1"></span>A.5 Transporte de plantas</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Plantacion" ng-model="Establecimiento.Plantacion"  ng-click="ConfirmarCheck('Plantacion')" ng-show="Establecimiento.Transporte && posicion>=5"/>
-                            <label>A.6 Plantación</label>
+                            <input class="form-check-input" type="checkbox" id="Plantacion" ng-model="Establecimiento.Plantacion"  />
+                            <label for="Plantacion"><span ng-show="Establecimiento.Transporte" id="Plantacion1"></span>A.6 Plantación</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Establecimiento.Fertilizacion"  ng-click="ConfirmarCheck('Fertilizacion')" ng-show="Establecimiento.Plantacion && posicion >= 6"/>
-                            <label>A.7 Fertilización</label>
+                            <input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Establecimiento.Fertilizacion"  />
+                            <label for="Fertilizacion"><span ng-show="Establecimiento.Plantacion" id="Fertilizacion1"></span>A.7 Fertilización</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Replantes" ng-model="Establecimiento.Replantes" ng-click="ConfirmarCheck('Replantes')" ng-show="Establecimiento.Fertilizacion && posicion >= 7"/>
-                            <label>A.8 Replantes</label>
+                            <input class="form-check-input" type="checkbox" id="Replantes" ng-model="Establecimiento.Replantes" />
+                            <label for="Replantes"><span  ng-show="Establecimiento.Fertilizacion" id="Replantes1"></span>A.8 Replantes</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Cercos" ng-model="Establecimiento.Cercos"  ng-click="ConfirmarCheck('Cercos')" ng-show="Establecimiento.Replantes && posicion >= 8"/>
-                            <label>A.9 Cercos</label>
+                            <input class="form-check-input" type="checkbox" id="Cercos" ng-model="Establecimiento.Cercos"  />
+                            <label for="Cercos"><span ng-show="Establecimiento.Replantes" id="Cercos1"></span>A.9 Cercos</label>
                         </div>
 
                     </form>
@@ -486,6 +494,6 @@
 	</div>
 </div>
 
-<footer style="margin-top:0px">
-<h3 style="text-align:center; color:white; padding-top:25px	;margin-top: 0px">Fábrica de software 2018 &copy;</h3>
+<footer>
+<h3 style="text-align:center; color:white; padding-top:25px">Fábrica de software 2018 &copy;</h3>
 </footer>

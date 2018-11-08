@@ -757,7 +757,7 @@ footer {
 }
 
 .fasesMenu {
-	height: 607px;
+	height: 100vh;
 	background: #82a20d;
 }
 
@@ -863,21 +863,6 @@ footer {
 	input[type="checkbox"] {
 		display: none;
 	}
-
-.btnCheck {
-	border :none;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	margin: -1px 4px 0 0;
-	vertical-align: middle;
-	background: url('../Images/checkbox.png') left top no-repeat;
-	cursor: pointer;
-}
-
-	/*#btnCheck:focus {
-		background: url('../Images/checkbox.png') -20px top no-repeat;
-	}*/
 
 	input[type="checkbox"] + label span {
 		display: inline-block;

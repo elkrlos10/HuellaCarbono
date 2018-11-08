@@ -13,7 +13,7 @@
 		</div>
 	</div>
 </div>
- 
+
 <h2 style="font-size:30px; text-align:center;padding-top:25px;padding-bottom:25px">Proyecto Juan</h2>
 <div class="row">
 	<div class="col-md-12">
@@ -26,7 +26,7 @@
 <div class="row">
 	<nav class="col-md-2 fasesMenu">
 		<ul class="nav nav-pills text-center nav-stacked" id="nav-tab" role="tablist" style="height:100%;">
-			<li><a class="tab nav-item nav-link active" role="presentation" showtab="" href="#nav-home">Establecimiento (Año 1)</a></li>
+			<li ng-click="ConsultarEstablecimiento()"><a class="tab nav-item nav-link active" role="presentation" showtab="" href="#nav-home">Establecimiento (Año 1)</a></li>
 			<li ng-click="ConsultarMantenimiento2(2)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento1">Mantenimiento (Año 2) </a></li>
 			<li ng-click="ConsultarMantenimiento2(3)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento2">Mantenimiento (año 3)</a></li>
 			<li ng-click="ConsultarMantenimiento3(4)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento3">Mantenimiento (año 5)</a></li>
@@ -39,46 +39,46 @@
 
 	<div class="tab-content col-md-10" id="nav-tabContent">
 		<div class="tab-pane fade in active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-			<div class="row fase1"> 
+			<div class="row fase1">
 				<div>
-					<form class="col-md-12" style="margin-bottom: 15px;">
+					<form class="col-md-12" style="margin-bottom: 15px;" id="Establecimiento">
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a1" ng-model="Establecimiento.Preparacion" />
-							<label for="a1"><span id="span"></span>A.1 Preparación del terreno</label>
+							<input class="form-check-input" type="checkbox" id="Preparacion" ng-model="Establecimiento.Preparacion" ng-click="ConfirmarCheck('Preparacion')" />
+							<label for="Preparacion"><span></span></label>A.1 Preparación del terreno
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a2" ng-model="Establecimiento.Roceria" ng-if="Establecimiento.Preparacion"/>
-							<label for="a2"><span></span>A.2 Rocería y control químico</label>
+							<input class="form-check-input" type="checkbox" id="Roceria" ng-model="Establecimiento.Roceria" ng-click="ConfirmarCheck('Roceria')" />
+							<label for="Roceria" ng-show="Establecimiento.Preparacion && posicion>=1"><span></span></label>A.2 Rocería y control químico
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a3" ng-model="Establecimiento.Trazado" ng-if="Establecimiento.Roceria"/>
-							<label for="a3"><span></span>A.3 Trazado</label>
+							<input class="form-check-input" type="checkbox" id="Trazado" ng-model="Establecimiento.Trazado" ng-click="ConfirmarCheck('Trazado')"  />
+							<label for="Trazado" ng-show="Establecimiento.Roceria && posicion>=2"><span></span></label>A.3 Trazado
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a4" ng-model="Establecimiento.Plateo" ng-if="Establecimiento.Trazado"/>
-							<label for="a4"><span></span>A.4 Plateo y Ahoyado</label>
+							<input class="form-check-input" type="checkbox" id="Plateo" ng-model="Establecimiento.Plateo" ng-click="ConfirmarCheck('Plateo')"  />
+							<label for="Plateo" ng-show="Establecimiento.Trazado  && posicion>=3"><span></span></label>A.4 Plateo y Ahoyado
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a5" ng-model="Establecimiento.Transporte" ng-if="Establecimiento.Plateo"/>
-							<label for="a5"><span></span>A.5 Transporte de plantas</label>
+							<input class="form-check-input" type="checkbox" id="Transporte" ng-model="Establecimiento.Transporte" ng-click="ConfirmarCheck('Transporte')"  />
+							<label for="Transporte" ng-show="Establecimiento.Plateo && posicion>=4"><span></span></label>A.5 Transporte de plantas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a6" ng-model="Establecimiento.Plantacion" ng-if="Establecimiento.Transporte"/>
-							<label for="a6"><span></span>A.6 Plantación</label>
+							<input class="form-check-input" type="checkbox" id="Plantacion" ng-model="Establecimiento.Plantacion" ng-click="ConfirmarCheck('Plantacion')" />
+							<label for="Plantacion" ng-show="Establecimiento.Transporte && posicion>=5"><span></span></label>A.6 Plantación
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a7" ng-model="Establecimiento.Fertilizacion" ng-if="Establecimiento.Plantacion"/>
-							<label for="a7"><span></span>A.7 Fertilización</label>
+							<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Establecimiento.Fertilizacion" ng-click="ConfirmarCheck('Fertilizacion')" />
+							<label for="Fertilizacion" ng-show="Establecimiento.Plantacion && posicion>=6"><span></span></label>A.7 Fertilización
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a8" ng-model="Establecimiento.Replantes" ng-if="Establecimiento.Fertilizacion"/>
-							<label for="a8"><span></span>A.8 Replantes</label>
+							<input class="form-check-input" type="checkbox" id="Replantes" ng-model="Establecimiento.Replantes" ng-click="ConfirmarCheck('Replantes')" />
+							<label for="Replantes" ng-show="Establecimiento.Fertilizacion && posicion>=7"><span></span></label>A.8 Replantes
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="a9" ng-model="Establecimiento.Cercos" ng-if="Establecimiento.Replantes"/>
-							<label for="a9"><span></span>A.9 Cercos</label>
+							<input class="form-check-input" type="checkbox" id="Cercos" ng-model="Establecimiento.Cercos" ng-click="ConfirmarCheck('Cercos')" />
+							<label for="Cercos" ng-show="Establecimiento.Replantes && posicion>=8"><span></span></label>A.9 Cercos
 						</div>
 
 					</form>
@@ -96,47 +96,50 @@
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b1" ng-model="Mantenimiento2.Planteos" />
-							<label for="b1"><span></span>B.1 Planteos</label>
+							<input class="form-check-input" type="checkbox" id="Planteos" ng-model="Mantenimiento2.Planteos" />
+							<label for="Planteos"><span></span></label>B.1 Planteos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b2" ng-model="Mantenimiento2.Fertilizacion" ng-if="Mantenimiento2.Planteos"/>
-							<label for="b2"><span></span>B.2 Fertilización</label>
+							<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Mantenimiento2.Fertilizacion"/>
+							<label for="Fertilizacion" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span></label>B.2 Fertilización
+						</div>
+						<!--<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Mantenimiento2.Fertilizacion" />
+							<label for="Fertilizacion" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span>B.2 Fertilización</label>
+						</div>-->
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="Podas" ng-model="Mantenimiento2.Podas" />
+							<label for="Podas" ng-show="Mantenimiento2.Fertilizacion && posicionMantenimiento>=2"><span></span></label>B.3 Podas Reiterativas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b3" ng-model="Mantenimiento2.Podas" ng-if="Mantenimiento2.Fertilizacion"/>
-							<label for="b3"><span></span>B.3 Podas de formación</label>
+							<input class="form-check-input" type="checkbox"  id="Plagas" ng-model="Mantenimiento2.Plagas" />
+							<label for="Plagas" ng-show="Mantenimiento2.Podas && posicionMantenimiento>=3"><span></span></label>B.4 Control Plagas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b4" ng-model="Mantenimiento2.Plagas" ng-if="Mantenimiento2.Podas"/>
-							<label for="b4"><span></span>B.4 Control Plagas</label>
+							<input class="form-check-input" type="checkbox" id="Enfermedades" ng-model="Mantenimiento2.Enfermedades" />
+							<label for="Enfermedades" ng-show="Mantenimiento2.Plagas && posicionMantenimiento>=4"><span></span></label>B.5 Control Enfermedades
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b5" ng-model="Mantenimiento2.Enfermedades" ng-if="Mantenimiento2.Plagas"/>
-							<label for="b5"><span></span>B.5 Control Enfermedades</label>
+							<input class="form-check-input" type="checkbox" id="Malezas" ng-model="Mantenimiento2.Malezas" />
+							<label for="Malezas" ng-show="Mantenimiento2.Enfermedades && posicionMantenimiento>=5"><span></span></label>B.6 Control de Malezas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b6" ng-model="Mantenimiento2.Malezas" ng-if="Mantenimiento2.Enfermedades"/>
-							<label for="b6"><span></span>B.6 Control de Malezas</label>
+							<input class="form-check-input" type="checkbox" id="Caminos" ng-model="Mantenimiento2.Caminos" />
+							<label for="Caminos" ng-show="Mantenimiento2.Malezas && posicionMantenimiento>=6"><span></span></label>B.7 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b7" ng-model="Mantenimiento2.Caminos" ng-if="Mantenimiento2.Malezas"/>
-							<label for="b7"><span></span>B.7 Mantenimiento de caminos</label>
+							<input class="form-check-input" type="checkbox"  id="Cercos" ng-model="Mantenimiento2.Cercos" />
+							<label for="Cercos" ng-show="Mantenimiento2.Caminos && posicionMantenimiento>=7"><span></span></label>B.8 Mantenimiento cercos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b8" ng-model="Mantenimiento2.Cercos" ng-if="Mantenimiento2.Caminos"/>
-							<label for="b8"><span></span>B.8 Mantenimiento cercos</label>
+							<input class="form-check-input" type="checkbox"  id="Incendios" ng-model="Mantenimiento2.Incendios" />
+							<label for="Incendios" ng-show="Mantenimiento2.Cercos && posicionMantenimiento>=8"><span></span></label>B.9 Protección contra incendios o barreras corta fuegos
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="b9" ng-model="Mantenimiento2.Incendios" ng-if="Mantenimiento2.Cercos"/>
-							<label for="b9"><span></span>B.9 Protección contra incendios o barreras corta fuegos</label>
-						</div>
-
 					</form>
 					<div class="col-md-8">
 						<h2 style="font-size:20px"> Dasometria anual</h2>
 						<hr />
-						<form id="tablaDasometria">
+						<form id="tablaDasometria" name="formDasometria" ng-validate="validationOptions">
 							<table class="table table-striped table-bordered tablaFases">
 								<thead>
 									<tr>
@@ -179,14 +182,15 @@
 									</tr>
 								</tbody>
 							</table>
+							<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(2, formDasometria)" style="float: right; display: inline-block;width:166px;">
+								Guardar Dasometría
+							</button>
 						</form>
 					</div>
 					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento2(2)" style="display:inline-block">
 						Guardar
 					</button>
-					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(2)" style="float: right; display: inline-block;width:166px;">
-						Guardar Dasometría
-					</button>
+
 				</div>
 			</div>
 		</div>
@@ -199,40 +203,40 @@
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c1" ng-model="Mantenimiento3.Planteos" />
-							<label for="c1"><span></span>C.1 Planteos</label>
+							<input class="form-check-input" type="checkbox" value="" id="Planteos" ng-model="Mantenimiento3.Planteos" />
+							<label for="Planteos"><span></span></label>C.1 Planteos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c2" ng-model="Mantenimiento3.Fertilizacion" ng-if="Mantenimiento3.Planteos" />
-							<label for="c2"><span></span>C.2 Fertilización</label>
+							<input class="form-check-input" type="checkbox"  value="" id="Fertilizacion" ng-model="Mantenimiento3.Fertilizacion"/>
+							<label for="Fertilizacion" ng-show="Mantenimiento3.Planteos && posicion >=1" ><span></span></label>C.2 Fertilización
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c3" ng-model="Mantenimiento3.Podas" ng-if="Mantenimiento3.Fertilizacion" />
-							<label for="c3"><span></span>C.3 Podas Reiterativas</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Podas" ng-model="Mantenimiento3.Podas" />
+							<label for="Podas" ng-show="Mantenimiento3.Fertilizacion && posicion >=2" ><span></span></label>C.3 Podas Reiterativas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c4" ng-model="Mantenimiento3.Plagas" ng-if="Mantenimiento3.Podas" />
-							<label for="c4"><span></span>C.4 Control Plagas</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Plagas" ng-model="Mantenimiento3.Plagas"/>
+							<label for="Plagas" ng-show="Mantenimiento3.Podas && posicion >=3"><span></span></label>C.4 Control Plagas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c5" ng-model="Mantenimiento3.Enfermedades" ng-if="Mantenimiento3.Plagas" />
-							<label for="c5"><span></span>C.5 Control Enfermedades</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Enfermedades" ng-model="Mantenimiento3.Enfermedades"/>
+							<label for="Enfermedades" ng-show="Mantenimiento3.Plagas && posicion >=4"><span></span></label>C.5 Control Enfermedades
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c6" ng-model="Mantenimiento3.Malezas" ng-if="Mantenimiento3.Enfermedades" />
-							<label for="c6"><span></span>C.6 Control de Malezas</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Malezas" ng-model="Mantenimiento3.Malezas" />
+							<label for="Malezas" ng-show="Mantenimiento3.Enfermedades && posicion >=5"><span></span></label>C.6 Control de Malezas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c7" ng-model="Mantenimiento3.Caminos" ng-if="Mantenimiento3.Malezas" />
-							<label for="c7"><span></span>C.7 Mantenimiento de caminos</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Caminos" ng-model="Mantenimiento3.Caminos"/>
+							<label for="Caminos" ng-show="Mantenimiento3.Malezas && posicion >=6"><span></span></label>C.7 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c8" ng-model="Mantenimiento3.Cercos" ng-if="Mantenimiento3.Caminos" />
-							<label for="c8"><span></span>C.8 Mantenimiento cercos</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Cercos" ng-model="Mantenimiento3.Cercos"  />
+							<label for="Cercos" ng-show="Mantenimiento3.Caminos && posicion >=7"><span></span></label>C.8 Mantenimiento cercos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="c9" ng-model="Mantenimiento3.Incendios" ng-if="Mantenimiento3.Cercos" />
-							<label for="c9"><span></span>C.9 Protección contra incendios o barreras corta fuegos</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Incendios" ng-model="Mantenimiento3.Incendios"  />
+							<label for="Incendios" ng-show="Mantenimiento3.Cercos && posicion >=8"><span></span></label>C.9 Protección contra incendios o barreras corta fuegos
 						</div>
 					</form>
 					<div class="col-md-8">
@@ -471,8 +475,8 @@
 							</table>
 						</form>
 					</div>
-					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento3(5)" 
-							style="display:inline-block" >
+					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento3(5)"
+							style="display:inline-block">
 						Siguiente Fase
 					</button>
 					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(5)" style="float: right; display: inline-block;width:166px;">
@@ -485,6 +489,6 @@
 	</div>
 </div>
 
-<footer>
-<h3 style="text-align:center; color:white; padding-top:25px">Fábrica de software 2018 &copy;</h3>
+<footer style="margin-top:0px">
+	<h3 style="text-align:center; color:white; padding-top:25px	;margin-top: 0px">Fábrica de software 2018 &copy;</h3>
 </footer>

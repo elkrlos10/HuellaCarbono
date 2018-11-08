@@ -100,19 +100,19 @@
 							<label for="Planteos"><span></span></label>B.1 Planteos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Mantenimiento2.Fertilizacion"/>
+							<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Mantenimiento2.Fertilizacion" />
 							<label for="Fertilizacion" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span></label>B.2 Fertilización
 						</div>
 						<!--<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Mantenimiento2.Fertilizacion" />
-							<label for="Fertilizacion" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span>B.2 Fertilización</label>
-						</div>-->
+			<input class="form-check-input" type="checkbox" id="Fertilizacion" ng-model="Mantenimiento2.Fertilizacion" />
+			<label for="Fertilizacion" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span>B.2 Fertilización</label>
+		</div>-->
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Podas" ng-model="Mantenimiento2.Podas" />
 							<label for="Podas" ng-show="Mantenimiento2.Fertilizacion && posicionMantenimiento>=2"><span></span></label>B.3 Podas Reiterativas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox"  id="Plagas" ng-model="Mantenimiento2.Plagas" />
+							<input class="form-check-input" type="checkbox" id="Plagas" ng-model="Mantenimiento2.Plagas" />
 							<label for="Plagas" ng-show="Mantenimiento2.Podas && posicionMantenimiento>=3"><span></span></label>B.4 Control Plagas
 						</div>
 						<div class="form-check">
@@ -128,11 +128,11 @@
 							<label for="Caminos" ng-show="Mantenimiento2.Malezas && posicionMantenimiento>=6"><span></span></label>B.7 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox"  id="Cercos" ng-model="Mantenimiento2.Cercos" />
+							<input class="form-check-input" type="checkbox" id="Cercos" ng-model="Mantenimiento2.Cercos" />
 							<label for="Cercos" ng-show="Mantenimiento2.Caminos && posicionMantenimiento>=7"><span></span></label>B.8 Mantenimiento cercos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox"  id="Incendios" ng-model="Mantenimiento2.Incendios" />
+							<input class="form-check-input" type="checkbox" id="Incendios" ng-model="Mantenimiento2.Incendios" />
 							<label for="Incendios" ng-show="Mantenimiento2.Cercos && posicionMantenimiento>=8"><span></span></label>B.9 Protección contra incendios o barreras corta fuegos
 						</div>
 					</form>
@@ -182,13 +182,14 @@
 									</tr>
 								</tbody>
 							</table>
-							<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(2, formDasometria)" style="float: right; display: inline-block;width:166px;">
-								Guardar Dasometría
-							</button>
+
 						</form>
 					</div>
 					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento2(2)" style="display:inline-block">
 						Guardar
+					</button>
+					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(2, formDasometria)" style="float: right; display: inline-block;width:166px;">
+						Guardar Dasometría
 					</button>
 
 				</div>

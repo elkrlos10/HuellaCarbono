@@ -130,46 +130,46 @@
             Etapa: ""
             }];
 
-        $scope.ConfirmarCheck = function (campo) {
-            console.log($scope.establecimiento);
-            swal({
-                title: '¿está seguro?',
-                text: "desea guardar la etapa " + campo,
-                type: 'warning',
-                showCancelButton: true,
-                confirmbuttoncolor: '#3085d6',
-                cancelbuttoncolor: '#d33',
-                confirmbuttontext: 'si, guardar',
-                cancelbuttontext: 'no, cancelar',
-                confirmbuttonclass: 'btn btn-success',
-                cancelbuttonclass: 'btn btn-danger',
-                buttonsstyling: true
-            }).then((result) => {
-                if (result.value) {
-                    $scope.GuardarEstablecimiento()
-                } else {
-                    //$scope.establecimiento = $scope.establecimiento;
-                    settimeout(function () {
-                        $("#" + campo).prop('checked', false);
+        //$scope.ConfirmarCheck = function (campo) {
+        //    console.log($scope.establecimiento);
+        //    swal({
+        //        title: '¿está seguro?',
+        //        text: "desea guardar la etapa " + campo,
+        //        type: 'warning',
+        //        showCancelButton: true,
+        //        confirmbuttoncolor: '#3085d6',
+        //        cancelbuttoncolor: '#d33',
+        //        confirmbuttontext: 'si, guardar',
+        //        cancelbuttontext: 'no, cancelar',
+        //        confirmbuttonclass: 'btn btn-success',
+        //        cancelbuttonclass: 'btn btn-danger',
+        //        buttonsstyling: true
+        //    }).then((result) => {
+        //        if (result.value) {
+        //            $scope.GuardarEstablecimiento()
+        //        } else {
+        //            //$scope.establecimiento = $scope.establecimiento;
+        //            settimeout(function () {
+        //                $("#" + campo).prop('checked', false);
 
-                        for (const prop in $scope.establecimiento) {
-                            if (prop == campo) {
-                                $scope.establecimiento[prop] = false;
+        //                for (const prop in $scope.establecimiento) {
+        //                    if (prop == campo) {
+        //                        $scope.establecimiento[prop] = false;
                                 
-                                //$("#" + campo + 1).css('display', 'none');
-                            }
-                        }
-                        document.getelementbyid("plateo").reset();
-                        console.log($scope.establecimiento)
-                    },1000)
-                    swal(
-                        'cancelado',
-                        'no se ha guardado la etapa ' + campo,
-                        'error'
-                    )
-                }
-            })
-        }
+        //                        //$("#" + campo + 1).css('display', 'none');
+        //                    }
+        //                }
+        //                document.getelementbyid("plateo").reset();
+        //                console.log($scope.establecimiento)
+        //            },1000)
+        //            swal(
+        //                'cancelado',
+        //                'no se ha guardado la etapa ' + campo,
+        //                'error'
+        //            )
+        //        }
+        //    })
+        //}
 
         $scope.seleccionado = false;
         $scope.ChequearBoton = function () {

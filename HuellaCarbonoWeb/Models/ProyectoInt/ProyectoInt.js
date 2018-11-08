@@ -190,6 +190,7 @@
         }
 
         $scope.GuardarEstablecimiento = function () {
+            alert("hola bb")
             $scope.Establecimiento.IdProyeto = $rootScope.IdProyecto;
             ProyectoIntService.GuardarEstablecimiento($scope.Establecimiento).then(function (response) {
                 if (response.data.success) {

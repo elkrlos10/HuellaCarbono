@@ -861,9 +861,9 @@ footer {
 		background: #708915;
 	}
 
-input[type="checkbox"] {
+/*input[type="checkbox"] {
 	display: none;
-}
+}*/
 
 .btnCheck {
 	border: none;

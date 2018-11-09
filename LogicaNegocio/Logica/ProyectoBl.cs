@@ -569,6 +569,15 @@
 		}
 
 
+        public List<Dasometria> ConsultarDasometria(int IdProyecto, int Etapa )
+        {
+            var dasometria = (from d in entity.Dasometria
+                              where d.IdProyecto == IdProyecto
+                              && d.Etapa == Etapa
+                              select d).ToList();
 
-	}
+            return dasometria;
+        }
+
+    }
 }

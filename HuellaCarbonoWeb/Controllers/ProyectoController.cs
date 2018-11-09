@@ -317,9 +317,26 @@ namespace HuellaCarbonoWeb.Controllers
 			}
 		}
 
+        [HttpPost]
+        public IHttpActionResult ConsultarDasometria(ParametrosDTO oParametroDTO)
+        {
+            try
+            {
+                ProyectoBl oProyectoBl = new ProyectoBl();
+                var response = oProyectoBl.ConsultarDasometria(int.Parse(oParametroDTO.Paramatro1), int.Parse(oParametroDTO.Paramatro2));
+
+                return Ok(new { success = true, response });
+            }
+            catch (Exception e)
+            {
+                return Ok(new { success = false, e.Message });
+
+            }
+        }
 
 
 
 
-	}
+
+    }
 }

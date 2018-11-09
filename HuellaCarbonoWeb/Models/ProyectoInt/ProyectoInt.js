@@ -227,6 +227,7 @@
             })
         }
 
+        
         $scope.GuardarMantenimiento2 = function (Etapa) {
             if (Etapa == 2) {
                 $scope.Objeto = $scope.Mantenimiento2;
@@ -234,7 +235,7 @@
             else {
                 $scope.Objeto = $scope.Mantenimiento3;
             }
-
+            $scope.Etapa=Etapa;
             $scope.Objeto.IdProyecto = $rootScope.IdProyecto;
             $scope.Objeto.Etapa = Etapa;
             $scope.posicionMantenimiento = 0;
@@ -242,12 +243,9 @@
                 if (response.data.success) {
                     if (response.data.response.Etapa == 2) {
                         $scope.Mantenimiento2 = response.data.response;
-                        $("#8s").attr("disabled", true);
                         for (const prop in $scope.Mantenimiento2) {
-
                             if ($scope.Mantenimiento2[prop] == true) {
-                                $("#" + prop).prop("disabled", true);
-                                console.log(prop)
+                                $("#" + prop + "2").prop("disabled", true);
                                 $scope.posicionMantenimiento++;
                             }
                         }
@@ -273,20 +271,20 @@
                 $scope.Objeto = $scope.Mantenimiento3;
             }
             $scope.Objeto.IdProyecto = $rootScope.IdProyecto;
-            $scope.Objeto.Etapa = Etapa;
+            $scope.Objeto.Etapa= Etapa;
             $scope.posicionMantenimiento = 0;
             ProyectoIntService.ConsultarMantenimiento2($scope.Objeto).then(function (response) {
                 if (response.data.success) {
                     if (response.data.response.Etapa == 2) {
                         $scope.Mantenimiento2 = response.data.response;
-                        for (const prop in $scope.Mantenimiento2) {
-                            if ($scope.Mantenimiento2[prop] == true) {
-                                $("#"+prop).prop("disabled", true);
+                        for (const prop in  $scope.Mantenimiento2) {
+                            if ( $scope.Mantenimiento2[prop] == true) {
+                                $("#"+prop +"2").prop("disabled", true);
                                 $scope.posicionMantenimiento++;
-                                console.log($scope.posicionMantenimiento)
-                                console.log(prop)
+                               
                             }
                         }
+                        $scope.ConsultarDasometria(Etapa);
                     }
                     else {
                         $scope.Mantenimiento3 = response.data.response;
@@ -344,6 +342,22 @@
         }
 
         $scope.GuardarDasometria = function (Etapa, form) {
+            $.each($scope.Dasometria, function (index, value) {
+                $scope.Dasometria[index] = value;
+                if (index == 0) {
+                    $scope.Dasometria[index].Mes = "Tercer Mes"
+                }
+                else if (index == 1) {
+                    $scope.Dasometria[index].Mes = "Sexto Mes"
+                }
+                else if (index == 2) {
+                    $scope.Dasometria[index].Mes = "Noveno Mes"
+                }
+                else if (index == 3) {
+                    $scope.Dasometria[index].Mes = "Doceavo Mes"
+                }
+
+            });
             if (!form.validate()) {
                 swal(
                     'Algo salio mal',
@@ -375,12 +389,42 @@
                         }
 
                     });
-                    console.log($scope.Dasometria);
+                   
                     swal(
                         'Buen Trabajo',
                         'Los cambios en dasometria se ha guardado correctamente',
                         'success'
                     )
+                }
+            })
+        }
+
+        $scope.ConsultarDasometria = function(Etapa)
+        { 
+            var item = {
+                Paramatro1: $rootScope.IdProyecto,
+                Paramatro2: Etapa
+            }
+            ProyectoIntService.ConsultarDasometria(item).then(function (response) {
+                if (response.data.success) {
+                    var DasometriaValue = response.data.response;
+                    $.each(DasometriaValue, function (index, value) {
+                        $scope.Dasometria[index] = value;
+                        if (index == 0) {
+                            $scope.Dasometria[index].Mes = "Tercer Mes"
+                        }
+                        else if (index == 1) {
+                            $scope.Dasometria[index].Mes = "Sexto Mes"
+                        }
+                        else if (index == 2) {
+                            $scope.Dasometria[index].Mes = "Noveno Mes"
+                        }
+                        else if (index == 3) {
+                            $scope.Dasometria[index].Mes = "Doceavo Mes"
+                        }
+
+                    });
+                  
                 }
             })
         }

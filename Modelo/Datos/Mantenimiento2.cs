@@ -13,7 +13,7 @@ namespace Modelo.Datos
 	{
 		[Key]
 		public int IdMantenimiento2 { get; set; }
-		public int IdProyecto { get; set; }
+		public int IdDetalleHuella { get; set; }
 		public bool? Planteos { get; set; }
 		public bool? Fertilizacion { get; set; }
 		public bool? Podas { get; set; }

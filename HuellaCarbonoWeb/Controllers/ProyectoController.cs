@@ -220,7 +220,7 @@ namespace HuellaCarbonoWeb.Controllers
 			try
 			{
 				ProyectoBl oProyectoBl = new ProyectoBl();
-				var response = oProyectoBl.ConsultarEstablecimiento(oEstablecimiento.IdProyeto);
+				var response = oProyectoBl.ConsultarEstablecimiento(oEstablecimiento.IdDetalleHuella);
 
 				return Ok(new { success = true, response });
 			}
@@ -255,7 +255,7 @@ namespace HuellaCarbonoWeb.Controllers
 			try
 			{
 				ProyectoBl oProyectoBl = new ProyectoBl();
-				var response = oProyectoBl.ConsultarMantenimiento2(oMantenimiento2.IdProyecto, oMantenimiento2.Etapa);
+				var response = oProyectoBl.ConsultarMantenimiento2(oMantenimiento2.IdDetalleHuella, oMantenimiento2.Etapa);
 
 				return Ok(new { success = true, response });
 			}
@@ -289,7 +289,7 @@ namespace HuellaCarbonoWeb.Controllers
             try
             {
                 ProyectoBl oProyectoBl = new ProyectoBl();
-                var response = oProyectoBl.ConsultarMantenimiento3(oMantenimiento3.IdProyecto, oMantenimiento3.Etapa);
+                var response = oProyectoBl.ConsultarMantenimiento3(oMantenimiento3.IdDetalleHuella, oMantenimiento3.Etapa);
 
                 return Ok(new { success = true, response });
             }
@@ -301,7 +301,7 @@ namespace HuellaCarbonoWeb.Controllers
         }
 
 		[HttpPost]
-		public IHttpActionResult GuardarDasometria(List<Dasometria> oDasometria)
+		public IHttpActionResult GuardarDasometria(Dasometria oDasometria)
 		{
 			try
 			{
@@ -334,9 +334,26 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
+		[HttpPost]
+		public IHttpActionResult Porcentaje(ParametrosDTO oParametroDTO)
+		{
+			try
+			{
+				ProyectoBl oProyectoBl = new ProyectoBl();
+				var response = oProyectoBl.Porcentaje(int.Parse(oParametroDTO.Paramatro1));
+
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+
+			}
+		}
 
 
 
 
-    }
+
+	}
 }

@@ -14,7 +14,7 @@ namespace Modelo.Datos
 	{
 		[Key]
 		public int IdDasometria { get; set; }
-		public int IdProyecto { get; set; }
+		public int IdDetalleHuella { get; set; }
 		public DateTime Fecha { get; set; }
 		public double Altura { get; set; }
 		public double Dap { get; set; }

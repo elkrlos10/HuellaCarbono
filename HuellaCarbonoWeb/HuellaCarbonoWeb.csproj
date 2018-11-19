@@ -138,6 +138,7 @@
     <Content Include="Models\Dashboard\DashboardService.js" />
     <Content Include="Models\Encuesta\Encuesta.js" />
     <Content Include="Models\Encuesta\EncuestaService.js" />
+    <Content Include="Models\Filter.js" />
     <Content Include="Models\General.js" />
     <Content Include="Models\Login\Login.js" />
     <Content Include="Models\Principal.js" />

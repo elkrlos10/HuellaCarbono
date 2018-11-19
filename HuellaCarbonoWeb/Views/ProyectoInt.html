@@ -18,7 +18,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="progress" style="display: block; margin: 0px 200px 25px 200px; height: 2rem;">
-			<div class="progress-bar bg-success" role="progressbar" style="width: 20%; height: 2rem;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">20 %</div>
+			<div class="progress-bar bg-success" role="progressbar" style="width:{{Porcentaje}}%; height: 2rem;" aria-valuenow="{{Porcentaje}}" aria-valuemin="0" aria-valuemax="100">{{Porcentaje}}%</div>
 		</div>
 	</div>
 </div>
@@ -26,11 +26,11 @@
 <div class="row">
 	<nav class="col-md-2 fasesMenu">
 		<ul class="nav nav-pills text-center nav-stacked" id="nav-tab" role="tablist" style="height:100%;">
-			<li ng-click="ConsultarEstablecimiento()"><a class="tab nav-item nav-link active" role="presentation" showtab="" href="#nav-home">Establecimiento (Año 1)</a></li>
-			<li ng-click="ConsultarMantenimiento2(2)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento1">Mantenimiento (Año 2) </a></li>
-			<li ng-click="ConsultarMantenimiento2(3)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento2">Mantenimiento (año 3)</a></li>
-			<li ng-click="ConsultarMantenimiento3(4)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento3">Mantenimiento (año 5)</a></li>
-			<li ng-click="ConsultarMantenimiento3(5)"><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento4">Mantenimiento (año 9)</a></li>
+			<li ng-click="ConsultarEstablecimiento()"><a class="tab nav-item nav-link active" role="presentation" showtab="" id="establecimientoBtn" href="#nav-home">Establecimiento (Año 1)</a></li>
+			<li ng-click="ConsultarMantenimiento2(2)"><a  id="Mantenimiento1" class="tab nav-item nav-link" role="presentation" showtab=""  href="{{hrefMantenimiento1}}">Mantenimiento (Año 2) </a></li>
+			<li ng-click="ConsultarMantenimiento2(3)"><a id="Mantenimiento2" class="tab nav-item nav-link" role="presentation" showtab="" href="{{hrefMantenimiento2}}">Mantenimiento (año 3)</a></li>
+			<li  ng-click="ConsultarMantenimiento3(4)"><a id="Mantenimiento3" class="tab nav-item nav-link" role="presentation" showtab="" href="{{hrefMantenimiento3}}" >Mantenimiento (año 5)</a></li>
+			<li  ng-click="ConsultarMantenimiento3(5)"><a id="Mantenimiento4" class="tab nav-item nav-link" role="presentation" showtab="" href="{{hrefMantenimiento4}}">Mantenimiento (año 9)</a></li>
 			<!--<li><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento5">Entresaca</a></li>
 			<li><a class="tab nav-item nav-link" role="presentation" showtab="" href="#mantenimiento6">Aprovechamiento o <br /> cosecha (año 15)</a></li>-->
 		</ul>
@@ -96,41 +96,41 @@
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="Planteos2" ng-model="Mantenimiento2.Planteos" />
-							<label for="Planteos"><span></span></label>B.1 Planteos
+							<input class="form-check-input" type="checkbox" id="Planteos2" ng-model="Mantenimiento2.Planteos"/>
+							<label for="Planteos2"><span></span></label>B.1 Planteos
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Fertilizacion2" ng-model="Mantenimiento2.Fertilizacion" />
-							<label for="Fertilizacion" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span></label>B.2 Fertilización
+							<label for="Fertilizacion2" ng-show="Mantenimiento2.Planteos && posicionMantenimiento>=1"><span></span></label>B.2 Fertilización
 						</div>
 
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Podas2" ng-model="Mantenimiento2.Podas" />
-							<label for="Podas" ng-show="Mantenimiento2.Fertilizacion && posicionMantenimiento>=2"><span></span></label>B.3 Podas Reiterativas
+							<label for="Podas2" ng-show="Mantenimiento2.Fertilizacion && posicionMantenimiento>=2"><span></span></label>B.3 Podas Reiterativas
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Plagas2" ng-model="Mantenimiento2.Plagas" />
-							<label for="Plagas" ng-show="Mantenimiento2.Podas && posicionMantenimiento>=3"><span></span></label>B.4 Control Plagas
+							<label for="Plagas2" ng-show="Mantenimiento2.Podas && posicionMantenimiento>=3"><span></span></label>B.4 Control Plagas
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Enfermedades2" ng-model="Mantenimiento2.Enfermedades" />
-							<label for="Enfermedades" ng-show="Mantenimiento2.Plagas && posicionMantenimiento>=4"><span></span></label>B.5 Control Enfermedades
+							<label for="Enfermedades2" ng-show="Mantenimiento2.Plagas && posicionMantenimiento>=4"><span></span></label>B.5 Control Enfermedades
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Malezas2" ng-model="Mantenimiento2.Malezas" />
-							<label for="Malezas" ng-show="Mantenimiento2.Enfermedades && posicionMantenimiento>=5"><span></span></label>B.6 Control de Malezas
+							<label for="Malezas2" ng-show="Mantenimiento2.Enfermedades && posicionMantenimiento>=5"><span></span></label>B.6 Control de Malezas
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Caminos2" ng-model="Mantenimiento2.Caminos" />
-							<label for="Caminos" ng-show="Mantenimiento2.Malezas && posicionMantenimiento>=6"><span></span></label>B.7 Mantenimiento de caminos
+							<label for="Caminos2" ng-show="Mantenimiento2.Malezas && posicionMantenimiento>=6"><span></span></label>B.7 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Cercos2" ng-model="Mantenimiento2.Cercos" />
-							<label for="Cercos" ng-show="Mantenimiento2.Caminos && posicionMantenimiento>=7"><span></span></label>B.8 Mantenimiento cercos
+							<label for="Cercos2" ng-show="Mantenimiento2.Caminos && posicionMantenimiento>=7"><span></span></label>B.8 Mantenimiento cercos
 						</div>
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" id="Incendios2" ng-model="Mantenimiento2.Incendios" />
-							<label for="Incendios" ng-show="Mantenimiento2.Cercos && posicionMantenimiento>=8"><span></span></label>B.9 Protección contra incendios o barreras corta fuegos
+							<label for="Incendios2" ng-show="Mantenimiento2.Cercos && posicionMantenimiento>=8"><span></span></label>B.9 Protección contra incendios o barreras corta fuegos
 						</div>
 					</form>
 					<div class="col-md-8">
@@ -149,37 +149,124 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="dasometria in Dasometria">
-										<th scope="row">{{dasometria.Mes}}</th>
+
+									<tr id="tercerMes">
+										<th scope="row">Tercer Mes</th>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="dasometria.Altura" />
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria1.Altura" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="dasometria.Dap" />
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria1.Dap" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="dasometria.Perimetro" />
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria1.Perimetro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="dasometria.Diametro" />
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria1.Diametro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="dasometria.Observaciones"></textarea>
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria1.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr  id="sextoMes">
+										<th scope="row">Sexto Mes</th>
+										<td>
+											<div class="form-group">
+												<input  class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria2.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria2.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria2.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria2.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria2.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="novenoMes">
+										<th scope="row">Noveno Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria3.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria3.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria3.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria3.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria3.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="doceavoMes">
+										<th scope="row">Doceavo Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria4.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria4.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria4.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria4.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria4.Observaciones"></textarea>
 											</div>
 										</td>
 									</tr>
 								</tbody>
 							</table>
-
 						</form>
 					</div>
 					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento2(2)" style="display:inline-block">
@@ -195,46 +282,46 @@
 
 
 		<div class="tab-pane fade" id="mantenimiento2" role="tabpanel" aria-labelledby="nav-contact-tab">
-			<div class="row fase1 mantenimiento">
-				<div class="col-md-12">
+			<div class="row fase1">
+				<div class="col-md-12" style="margin: 0px;padding: 0px;">
 					<form class="col-md-4">
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="Planteos" ng-model="Mantenimiento3.Planteos" />
-							<label for="Planteos"><span></span></label>C.1 Planteos
+							<input class="form-check-input" type="checkbox" id="Planteos3" ng-model="Mantenimiento3.Planteos" />
+							<label for="Planteos3"><span></span></label>C.1 Planteos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox"  value="" id="Fertilizacion8" ng-model="Mantenimiento3.Fertilizacion"/>
-							<label for="Fertilizacion" ng-show="Mantenimiento3.Planteos && posicion >=1" ><span></span></label>C.2 Fertilización
+							<input class="form-check-input" type="checkbox"  id="Fertilizacion3" ng-model="Mantenimiento3.Fertilizacion"/>
+							<label for="Fertilizacion3" ng-show="Mantenimiento3.Planteos && posicionMantenimiento2 >=1" ><span></span></label>C.2 Fertilización
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Podas" ng-model="Mantenimiento3.Podas" />
-							<label for="Podas" ng-show="Mantenimiento3.Fertilizacion && posicion >=2" ><span></span></label>C.3 Podas Reiterativas
+							<input class="form-check-input" type="checkbox" id="Podas3" ng-model="Mantenimiento3.Podas" />
+							<label for="Podas3" ng-show="Mantenimiento3.Fertilizacion && posicionMantenimiento2 >=2" ><span></span></label>C.3 Podas Reiterativas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Plagas" ng-model="Mantenimiento3.Plagas"/>
-							<label for="Plagas" ng-show="Mantenimiento3.Podas && posicion >=3"><span></span></label>C.4 Control Plagas
+							<input class="form-check-input" type="checkbox"  id="Plagas3" ng-model="Mantenimiento3.Plagas"/>
+							<label for="Plagas3" ng-show="Mantenimiento3.Podas && posicionMantenimiento2 >=3"><span></span></label>C.4 Control Plagas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Enfermedades" ng-model="Mantenimiento3.Enfermedades"/>
-							<label for="Enfermedades" ng-show="Mantenimiento3.Plagas && posicion >=4"><span></span></label>C.5 Control Enfermedades
+							<input class="form-check-input" type="checkbox"  id="Enfermedades3" ng-model="Mantenimiento3.Enfermedades"/>
+							<label for="Enfermedades3" ng-show="Mantenimiento3.Plagas && posicionMantenimiento2 >=4"><span></span></label>C.5 Control Enfermedades
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Malezas" ng-model="Mantenimiento3.Malezas" />
-							<label for="Malezas" ng-show="Mantenimiento3.Enfermedades && posicion >=5"><span></span></label>C.6 Control de Malezas
+							<input class="form-check-input" type="checkbox" id="Malezas3" ng-model="Mantenimiento3.Malezas" />
+							<label for="Malezas3" ng-show="Mantenimiento3.Enfermedades && posicionMantenimiento2 >=5"><span></span></label>C.6 Control de Malezas
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Caminos" ng-model="Mantenimiento3.Caminos"/>
-							<label for="Caminos" ng-show="Mantenimiento3.Malezas && posicion >=6"><span></span></label>C.7 Mantenimiento de caminos
+							<input class="form-check-input" type="checkbox"  id="Caminos3" ng-model="Mantenimiento3.Caminos"/>
+							<label for="Caminos3" ng-show="Mantenimiento3.Malezas && posicionMantenimiento2 >=6"><span></span></label>C.7 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Cercos" ng-model="Mantenimiento3.Cercos"  />
-							<label for="Cercos" ng-show="Mantenimiento3.Caminos && posicion >=7"><span></span></label>C.8 Mantenimiento cercos
+							<input class="form-check-input" type="checkbox" id="Cercos3" ng-model="Mantenimiento3.Cercos"  />
+							<label for="Cercos3" ng-show="Mantenimiento3.Caminos && posicionMantenimiento2 >=7"><span></span></label>C.8 Mantenimiento cercos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="Incendios" ng-model="Mantenimiento3.Incendios"  />
-							<label for="Incendios" ng-show="Mantenimiento3.Cercos && posicion >=8"><span></span></label>C.9 Protección contra incendios o barreras corta fuegos
+							<input class="form-check-input" type="checkbox"  id="Incendios3" ng-model="Mantenimiento3.Incendios"  />
+							<label for="Incendios3" ng-show="Mantenimiento3.Cercos && posicionMantenimiento2 >=8"><span></span></label>C.9 Protección contra incendios o barreras corta fuegos
 						</div>
 					</form>
 					<div class="col-md-8">
@@ -253,31 +340,119 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="dasometria in Dasometria">
-										<th scope="row">{{dasometria.Mes}}</th>
+
+									<tr id="tercerMes2">
+										<th scope="row">Tercer Mes</th>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="dasometria.Altura" />
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria5.Altura" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="dasometria.Dap" />
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria5.Dap" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="dasometria.Perimetro" />
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria5.Perimetro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="dasometria.Diametro" />
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria5.Diametro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="dasometria.Observaciones"></textarea>
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria5.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="sextoMes2">
+										<th scope="row">Sexto Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria6.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria6.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria6.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria6.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria6.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="novenoMes2">
+										<th scope="row">Noveno Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria7.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria7.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria7.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria7.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria7.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="doceavoMes2">
+										<th scope="row">Doceavo Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria8.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria8.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria8.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria8.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria8.Observaciones"></textarea>
 											</div>
 										</td>
 									</tr>
@@ -288,7 +463,7 @@
 					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento2(3)" style="display:inline-block">
 						Siguiente Fase
 					</button>
-					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(3)" style="float: right; display: inline-block;width:166px;">
+					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria2(3, formDasometria)" style="float: right; display: inline-block;width:166px;">
 						Guardar Dasometría
 					</button>
 				</div>
@@ -298,37 +473,37 @@
 
 		<div class="tab-pane fade" id="mantenimiento3" role="tabpanel" aria-labelledby="nav-contact-tab">
 			<div class="row fase1 mantenimiento">
-				<div class="col-md-12">
+				<div class="col-md-12" style="margin: 0px;padding: 0px;">
 					<form class="col-md-4">
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d1" ng-model="Mantenimiento4.Planteos" />
-							<label for="d1"><span></span>D.1 Planteos</label>
+							<input class="form-check-input" type="checkbox"id="Planteos4" ng-model="Mantenimiento4.Planteos"/>
+							<label for="Planteos4"><span></span></label>D.1 Planteos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d2" ng-model="Mantenimiento4.Fertilizacion" ng-if="Mantenimiento4.Planteos" />
-							<label for="d2"><span></span>D.2 Fertilización</label>
+							<input class="form-check-input" type="checkbox"  id="Fertilizacion4" ng-model="Mantenimiento4.Fertilizacion"/>
+							<label for="Fertilizacion4"  ng-show="Mantenimiento4.Planteos && posicionMantenimiento3 >=1" ><span></span></label>D.2 Fertilización
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d3" ng-model="Mantenimiento4.Plagas" ng-if="Mantenimiento4.Fertilizacion" />
-							<label for="d3"><span></span>D.3 Monitoreo plagas y enfermedades</label>
+							<input class="form-check-input" type="checkbox"id="Plagas4" ng-model="Mantenimiento4.Plagas"/>
+							<label for="Plagas4" ng-show="Mantenimiento4.Fertilizacion && posicionMantenimiento3 >=2"><span></span></label>D.3 Monitoreo plagas y enfermedades
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d4" ng-model="Mantenimiento4.Caminos" ng-if="Mantenimiento4.Plagas" />
-							<label for="d4"><span></span>D.4 Mantenimiento de caminos</label>
+							<input class="form-check-input" type="checkbox"  id="Caminos4" ng-model="Mantenimiento4.Caminos"/>
+							<label for="Caminos4" ng-show="Mantenimiento4.Plagas && posicionMantenimiento3 >=3"><span></span></label>D.4 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d5" ng-model="Mantenimiento4.Cercos" ng-if="Mantenimiento4.Caminos" />
-							<label for="d5"><span></span>D.5 Mantenimiento de cercos</label>
+							<input class="form-check-input" type="checkbox"  id="Cercos4" ng-model="Mantenimiento4.Cercos"/>
+							<label for="Cercos4" ng-show="Mantenimiento4.Caminos && posicionMantenimiento3 >=4"><span></span></label>D.5 Mantenimiento de cercos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d6" ng-model="Mantenimiento4.Incendios" ng-if="Mantenimiento4.Cercos" />
-							<label for="d6"><span></span>D.6 Protección contra incendios o barreras corta fuegos</label>
+							<input class="form-check-input" type="checkbox" id="Incendios4" ng-model="Mantenimiento4.Incendios" />
+							<label for="Incendios4" ng-show="Mantenimiento4.Cercos && posicionMantenimiento3 >=5"><span></span></label>D.6 Protección contra incendios o barreras corta fuegos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="d7" ng-model="Mantenimiento4.Raleos" ng-if="Mantenimiento4.Incendios" />
-							<label for="d7"><span></span>D.7 Primer Raleo (50 % población Inicial)</label>
+							<input class="form-check-input" type="checkbox" id="Raleo4" ng-model="Mantenimiento4.Raleo"/>
+							<label for="Raleo4" ng-show="Mantenimiento4.Incendios && posicionMantenimiento3 >=6"><span></span></label>D.7 Primer Raleo (50 % población Inicial)
 						</div>
 					</form>
 					<div class="col-md-8">
@@ -347,31 +522,119 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="dasometria in Dasometria">
-										<th scope="row">{{dasometria.Mes}}</th>
+
+									<tr id="tercerMes3">
+										<th scope="row">Tercer Mes</th>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="dasometria.Altura" />
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria9.Altura" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="dasometria.Dap" />
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria9.Dap" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="dasometria.Perimetro" />
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria9.Perimetro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="dasometria.Diametro" />
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria9.Diametro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="dasometria.Observaciones"></textarea>
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria9.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="sextoMes3">
+										<th scope="row">Sexto Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria10.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria10.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria10.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria10.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria10.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="novenoMes3">
+										<th scope="row">Noveno Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria11.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria11.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria11.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria11.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria11.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="doceavoMes3">
+										<th scope="row">Doceavo Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria12.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria12.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria12.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria12.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria12.Observaciones"></textarea>
 											</div>
 										</td>
 									</tr>
@@ -382,7 +645,7 @@
 					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarMantenimiento3(4)" style="display:inline-block">
 						Siguiente Fase
 					</button>
-					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(4)" style="float: right; display: inline-block;width:166px;">
+					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria3(4, formDasometria)" style="float: right; display: inline-block;width:166px;">
 						Guardar Dasometría
 					</button>
 				</div>
@@ -392,37 +655,37 @@
 
 		<div class="tab-pane fade" id="mantenimiento4" role="tabpanel" aria-labelledby="nav-contact-tab">
 			<div class="row fase1 mantenimiento">
-				<div class="col-md-12">
+				<div class="col-md-12" style="margin: 0px;padding: 0px;">
 					<form class="col-md-4">
 						<h2 style="font-size:20px"> Seguimiento de cultivo</h2>
 						<hr />
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e1" ng-model="Mantenimiento5.Planteos" />
-							<label for="e1"><span></span>E.1 Planteos</label>
+							<input class="form-check-input" type="checkbox" id="Planteos5" ng-model="Mantenimiento5.Planteos" />
+							<label for="Planteos5" ><span></span>E.1 Planteos</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e2" ng-model="Mantenimiento5.Fertilizacion" ng-if="Mantenimiento5.Planteos" />
-							<label for="e2"><span></span>E.2 Fertilización</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Fertilizacion5" ng-model="Mantenimiento5.Fertilizacion"/>
+							<label for="Fertilizacion5" ng-show="Mantenimiento5.Planteos && posicionMantenimiento4 >=1"><span></span></label>E.2 Fertilización
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e3" ng-model="Mantenimiento5.Plagas" ng-if="Mantenimiento5.Fertilizacion" />
-							<label for="e3"><span></span>E.3 Monitoreo plagas y enfermedades</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Plagas5" ng-model="Mantenimiento5.Plagas"/>
+							<label for="Plagas5" ng-show="Mantenimiento5.Fertilizacion && posicionMantenimiento4 >=2" ><span></span></label>E.3 Monitoreo plagas y enfermedades
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e4" ng-model="Mantenimiento5.Caminos" ng-if="Mantenimiento5.Plagas" />
-							<label for="e4"><span></span>E.4 Mantenimiento de caminos</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Caminos5" ng-model="Mantenimiento5.Caminos"/>
+							<label for="Caminos5" ng-show="Mantenimiento5.Plagas && posicionMantenimiento4 >=3" ><span></span></label>E.4 Mantenimiento de caminos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e5" ng-model="Mantenimiento5.Cercos" ng-if="Mantenimiento5.Caminos" />
-							<label for="e5"><span></span>E.5 Mantenimiento de cercos</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Cercos5" ng-model="Mantenimiento5.Cercos"/>
+							<label for="Cercos5" ng-show="Mantenimiento5.Caminos && posicionMantenimiento4 >=4" ><span></span></label>E.5 Mantenimiento de cercos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e6" ng-model="Mantenimiento5.Incendios" ng-if="Mantenimiento5.Cercos" />
-							<label for="e6"><span></span>E.6 Protección contra incendios o barreras corta fuegos</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Incendios5" ng-model="Mantenimiento5.Incendios"/>
+							<label for="Incendios5" ng-show="Mantenimiento5.Cercos && posicionMantenimiento4 >=5" ><span></span></label>E.6 Protección contra incendios o barreras corta fuegos
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="name" value="" id="e7" ng-model="Mantenimiento5.Raleos" ng-if="Mantenimiento5.Incendios" />
-							<label for="e7"><span></span>E.7 Segundo Raleo (50 % población restante)</label>
+							<input class="form-check-input" type="checkbox" name="name" value="" id="Raleo5" ng-model="Mantenimiento5.Raleo"/>
+							<label for="Raleo5" ng-show="Mantenimiento5.Incendios && posicionMantenimiento4 >=6" ><span></span></label>E.7 Segundo Raleo (50 % población restante)
 						</div>
 					</form>
 					<div class="col-md-8">
@@ -441,31 +704,119 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="dasometria in Dasometria">
-										<th scope="row">{{dasometria.Mes}}</th>
+
+									<tr id="tercerMes4">
+										<th scope="row">Tercer Mes</th>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="dasometria.Altura" />
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria13.Altura" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="dasometria.Dap" />
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria13.Dap" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="dasometria.Perimetro" />
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria13.Perimetro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="dasometria.Diametro" />
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria13.Diametro" />
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="dasometria.Observaciones"></textarea>
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria13.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="sextoMes4">
+										<th scope="row">Sexto Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria14.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria14.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria14.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria14.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria14.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="novenoMes4">
+										<th scope="row">Noveno Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria15.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria15.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria15.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria15.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria15.Observaciones"></textarea>
+											</div>
+										</td>
+									</tr>
+
+									<tr id="doceavoMes4">
+										<th scope="row">Doceavo Mes</th>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" min="0" name="altura" ng-model="Dasometria16.Altura" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="dap" ng-model="Dasometria16.Dap" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="perimetro" ng-model="Dasometria16.Perimetro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input class="form-control inputTablaFase" type="number" name="diametro" ng-model="Dasometria16.Diametro" />
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<textarea class="form-control inputTablaFase" type="text" name="observaciones" ng-model="Dasometria16.Observaciones"></textarea>
 											</div>
 										</td>
 									</tr>
@@ -477,7 +828,7 @@
 							style="display:inline-block">
 						Siguiente Fase
 					</button>
-					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria(5)" style="float: right; display: inline-block;width:166px;">
+					<button type="submit" class="btn btn-success btnFases btn-block" ng-click="GuardarDasometria4(5, formDasometria)" style="float: right; display: inline-block;width:166px;">
 						Guardar Dasometría
 					</button>
 				</div>

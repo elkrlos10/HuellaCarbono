@@ -20,10 +20,10 @@
             return $http.post(UrlServices + "Proyecto/FiltroProyectos", item);
         }
 
-
-
-
-
+        service.Porcentaje = function (item) {
+            return $http.post(UrlServices + "Proyecto/Porcentaje", item);
+        }
+        
         return service;
     }
 

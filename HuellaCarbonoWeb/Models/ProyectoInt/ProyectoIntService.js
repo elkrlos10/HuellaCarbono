@@ -30,9 +30,18 @@
         service.GuardarDasometria = function (item) {
             return $http.post(UrlServices + "Proyecto/GuardarDasometria", item);
         }
+
         service.ConsultarDasometria = function (item) {
             return $http.post(UrlServices + "Proyecto/ConsultarDasometria", item);
         }
+
+        service.Porcentaje = function (Id) {
+            var item = {
+                Paramatro1:Id
+            }
+            return $http.post(UrlServices + "Proyecto/Porcentaje", item);
+        }
+
         return service;
     }
 

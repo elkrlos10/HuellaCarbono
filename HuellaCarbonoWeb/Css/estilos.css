@@ -718,7 +718,7 @@ label {
 
 .tabla {
 	display: block;
-	margin: 30px auto;
+	padding:0px !important;
 }
 
 .circleProgress {
@@ -861,9 +861,13 @@ footer {
 		background: #708915;
 	}
 
-/*input[type="checkbox"] {
+input[type="checkbox"] {
 	display: none;
-}*/
+}
+
+.form-check{
+	margin:5px;
+}
 
 .btnCheck {
 	border: none;
@@ -876,9 +880,6 @@ footer {
 	cursor: pointer;
 }
 
-/*#btnCheck:focus {
-		background: url('../Images/checkbox.png') -20px top no-repeat;
-	}*/
 
 input[type="checkbox"] + label span {
 	display: inline-block;
@@ -1513,4 +1514,23 @@ input[type=number]::-webkit-outer-spin-button {
 	-moz-appearance: none;
 	appearance: none;
 	margin: 0;
+}
+
+.trTabla {
+	color: #5d5d5d;
+	font-size: 16px;
+	text-align: center;
+}
+
+.trTabla th{
+	text-align:center;
+	font-weight:bold;
+}
+
+.tdBody td{
+	text-align:center;
+}
+
+.estadoTabla h2 {
+	color: #7f7f7f !important;
 }

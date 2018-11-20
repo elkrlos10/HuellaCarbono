@@ -5,6 +5,8 @@ using Modelo.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -114,24 +116,29 @@ namespace LogicaNegocio.Logica
             return Task.FromResult<Usuario>(Usuario);
         }
 
-        public async Task<bool> RecuperarContraseña(UsuarioDTO oUsuario)
+        public async Task<bool> RecuperarContrasena(UsuarioDTO oUsuario)
         {
             var Correo = (from i in entity.Usuario
                           where i.NombreUsuario == oUsuario.NombreUsuario
                           select i).FirstOrDefault();
             bool respuesta = false;
-
-            if (Correo != null)
+			
+			if (Correo != null)
             {
-                var Asunto = "Recuperación contraseña Huella Carbono";
+				LinkedResource img = new LinkedResource(@"C:\Users\FS_2017\Desktop\publicacion\SISCOLI\HuellaCarbono\LogicaNegocio\Email\logoBlanco.png", MediaTypeNames.Image.Jpeg);
+				img.ContentId = "imagen";
+				var Asunto = "Recuperación contraseña Huella Carbono";
                 var body = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">";
-                body += "<HTML><HEAD><META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">";
-                body += "</HEAD><BODY><DIV style='height:100%; width:43%;  margin-left:25%; '><div style='height:70px; width:100%;  '><center><H3 STYLE='color:rgb(89,181,72)'>GIDPI</H3></center></div><P>Hola</P><P>La solicitud para recuperar su contraseña ha sido aceptada</P>";
-                body += "<H3>INFORMACION DE CONTACTO</H3></br><H3><B>Usuario: </B></H3>" + Correo.NombreUsuario + " <H3><B> Contraseña: </B></H3> " + Correo.Password;
-                body += "<P>Puede dirigirse a la pagina principal de GIDPI para ingresar al aplicativo en el siguiente enlace.</P><A href='www.gidpi.com/#/Login'>www.gidpi.com/</A>";
-                body += "<P><I>Esto es un correo electronico generado automaticamente enviado por el aplicativo GIDPI. Su correo no se enviara a GIDPI si responde a este mensaje.</I></P></DIV></BODY></HTML>";
-
-                SendMail.SendMailMessage(Asunto, body, Correo.NombreUsuario);
+				body += "<HTML><HEAD><META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">";
+				body += "<body style = 'font-family:helvetica;'><div style = 'background: white ; border-radius: 20px; height: 100%; width: 40%;margin: 0px; color:#182430;  box-shadow: 2px 6px 15px #ccc'>" +
+					"<header style = 'background: #82a20d; width: 100%; height: 150px;border-radius: 20px 20px 0px 0px;'>" +
+		"<center><img src='"+ img.ContentId + "' width='150px'></center></header>" +
+		"<div style='padding:20px'><b><h2> Hola </h2></b><p>La solicitud para recuperar su contraseña ha sido aceptada</p> <center><b><h3> INFORMACIÓN DE CONTACTO</h3></b></center> " +
+		"<h4>Usuario: " + Correo.NombreUsuario + "</h4><h4> Contraseña: " + Correo.Password + "</h4> " +
+		"<p> Puede dirigirse a la aplicación móvil Huella de carbono para ingresar nuevamente </p><br><br><i> Esto es un correo electrónico generado automáticamente enviado por el aplicativo Huella de Carbono.</i> " +
+		"</div></div></body></html>";
+	  
+			SendMail.SendMailMessage(Asunto, body, Correo.NombreUsuario);
 
                 respuesta = true;
             }

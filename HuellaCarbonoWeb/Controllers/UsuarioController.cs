@@ -67,12 +67,12 @@ namespace HuellaCarbonoWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<bool> RecuperarContraseña(UsuarioDTO oUser)
+        public async Task<bool> RecuperarContrasena(UsuarioDTO oUser)
         {
             try
             {
                 UsuarioBl oUsuario = new UsuarioBl();
-                var response = await oUsuario.RecuperarContraseña(oUser);
+                var response = await oUsuario.RecuperarContrasena(oUser);
 
                 return response;
 

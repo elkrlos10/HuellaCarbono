@@ -105,7 +105,7 @@
             //{
             //    if (oEncuesta.TipoCombustible == "Gas")
             //    {
-            //        oEncuesta.FactorAuto = (oEncuesta.DistanciaAutoMoto * FactorEmision.Gas_M3 * 260);
+            //        oEncuesta.FactorAuto = (oEncuesta.Km * FactorEmision.Gas_M3 * 260);
             //    }
             //    else if (oEncuesta.TipoCombustible == "Gasolina")
             //    {

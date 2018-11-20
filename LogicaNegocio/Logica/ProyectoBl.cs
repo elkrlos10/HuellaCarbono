@@ -30,6 +30,7 @@
 			entity.SaveChanges();
 			oProyecto.NombreEmpresa = empresa.NombreEmpresa;
 			oProyecto.IdProyecto = proyecto.IdProyecto;
+            oProyecto.TipoEmpresa = empresa.TipoEmpresa;
 
 			return Task.FromResult<ProyectoDTO>(oProyecto);
 		}

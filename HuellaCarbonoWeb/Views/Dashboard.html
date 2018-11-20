@@ -61,16 +61,16 @@
 			</div>
 		</div>
 		<div class="contenedorDatos col-md-12">
-			<div style="
-			display: block;
-			margin: 3px auto;
-			background: #182430;
-			width: 500px;
-			height: 3px;
-			border-radius: 5px;"></div>
-			<h2 style="text-align: center;margin: 10px;font-size: 25px;font-weight:bold; color:#182430;">
-				PROYECTOS PRESENTADOS
-			</h2>
+			<!--<div style="
+	display: block;
+	margin: 3px auto;
+	background: #182430;
+	width: 500px;
+	height: 3px;
+	border-radius: 5px;"></div>
+	<h2 style="text-align: center;margin: 10px;font-size: 25px;font-weight:bold; color:#182430;">
+		PROYECTOS PRESENTADOS
+	</h2>-->
 			<div class="row">
 				<div class="col-md-6">
 					<form class="navbar-form navbar-left" style="margin-top:25px">
@@ -158,28 +158,38 @@
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
-
-						<div class="modal-body">
-							<h3 style="font-size:20px" class="modal-title" id="exampleModalLabel">{{Empresa.NombreEmpresa | uppercase}}</h3>
-							<h3 style="font-size:18px" class="modal-title" ng-if="Empresa.TipoEmpresa == 1">Institución Educativa</h3>
-							<h3 style="font-size:18px" class="modal-title" ng-if="Empresa.TipoEmpresa == 2">Transporte</h3>
-							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Direccion:</b> {{Empresa.Direccion}}</h4>
-							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Email:</b> {{Empresa.Email}}</h4>
-							<h4 style="font-size:16px; margin:5px 0px" class="modalData"><b>Nit:</b> {{Empresa.Nit}}</h4>
-						</div>
-						<div class="modal-footer">
-							<div>
-								<button ng-if="Listar[0].Estado == null" type="button" ng-click="CambiarEstadoProyecto(true)" class="btn btn-success">Aprobar</button>
-								<button ng-if="Listar[0].Estado == null || Listar[0].Estado == true" type="button" ng-click="CambiarEstadoProyecto(false)" class="btn btn-danger">Cancelar</button>
-								<button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+						<div class="modal-header headerModal">
+							<div class="titleModal">
+								<h3 style="font-size:30px; color:white; text-align:center; font-weight:bold" class="modal-title" id="exampleModalLabel">{{Empresa.NombreEmpresa | uppercase}}</h3>
+								<h3 style="font-size:18px;color:white; text-align:center;font-weight:bold" class="modal-title" ng-if="Empresa.TipoEmpresa == 1">Institución educativa</h3>
+								<h3 style="font-size:18px;color:white; text-align:center;font-weight:bold" class="modal-title" ng-if="Empresa.TipoEmpresa == 2">Empresa de transporte</h3>
 							</div>
+						</div>
+						<div class="modal-body">
+							<center>
+								<nav class="itemsModal">
+									<ul class="dots liModal">
+										<li><span class="fas fa-map-marker-alt"></span> <br /> <b>{{Empresa.Direccion}}</b> </li>
+										<li><span class="fas fa-envelope"></span> <br /> <b>{{Empresa.Email}}</b> </li>
+										<li><span class="fas fa-fingerprint"></span> <br /> <b>{{Empresa.Nit}}</b> </li>
+									</ul>
+								</nav>
+							</center>
+							<hr />
+							<center>
+								<div class="botonesModal">
+									<button ng-if="Listar[0].Estado == null" type="button" ng-click="CambiarEstadoProyecto(true)" class="btn btn-success btnAprobar">Aprobar</button>
+									<button ng-if="Listar[0].Estado == null || Listar[0].Estado == true" type="button" ng-click="CambiarEstadoProyecto(false)" class="btn btn-danger btnCancelar">Cancelar</button>
+								</div>
+							</center>
+							<button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background:none; box-shadow:none"><i class="fas fa-times"></i></button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 <footer>
 	<h3 style="text-align:center; color:white; padding-top:25px">Fábrica de software 2018 &copy;</h3>
 </footer>

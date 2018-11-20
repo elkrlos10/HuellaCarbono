@@ -1539,3 +1539,63 @@ input[type=number]::-webkit-outer-spin-button {
 	box-shadow: 1px 1px 20px #ccc;
 	border-radius:7px;
 }
+
+.modal-body{
+	padding:0px !important;
+}
+
+.headerModal {
+	background: url('../Images/beautiful-cascade-creek-460621.jpg') top left;
+	background-size: cover;
+	height: 200px;
+}
+.titleModal {
+	padding: 25px;
+}
+
+.itemsModal {
+	margin-bottom: -40px !important;
+}
+
+.liModal {
+	top: -40px;
+	position: relative;
+}
+
+.liModal li{
+	text-align:center;
+	font-size:16px;
+	display:inline-block;
+	width:auto !important;
+	margin:5px;
+}
+
+	.liModal li span {
+		font-size: 20px;
+		color: white;
+		background-color: #82a20d !important;
+	}
+
+	.liModal li b{
+		margin-bottom:20px;
+		font-weight:bold;
+	}
+
+.botonesModal{
+	display:block;
+	margin:10px auto;
+}
+
+.btnAprobar {
+	border: 2px solid #5cb85c;
+	background-color: transparent;
+	color: #5cb85c;
+	font-weight: bold;
+}
+
+.btnCancelar {
+	border: 2px solid #d43f3a;
+	background-color: transparent;
+	color: #d43f3a;
+	font-weight: bold;
+}

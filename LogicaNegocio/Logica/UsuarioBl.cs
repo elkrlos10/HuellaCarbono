@@ -9,6 +9,8 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Net.Http;
 
 namespace LogicaNegocio.Logica
 {
@@ -122,29 +124,26 @@ namespace LogicaNegocio.Logica
                           where i.NombreUsuario == oUsuario.NombreUsuario
                           select i).FirstOrDefault();
             bool respuesta = false;
-			
+
 			if (Correo != null)
-            {
-				LinkedResource img = new LinkedResource(@"C:\Users\FS_2017\Desktop\publicacion\SISCOLI\HuellaCarbono\LogicaNegocio\Email\logoBlanco.png", MediaTypeNames.Image.Jpeg);
-				img.ContentId = "imagen";
+			{ //C:\Users\FS_2017\Desktop\publicacion\SISCOLI\HuellaCarbono\HuellaCarbonoWeb\
+				string[] delimitador = new string[] { "api" };
+				string[] rutaBase;
+				var ruta = HttpContext.Current.Request.Url.AbsoluteUri;
+				rutaBase = ruta.Split(delimitador, StringSplitOptions.None);
+				var rutaAbsoluta = rutaBase[0];
 				var Asunto = "Recuperación contraseña Huella Carbono";
-                var body = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">";
-				body += "<HTML><HEAD><META http-equiv=Content-Type content=\"text/html; charset=iso-8859-1\">";
-				body += "<body style = 'font-family:helvetica;'><div style = 'background: white ; border-radius: 20px; height: 100%; width: 40%;margin: 0px; color:#182430;  box-shadow: 2px 6px 15px #ccc'>" +
-					"<header style = 'background: #82a20d; width: 100%; height: 150px;border-radius: 20px 20px 0px 0px;'>" +
-		"<center><img src='"+ img.ContentId + "' width='150px'></center></header>" +
+				var body = "<div style = 'font-family:helvetica;'><div style = 'background: white ; border-radius: 20px; height: 100%; width: 80%;margin: 0px; color:#182430;  box-shadow: 2px 6px 15px #ccc'>" +
+					"<div style = 'background: #82a20d; width: 100%; height: 150px;border-radius: 20px 20px 0px 0px;'>" +
+		"<center><img src='" + rutaAbsoluta + "Images/logoBlanco.png' width='150px' style='margin-top:5px' /></center></div>" +
 		"<div style='padding:20px'><b><h2> Hola </h2></b><p>La solicitud para recuperar su contraseña ha sido aceptada</p> <center><b><h3> INFORMACIÓN DE CONTACTO</h3></b></center> " +
 		"<h4>Usuario: " + Correo.NombreUsuario + "</h4><h4> Contraseña: " + Correo.Password + "</h4> " +
 		"<p> Puede dirigirse a la aplicación móvil Huella de carbono para ingresar nuevamente </p><br><br><i> Esto es un correo electrónico generado automáticamente enviado por el aplicativo Huella de Carbono.</i> " +
-		"</div></div></body></html>";
-	  
-			SendMail.SendMailMessage(Asunto, body, Correo.NombreUsuario);
-
+		"</div></div></div>";
+				SendMail.SendMailMessage(Asunto, body, Correo.NombreUsuario);
                 respuesta = true;
             }
-
             return await Task.FromResult<bool>(respuesta);
-
         }
 
     }

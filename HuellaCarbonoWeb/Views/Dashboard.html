@@ -6,9 +6,9 @@
 					
 					<nav>
 						<ul class="dots">
-							<li>
+							<!--<li>
 								<span class="fas fa-sign-out-alt iconos derIcon"></span>
-							</li>
+							</li>-->
 						</ul>
 					</nav>
 					<div class="notificacionesCont row">
@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<div class="logoAdmin col-md-12">
-					<img src="../Images/logoBlanco.png" />
+					<img src="../Images/logoBlanco.png" style="top:-5px"/>
 				</div>
 			</div>
 		</div>
@@ -61,16 +61,23 @@
 			</div>
 		</div>
 		<div class="contenedorDatos col-md-12">
-			<h2 style="text-align: center;margin: 20px;font-size: 25px;font-weight:bold">
+			<div style="
+			display: block;
+			margin: 3px auto;
+			background: #182430;
+			width: 500px;
+			height: 3px;
+			border-radius: 5px;"></div>
+			<h2 style="text-align: center;margin: 10px;font-size: 25px;font-weight:bold; color:#182430;">
 				PROYECTOS PRESENTADOS
 			</h2>
 			<div class="row">
 				<div class="col-md-6">
 					<form class="navbar-form navbar-left" style="margin-top:25px">
 						<div class="form-group">
-							<input type="text" class="form-control buscarProyecto" id="Buscar" style="border:2px solid #82a20d;font-size:16px" ng-model="filtro" placeholder="Buscar Proyecto">
+							<input type="text" class="form-control buscarProyecto" id="Buscar" style="border:2px solid #82a20d;font-size:14px" ng-model="filtro" placeholder="Buscar Proyecto">
 						</div>
-						<button type="submit" class="btn btn-default" style="background:#82a20d; color:white;font-family:Poppins;font-size:16px">Buscar</button>
+						<button type="submit" class="btn btn-default" style="background:#82a20d; color:white;font-family:Poppins;font-size:16px;border: none;"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
 				<div class="col-md-6">
@@ -79,7 +86,7 @@
 							<li>
 								<a class="btn btn-danger" ng-click="FiltroProyectos(false)">
 									<p style="color: white;
-							font-size: 16px;">Cancelados</p>
+							font-size: 16px;"><i class="fas fa-ban"></i> Cancelados</p>
 								</a>
 							</li>
 							<li>
@@ -112,7 +119,7 @@
 							<th>Total árboles</th>
 							<th>Especie</th>
 							<th>Estado</th>
-							<th ng-if="Listar[0].Estado == true" >Progreso del Proyecto</th>
+							<th ng-if="Listar[0].Estado == true">Progreso del Proyecto</th>
 							<th>Opciones</th>
 						</tr>
 					</thead>

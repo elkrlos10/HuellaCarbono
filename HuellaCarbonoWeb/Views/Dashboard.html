@@ -31,34 +31,36 @@
 		</div>
 
 		<div class="col-md-12 circleProgress">
-			<div class="item col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-body text-center">
-						<ui-knob value="value" options="options"></ui-knob>
+			<center>
+				<div class="item col-md-3">
+					<div class="panel panel-primary">
+						<div class="panel-body text-center">
+							<ui-knob value="value" options="options"></ui-knob>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="item col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-body text-center">
-						<ui-knob value="value2" options="options2"></ui-knob>
+				<div class="item col-md-3">
+					<div class="panel panel-primary">
+						<div class="panel-body text-center">
+							<ui-knob value="value2" options="options2"></ui-knob>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="item col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-body text-center">
-						<ui-knob value="value3" options="options3"></ui-knob>
+				<div class="item col-md-3">
+					<div class="panel panel-primary">
+						<div class="panel-body text-center">
+							<ui-knob value="value3" options="options3"></ui-knob>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="item col-md-3">
-				<div class="panel panel-primary">
-					<div class="panel-body text-center">
-						<ui-knob value="value4" options="options4"></ui-knob>
+				<div class="item col-md-3">
+					<div class="panel panel-primary">
+						<div class="panel-body text-center">
+							<ui-knob value="value4" options="options4"></ui-knob>
+						</div>
 					</div>
 				</div>
-			</div>
+			</center>
 		</div>
 		<div class="contenedorDatos col-md-12">
 			<!--<div style="
@@ -75,7 +77,7 @@
 				<div class="col-md-6">
 					<form class="navbar-form navbar-left" style="margin-top:25px">
 						<div class="form-group">
-							<input type="text" class="form-control buscarProyecto" id="Buscar" style="border:2px solid #82a20d;font-size:14px" ng-model="filtro" placeholder="Buscar Proyecto">
+							<input type="text" class="form-control buscarProyecto" id="Buscar" style="border:1px solid #82a20d;font-size:14px" ng-model="filtro" placeholder="Buscar Proyecto">
 						</div>
 						<button type="submit" class="btn btn-default" style="background:#82a20d; color:white;font-family:Poppins;font-size:16px;border: none;"><i class="fas fa-search"></i></button>
 					</form>
@@ -84,23 +86,20 @@
 					<nav class="filtro">
 						<ul class="dots">
 							<li>
-								<a class="btn btn-danger" ng-click="FiltroProyectos(false)">
-									<p style="color: white;
-							font-size: 16px;"><i class="fas fa-ban"></i> Cancelados</p>
+								<a class="btn btn-primary" ng-click="FiltroProyectos(false)" style="border-radius: 20px 0px 0px !important; ">
+									<p class="txtFilter"> Cancelados</p>
 								</a>
 							</li>
 							<li>
-								<a class="btn btn-info" ng-click="FiltroProyectos(true)">
-									<p style="color: white;
-							font-size: 16px;">En Ejecución</p>
+								<a class="btn btn-primary" ng-click="FiltroProyectos(true)" style="border-radius:0px !important;">
+									<p class="txtFilter">En Ejecución</p>
 								</a>
 							</li>
 							<!-- ng-click="mostrarNotificaciones() -->
 							<li>
-								<a class="btn btn-success" ng-click="FiltroProyectos(null)">
-									<mark class="rubberBand" style="left: 100px !important;">{{ value4 }}</mark>
-									<p style="color: white;
-							font-size: 16px;">Por Aprobar</p>
+								<a class="btn btn-primary" ng-click="FiltroProyectos(null)" style="border-radius: 0px 0px 20px 0px !important">
+									<mark class="rubberBand" style="left: 90px !important;top:-3px !important;">{{ value4 }}</mark>
+									<p class="txtFilter">Por Aprobar</p>
 								</a>
 							</li>
 						</ul>
@@ -175,14 +174,14 @@
 									</ul>
 								</nav>
 							</center>
-							<hr />
+							<hr ng-if="ListaData.Estado != false"/>
 							<center>
 								<div class="botonesModal">
 									<button ng-if="Listar[0].Estado == null" type="button" ng-click="CambiarEstadoProyecto(true)" class="btn btn-success btnAprobar">Aprobar</button>
 									<button ng-if="Listar[0].Estado == null || Listar[0].Estado == true" type="button" ng-click="CambiarEstadoProyecto(false)" class="btn btn-danger btnCancelar">Cancelar</button>
 								</div>
 							</center>
-							<button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background:none; box-shadow:none"><i class="fas fa-times"></i></button>
+							<!--<button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background:none; box-shadow:none"><i class="fas fa-times"></i></button>-->
 						</div>
 					</div>
 				</div>

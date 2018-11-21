@@ -1508,13 +1508,52 @@ code {
 	width: inherit;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	margin: 0;
-}
+	.filtro ul li a {
+		background-color: transparent;
+		border: 1px solid #82a20d;
+		color: #82a20d;
+	}
+
+	/*.filtro ul li a:focus-within{
+		background-color:black;
+	}*/
+
+	.filtro ul li a p {
+		font-size: 14px;
+	}
+		.filtro ul li a:focus {
+			background-color: #5e7703 !important;
+			border: 1px solid #5e7703 !important;
+			color: white;
+			font-size: 14px;
+		}
+
+
+		.filtro ul li a:hover {
+			background-color: #82a20d;
+			border: 1px solid #82a20d;
+			color: white;
+			font-size: 14px;
+			transform: translateY(-2px);
+			box-shadow: 1px 4px 11px #a7a7a7;
+		}
+
+		.filtro ul li a:active {
+			background-color: #5e7703 !important;
+			border: 1px solid #5e7703 !important;
+			color: white;
+			font-size: 14px;
+			transform: translateY(-1px);
+			box-shadow: 1px 4px 11px #a7a7a7;
+		}
+	
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		margin: 0;
+	}
 
 .trTabla {
 	color: #5d5d5d;
@@ -1537,7 +1576,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .panel-body {
 	box-shadow: 1px 1px 20px #ccc;
-	border-radius:7px;
+	border-radius: 240px;
+	width: 240px;
 }
 
 .modal-body{
@@ -1593,9 +1633,31 @@ input[type=number]::-webkit-outer-spin-button {
 	font-weight: bold;
 }
 
+	.btnAprobar:hover {
+		transform: translateY(-2px);
+		box-shadow: 1px 4px 11px #a7a7a7;
+	}
+
+	.btnAprobar:active {
+		transform: translateY(-1px);
+		box-shadow: 1px 4px 11px #a7a7a7;
+	}
+
 .btnCancelar {
 	border: 2px solid #d43f3a;
 	background-color: transparent;
 	color: #d43f3a;
 	font-weight: bold;
 }
+
+	.btnCancelar:hover {
+		transform: translateY(-2px);
+		box-shadow: 1px 4px 11px #a7a7a7;
+	}
+
+	.btnCancelar:active {
+		transform: translateY(-1px);
+		box-shadow: 1px 4px 11px #a7a7a7;
+	}
+
+

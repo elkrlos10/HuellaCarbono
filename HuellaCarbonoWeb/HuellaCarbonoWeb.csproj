@@ -142,6 +142,7 @@
     <Content Include="Models\Filter.js" />
     <Content Include="Models\General.js" />
     <Content Include="Models\Login\Login.js" />
+    <Content Include="Models\Login\LoginService.js" />
     <Content Include="Models\Principal.js" />
     <Content Include="Models\ProyectoInt\ProyectoInt.js" />
     <Content Include="Models\ProyectoInt\ProyectoIntService.js" />
@@ -161,6 +162,7 @@
     <Content Include="Scripts\jquery.fullPage.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\ng-knob.js" />
     <Content Include="Scripts\ng-validate.js" />
     <Content Include="Scripts\rzslider.min.js" />

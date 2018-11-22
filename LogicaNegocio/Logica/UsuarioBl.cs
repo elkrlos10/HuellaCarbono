@@ -146,5 +146,17 @@ namespace LogicaNegocio.Logica
             return await Task.FromResult<bool>(respuesta);
         }
 
+        public Usuario ConsutarUsuario(Usuario oUsuario)
+        {
+            Model1 entity = new Model1();
+            //var desencriptar = SecurityEncode.SecurityEncode.Encriptar(oUsuario.Password);
+            //oUsuario.Password = desencriptar;
+            var usuario = (from i in entity.Usuario
+                           where i.NombreUsuario == oUsuario.NombreUsuario
+                           && i.Password == oUsuario.Password
+                           select i).FirstOrDefault();
+            return usuario;
+        }
+
     }
 }

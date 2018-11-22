@@ -83,5 +83,31 @@ namespace HuellaCarbonoWeb.Controllers
             }
         }
 
+        [HttpPost]
+        public IHttpActionResult ConsultarUsuario(Usuario oUsuario)
+        {
+            try
+            {
+                UsuarioBl oUsuarioBl = new UsuarioBl();
+                var usuario = oUsuarioBl.ConsutarUsuario(oUsuario);
+
+                if (usuario == null)
+                {
+                    return Ok(new { user = false });
+                }
+                else
+                {
+                    return Ok(new { user = true,  usuario });
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                return Ok(new { success = false });
+            }
+
+        }
+
     }
 }

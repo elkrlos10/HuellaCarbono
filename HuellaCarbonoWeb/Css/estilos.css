@@ -100,6 +100,18 @@ md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb 
 	display: none;
 }
 
+#botonPasar:hover{
+	transform: translateY(-2px);
+	box-shadow: 1px 4px 11px #a7a7a7;
+}
+
+	#botonPasar:active {
+		transform: translateY(-1px);
+		box-shadow: 1px 4px 11px #a7a7a7;
+	}
+
+
+
 .md-container {
 	margin-top: 12px !important;
 }
@@ -849,11 +861,15 @@ footer {
 }
 
 	.btnFases:hover {
+		transform: translateY(-2px);
+		box-shadow: 1px 4px 11px #a7a7a7;
 		background: #708915;
 		border: none;
 	}
 
 	.btnFases:active {
+		transform: translateY(-1px);
+		box-shadow: 1px 4px 11px #a7a7a7;
 		background: #708915;
 	}
 

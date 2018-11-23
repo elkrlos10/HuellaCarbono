@@ -4,7 +4,7 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
 //Configuración de las rutas (vistas)
 (function () {
 
-    var rutas = function ($routeProvider) {
+    var rutas = function ($routeProvider, $locationProvider) {
 
         $routeProvider.when("/Encuesta", {
             templateUrl: "Views/Encuesta.html",
@@ -25,12 +25,14 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
             templateUrl: "Views/ProyectoInt.html",
             controller: "ProyectoIntController"
         })
-        //Indicamos que cuando copien una ruta que no existe redireccione al index
-        $routeProvider.otherwise({ redirecTo: "/" });
+            .otherwise({
+                redirecTo: "/"
+            });
+        $locationProvider.html5Mode(true);
     }
 
     //Injectamos las dependencias que utilizamos
-    rutas.$inject = ["$routeProvider"];
+    rutas.$inject = ["$routeProvider","$locationProvider"];
 
 
     //Indicamos que será configuración de la app

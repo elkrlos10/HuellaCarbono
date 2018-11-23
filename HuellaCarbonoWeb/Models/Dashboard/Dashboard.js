@@ -179,6 +179,7 @@
             $rootScope.IdDetalleHuella = idDetalleHuella;
             $cookies.putObject("IdDetalleHuella", $rootScope.IdDetalleHuella);
             $location.url("ProyectoInt");
+            $rootScope.Id = $cookieStore.get('IdDetalleHuella');
         }
 
         //$scope.Filter = function (e) {

@@ -4,6 +4,8 @@
         //console.log($rootScope.idProyectoInt)
 
         $rootScope.IdProyecto = $cookieStore.get('IdDetalleHuella');
+        $rootScope.Id = undefined;
+        alert($rootScope.Id);
 
         //FASE UNO ESTABLECIMIENTO
         $scope.Establecimiento = {

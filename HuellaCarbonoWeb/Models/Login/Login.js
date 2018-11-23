@@ -21,6 +21,7 @@
             } else {
                 var hash = CryptoJS.MD5($scope.Usuario.Password);
                 $scope.Usuario.Password = hash.toString();
+              
                 LoginService.ConsultarUsuario($scope.Usuario).then(function (response) {
                     if (response.data.user) {
                         if (response.data.usuario.TipoUsuario !=3) {
@@ -38,7 +39,6 @@
                                 }
                             };
                             $cookies.putObject("username", $rootScope.globals);
-                            console.log($rootScope.globals);
                             $location.url('/Dashboard');
 
                         }

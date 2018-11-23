@@ -491,6 +491,7 @@ md-switch {
 
 /*Medium devices (tablets, 768px and up)*/
 @media (max-width: 768px) {
+
 	.index {
 		overflow-y: scroll;
 	}
@@ -558,7 +559,8 @@ md-switch {
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
+
 }
 
 @font-face {
@@ -596,23 +598,26 @@ md-switch {
 /*----------------------------------------------------------------------------L-O-G-I-N-----------------------------------------------------------------------------------------------*/
 
 .contenedorLogin {
-	background: url('../Images/802.jpg') center;
+	background: linear-gradient(
+		to right bottom, 
+	rgba(130, 162, 13, 0.6), 
+	rgba(78, 96, 10, 0.6)),
+	url('../Images/802.jpg');
+	background-position:top;
 	background-size: cover;
-	width: 100%;
 	height: 100vh;
+	position: relative;
 	font-family: Poppins-Regular;
 }
 
 .contenedorLogearse {
 	border-radius: 20px;
-	display: block;
 	background: white;
-	width: 22.5%;
-	height: 55vh;
-	margin: 0px auto;
-	position: absolute;
-	top: 20%;
-	bottom: 0px;
+	margin: 30px auto;
+	display: inline;
+	width: 300px;
+	position: fixed;
+	top: 10vh;
 	right: 0px;
 	left: 0px;
 	box-shadow: 1px 1px 26px #282828;

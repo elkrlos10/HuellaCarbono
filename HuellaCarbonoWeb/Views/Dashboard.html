@@ -112,7 +112,7 @@
 					</thead>
 					<tbody class="searchable">
 						<tr class="paginationClass tdBody" ng-repeat="ListaData in Listar | filter:filtro as resultado">
-							<td>{{ ListaData.IdProyecto }}</td>
+							<td>{{ ListaData.IdDetalle }}</td>
 							<td>{{ ListaData.Toneledas }}</td>
 							<td>{{ ListaData.Porcentaje }}</td>
 							<td>{{ ListaData.Area }}</td>
@@ -130,7 +130,7 @@
 								</div>
 							</td>
 							<td>
-								<button type="button" class="miBtn" data-toggle="modal" data-target="#exampleModal" ng-click="CapIdEmpresa(ListaData.IdEmpresa, ListaData.IdProyecto)">
+								<button type="button" class="miBtn" data-toggle="modal" data-target="#exampleModal" ng-click="CapIdEmpresa(ListaData.IdEmpresa, ListaData.IdDetalle)">
 									<i class="fas fa-eye iconosTabla"></i>
 								</button>
 								<button ng-if="Listar[0].Estado == true" style="border: none; background: none;">

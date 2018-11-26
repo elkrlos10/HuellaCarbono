@@ -159,24 +159,6 @@
 
 		public Task<List<HuellaDTO>> ListaProyectos(int IdEmpresa)
 		{
-			//var Proyectos = (from d in entity.DetalleHuella
-			//                 join h in entity.Huella on d.IdHuella equals h.IdHuella
-			//                 join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
-			//                 where p.IdEmpresa == IdEmpresa
-			//                 select new HuellaDTO
-			//                 {
-			//                     IdHuella = h.IdHuella,
-			//                     IdProyecto = h.IdProyecto,
-			//                     Fecha = h.Fecha,
-			//                     TipoArbol = h.TipoArbol,
-			//                     Zona = h.Zona,
-			//                     Precisar = h.Precisar,
-			//                     Toneledas = h.Toneledas,
-			//                     Porcentaje = d.Porcentaje,
-			//                     Estado = d.Estado,
-			//                     Estado1= d.Estado == false ? "Pendiente" : "En ejecución",
-			//                     EstadoCompensacion=h.EstadoCompensacion
-			//                 }).ToList();
 
 			var detalles = (from i in entity.DetalleHuella
 							join h in entity.Huella on i.IdHuella equals h.IdHuella
@@ -213,7 +195,18 @@
 					var index = item1.i;
 					proyecto[index].NumCompensacion = index + 1;
 					sumaPorcentaje = item1.value.Porcentaje + sumaPorcentaje;
-
+					if (item1.value.Estado == false)
+					{
+						proyecto[index].Estado1 = "Cancelado";
+					}
+					if (item1.value.Estado == true)
+					{
+						proyecto[index].Estado1 = "En ejecución";
+					}
+					if (item1.value.Estado == null)
+					{
+						proyecto[index].Estado1 = "Pendiente";
+					}
 				}
 				if (proyecto.Count > 1)
 				{
@@ -271,7 +264,7 @@
 			{
 				IdHuella = huella.IdHuella,
 				Porcentaje = 100 - huella.Porcentaje,
-				Estado = oHuella.Estado
+				//Estado = false
 			};
 
 			var proye = (from i in entity.Huella
@@ -433,11 +426,11 @@
 			return empresa;
 		}
 
-		public bool CambiarEstadoProyecto(int idProyecto, bool? estado)
+		public bool CambiarEstadoProyecto(int IdDetalle, bool? estado)
 		{
 			var proyecto = (from h in entity.Huella
 							join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
-							where h.IdProyecto == idProyecto
+							where d.IdDetalle == IdDetalle
 							select d).FirstOrDefault();
 
 			proyecto.Estado = estado;

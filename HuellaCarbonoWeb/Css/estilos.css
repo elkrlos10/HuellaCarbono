@@ -893,10 +893,26 @@ footer {
 	font-size: 15px;
 }
 
+.btnFases2 {
+	margin: 15px;
+	background: #82A20D;
+	border-radius: 20px 0px 20px 0px;
+	padding: 5px;
+	border: none;
+	width: 156px;
+	height: 40px;
+	font-family: Poppins-Medium;
+	font-size: 15px;
+}
+
+	.btnFases2:hover {
+		background: #82A20D !important;
+	}
+
 	.btnFases:hover {
 		transform: translateY(-2px);
 		box-shadow: 1px 4px 11px #a7a7a7;
-		background: #708915;
+		background: #708915 !important;
 		border: none;
 	}
 

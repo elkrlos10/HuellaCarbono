@@ -1,6 +1,6 @@
 ﻿(function () {
     //var personas = function ($scope, nombre del servicio) {
-    var proyectoInt = function ($scope, $rootScope, ProyectoIntService, $cookies, $cookieStore) {
+    var proyectoInt = function ($scope, $rootScope, ProyectoIntService, $location, $cookies, $cookieStore) {
         //console.log($rootScope.idProyectoInt)
 
         $rootScope.IdProyecto = $cookieStore.get('IdDetalleHuella');
@@ -268,32 +268,52 @@
             Etapa: ""
         }
 
+
         $scope.GuardarEstablecimiento = function () {
             $scope.Establecimiento.IdDetalleHuella = $rootScope.IdProyecto;
+            swal({
+                title: 'Está seguro',
+                text: "Desea guardar los cambios en mantenimiento",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.value) {
+                    ProyectoIntService.GuardarEstablecimiento($scope.Establecimiento).then(function (response) {
+                        if (response.data.success) {
+                            $scope.Establecimiento = response.data.response;
+                            swal(
+                                'Buen trabajo',
+                                'La fase establecimiento se ha guardado correctamente',
+                                'success'
+                            )
+                            $scope.ConsultarPorcentaje()
+                        }
+                        $scope.posicion = 0;
+                        for (const prop in $scope.Establecimiento) {
+                            if ($scope.Establecimiento[prop] == true) {
+                                $("#" + prop).attr("disabled", true);
+                                $scope.posicion++;
+                                if ($scope.posicion == 9) {
+                                    $("#btnGuardar1").attr("disabled", true);
+                                    $("#btnGuardar1").removeClass("btnFases");
+                                    $("#btnGuardar1").addClass("btnFases2");
+                                }
+                            }
+                        }
 
-            ProyectoIntService.GuardarEstablecimiento($scope.Establecimiento).then(function (response) {
-                if (response.data.success) {
-                    $scope.Establecimiento = response.data.response;
+                    })
+                } else {
                     swal(
-                        'Buen trabajo',
-                        'La fase establecimiento se ha guardado correctamente',
+                        'Listo',
+                        'No se han guardado los cambios',
                         'success'
                     )
-                    $scope.ConsultarPorcentaje()
                 }
-                $scope.posicion = 0;
-                for (const prop in $scope.Establecimiento) {
-                    if ($scope.Establecimiento[prop] == true) {
-                        $("#" + prop).attr("disabled", true);
-                        $scope.posicion++;
-                        if ($scope.posicion == 9) {
-                            $("#btnGuardar1").attr("disabled", true);
-                        }
-                    }
-                }
-
             })
-
         }
 
         $scope.Establecimiento.IdDetalleHuella = $rootScope.IdProyecto;
@@ -310,6 +330,8 @@
 
                         if ($scope.posicion == 9) {
                             $("#btnGuardar1").attr("disabled", true);
+                            $("#btnGuardar1").removeClass("btnFases");
+                            $("#btnGuardar1").addClass("btnFases2");
                         }
                     }
                 }
@@ -343,6 +365,8 @@
                             $scope.posicion++;
                             if ($scope.posicion == 9) {
                                 $("#btnGuardar1").attr("disabled", true);
+                                $("#btnGuardar1").removeClass("btnFases");
+                                $("#btnGuardar1").addClass("btnFases2");
                             }
                         }
                     }
@@ -366,6 +390,7 @@
             $scope.Objeto.Etapa = Etapa;
             $scope.posicionMantenimiento = 0;
             $scope.posicionMantenimiento2 = 0;
+
             ProyectoIntService.GuardarMantenimiento2($scope.Objeto).then(function (response) {
                 if (response.data.success) {
                     if (response.data.response.Etapa == 2) {
@@ -374,6 +399,12 @@
                             if ($scope.Mantenimiento2[prop] == true) {
                                 $("#" + prop + "2").prop("disabled", true);
                                 $scope.posicionMantenimiento++;
+
+                                if ($scope.posicionMantenimiento == 9) {
+                                    $("#btnGuardar2").attr("disabled", true);
+                                    $("#btnGuardar2").removeClass("btnFases");
+                                    $("#btnGuardar2").addClass("btnFases2");
+                                }
                             }
                         }
                         $scope.ConsultarPorcentaje()
@@ -385,19 +416,25 @@
                             if ($scope.Mantenimiento3[prop] == true) {
                                 $("#" + prop + "3").prop("disabled", true);
                                 $scope.posicionMantenimiento2++;
+
+                                if ($scope.posicionMantenimiento2 == 9) {
+                                    $("#btnGuardar3").attr("disabled", true);
+                                    $("#btnGuardar3").removeClass("btnFases");
+                                    $("#btnGuardar3").addClass("btnFases2");
+                                }
                             }
                         }
                         $scope.ConsultarPorcentaje()
-
                     }
                     swal(
-                        'Buen Trabajo',
+                        'Buen trabajo',
                         'Los cambios se ha guardado correctamente',
                         'success'
                     )
 
                 }
             })
+
         }
 
         $scope.ConsultarMantenimiento2 = function (Etapa) {
@@ -428,7 +465,14 @@
                             if ($scope.Mantenimiento2[prop] == true) {
                                 $("#" + prop + "2").prop("disabled", true);
                                 $scope.posicionMantenimiento++;
+
+                                if ($scope.posicionMantenimiento == 9) {
+                                    $("#btnGuardar2").attr("disabled", true);
+                                    $("#btnGuardar2").removeClass("btnFases");
+                                    $("#btnGuardar2").addClass("btnFases2");
+                                }
                             }
+
                         }
                     }
 
@@ -438,6 +482,12 @@
                             if ($scope.Mantenimiento3[prop] == true) {
                                 $("#" + prop + "3").prop("disabled", true);
                                 $scope.posicionMantenimiento2++;
+
+                                if ($scope.posicionMantenimiento2 == 9) {
+                                    $("#btnGuardar3").attr("disabled", true);
+                                    $("#btnGuardar3").removeClass("btnFases");
+                                    $("#btnGuardar3").addClass("btnFases2");
+                                }
                             }
                         }
                     }
@@ -457,6 +507,7 @@
             $scope.Objeto.Etapa = Etapa;
             $scope.posicionMantenimiento3 = 0;
             $scope.posicionMantenimiento4 = 0;
+
             ProyectoIntService.GuardarMantenimiento3($scope.Objeto).then(function (response) {
                 if (response.data.success) {
 
@@ -467,6 +518,12 @@
                             if ($scope.Mantenimiento4[prop] == true) {
                                 $("#" + prop + "4").prop("disabled", true);
                                 $scope.posicionMantenimiento3++;
+                                if ($scope.posicionMantenimiento3 == 7) {
+                                    $("#btnGuardar4").attr("disabled", true);
+                                    $("#btnGuardar4").removeClass("btnFases");
+                                    $("#btnGuardar4").addClass("btnFases2");
+                                }
+
                             }
                         }
                         $scope.ConsultarPorcentaje()
@@ -478,6 +535,11 @@
                             if ($scope.Mantenimiento5[prop] == true) {
                                 $("#" + prop + "5").prop("disabled", true);
                                 $scope.posicionMantenimiento4++;
+                                if ($scope.posicionMantenimiento4 == 7) {
+                                    $("#btnGuardar5").attr("disabled", true);
+                                    $("#btnGuardar5").removeClass("btnFases");
+                                    $("#btnGuardar5").addClass("btnFases2");
+                                }
                             }
                         }
                         $scope.ConsultarPorcentaje()
@@ -492,6 +554,8 @@
             })
         }
 
+
+
         $scope.ConsultarMantenimiento3 = function (Etapa) {
             if (Etapa == 4) {
                 $scope.Objeto = $scope.Mantenimiento4;
@@ -505,7 +569,7 @@
             $scope.posicionMantenimiento4 = 0;
             ProyectoIntService.ConsultarMantenimiento3($scope.Objeto).then(function (response) {
                 if (response.data.success) {
-                    if (Etapa== 4) {
+                    if (Etapa == 4) {
                         $scope.ConsultarDasometria3(Etapa)
                     } else {
                         $scope.ConsultarDasometria4(Etapa)
@@ -516,9 +580,14 @@
                             if ($scope.Mantenimiento4[prop] == true) {
                                 $("#" + prop + "4").prop("disabled", true);
                                 $scope.posicionMantenimiento3++;
+                                if ($scope.posicionMantenimiento3 == 7) {
+                                    $("#btnGuardar4").attr("disabled", true);
+                                    $("#btnGuardar4").removeClass("btnFases");
+                                    $("#btnGuardar4").addClass("btnFases2");
+                                }
                             }
                         }
-                       
+
                     }
                     else {
                         $scope.Mantenimiento5 = response.data.response;
@@ -526,9 +595,14 @@
                             if ($scope.Mantenimiento5[prop] == true) {
                                 $("#" + prop + "5").prop("disabled", true);
                                 $scope.posicionMantenimiento4++;
+                                if ($scope.posicionMantenimiento4 == 7) {
+                                    $("#btnGuardar5").attr("disabled", true);
+                                    $("#btnGuardar5").removeClass("btnFases");
+                                    $("#btnGuardar5").addClass("btnFases2");
+                                }
                             }
                         }
-                        
+
                     }
                 }
             })
@@ -1207,7 +1281,7 @@
     }
 
     //inyectar las dependencias que se esta usando
-    proyectoInt.$inject = ["$scope", "$rootScope", "ProyectoIntService", "$cookies", "$cookieStore"];
+    proyectoInt.$inject = ["$scope", "$rootScope", "ProyectoIntService","$location", "$cookies", "$cookieStore"];
     //para declarar que este es mi controlador
     AngularApp.controller("ProyectoIntController", proyectoInt);
 

@@ -737,5 +737,15 @@
 
 		}
 
+		//public Empresa ConsultarEmpresa(int IdDetalleHuella)
+		//{
+		//	var empresa = (from e in entity.Empresa
+		//					  where e.IdEmpresa == IdDetalleHuella
+		//					  && d.Etapa == Etapa
+		//					  select d).ToList();
+
+		//	return dasometria;
+		//}
+
 	}
 }

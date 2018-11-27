@@ -3,11 +3,10 @@
 		<div class="col-md-12 barraNotificaciones">
 			<div class="row">
 				<div class="iconosNot  col-md-12">
-					<div class="logout">
+					<div class="logout" ng-click="cerrarSesion()">
 						<img src="../Images/logout.png" class="logoutImage" />
 						<br />
 						<span>Salir</span>
-
 					</div>
 					<div class="notificacionesCont row">
 						<div class="Notificacionestitulo col-md-12">
@@ -65,7 +64,7 @@
 				<div class="col-md-6">
 					<form class="navbar-form navbar-left" style="margin-top:25px">
 						<div class="form-group">
-							<input type="text" class="form-control buscarProyecto" id="Buscar" style="border:1px solid #82a20d;font-size:14px" ng-model="filtro" placeholder="Buscar Proyecto">
+							<input type="text" class="form-control buscarProyecto" id="Buscar" style="border:1px solid #82a20d;font-size:14px" ng-model="filtro" placeholder="Buscar proyecto">
 						</div>
 						<button type="submit" class="btn btn-default" style="background:#82a20d; color:white;font-family:Poppins;font-size:16px;border: none;"><i class="fas fa-search"></i></button>
 					</form>
@@ -74,20 +73,20 @@
 					<nav class="filtro">
 						<ul class="dots">
 							<li>
-								<a class="btn btn-primary" ng-click="FiltroProyectos(false)" style="border-radius: 20px 0px 0px !important; ">
+								<a class="btn btn-primary " id="btnCancelado" ng-click="FiltroProyectos(false)" style="border-radius: 20px 0px 0px !important; ">
 									<p class="txtFilter"> Cancelados</p>
 								</a>
 							</li>
 							<li>
-								<a class="btn btn-primary" ng-click="FiltroProyectos(true)" style="border-radius:0px !important;">
-									<p class="txtFilter">En Ejecución</p>
+								<a class="btn btn-primary" id="btnEjecucion" ng-click="FiltroProyectos(true)" style="border-radius:0px !important;">
+									<p class="txtFilter">En ejecución</p>
 								</a>
 							</li>
 							<!-- ng-click="mostrarNotificaciones() -->
 							<li>
-								<a class="btn btn-primary" ng-click="FiltroProyectos(null)" style="border-radius: 0px 0px 20px 0px !important">
+								<a class="btn btn-primary seleccionado"  id="btnAprobar" ng-click="FiltroProyectos(null)" style="border-radius: 0px 0px 20px 0px !important">
 									<mark class="rubberBand" style="left: 90px !important;top:-3px !important;">{{ value4 }}</mark>
-									<p class="txtFilter">Por Aprobar</p>
+									<p class="txtFilter">Por aprobar</p>
 								</a>
 							</li>
 						</ul>
@@ -95,18 +94,23 @@
 				</div>
 			</div>
 			<div class="tabla table-responsive col-md-12">
+				<!--<div class="alert alert-success" ng-if='Listar[0].Estado == null && Listar[0].IdDetalle == null '>
+					No hay proyectos por aprobar
+				</div>-->
+				
+
 				<table class="table">
 					<thead>
 						<tr class="trTabla">
 							<th>Id</th>
-							<th>Ton Totales</th>
+							<th>Ton totales</th>
 							<th>% Compensar</th>
 							<th>Área</th>
 							<th>Árboles/Hectarea</th>
 							<th>Total árboles</th>
 							<th>Especie</th>
 							<th>Estado</th>
-							<th ng-if="Listar[0].Estado == true">Progreso del Proyecto</th>
+							<th ng-if="Listar[0].Estado == true">Progreso del proyecto</th>
 							<th>Opciones</th>
 						</tr>
 					</thead>
@@ -138,6 +142,7 @@
 								</button>
 							</td>
 						</tr>
+
 					</tbody>
 				</table>
 			</div>
@@ -165,8 +170,8 @@
 							<hr ng-if="ListaData.Estado != false"/>
 							<center>
 								<div class="botonesModal">
-									<button ng-if="Listar[0].Estado == null" type="button" ng-click="CambiarEstadoProyecto(true)" class="btn btn-success btnAprobar">Aprobar</button>
-									<button ng-if="Listar[0].Estado == null || Listar[0].Estado == true" type="button" ng-click="CambiarEstadoProyecto(false)" class="btn btn-danger btnCancelar">Cancelar</button>
+									<button ng-if="Listar[0].Estado == null" type="button" ng-click="AprobarProyectos(true)" class="btn btn-success btnAprobar">Aprobar</button>
+									<button ng-if="Listar[0].Estado == null || Listar[0].Estado == true" type="button" ng-click="CancelarProyecto(false)" class="btn btn-danger btnCancelar">Cancelar</button>
 								</div>
 							</center>
 							<!--<button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background:none; box-shadow:none"><i class="fas fa-times"></i></button>-->

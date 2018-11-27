@@ -618,9 +618,9 @@ md-switch {
 	background: white;
 	margin: 30px auto;
 	display: inline;
-	width: 300px;
+	width: 335px;
 	position: fixed;
-	top: 10vh;
+	top: 15vh;
 	right: 0px;
 	left: 0px;
 	box-shadow: 1px 1px 26px #282828;
@@ -1709,4 +1709,14 @@ code {
 		box-shadow: 1px 4px 11px #a7a7a7;
 	}
 
+.seleccionado{
+	background-color: #82a20d !important;
+	color: white !important;
+}
 
+
+.btn-success:active:focus, .btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus {
+	color: #fff;
+	background-color: #82a20d;
+	border-color: #255625;
+}

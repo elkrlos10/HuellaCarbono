@@ -31,6 +31,66 @@
             });
         }
 
+        $scope.CancelarProyecto = function (estado) {
+            swal({
+                title: 'Está seguro',
+                text: "Desea cancelar el proyecto",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, cancelar',
+                cancelButtonText: 'No, esperar'
+            }).then((result) => {
+                if (result.value) {
+                    $scope.CambiarEstadoProyecto(estado);
+                    swal(
+                        'Cancelado',
+                        'El proyecto se ha cancelado satisfactoriamente',
+                        'success'
+                    )
+                    $("#exampleModal").modal("hide");
+                } else {
+                    swal(
+                        'Listo',
+                        'No se ha cancelado el proyecto',
+                        'success'
+                    )
+                    $("#exampleModal").modal("hide");
+                }
+            })
+        }
+
+        $scope.AprobarProyectos = function (estado) {
+            swal({
+                title: 'Está seguro',
+                text: "Desea aprobar el proyecto",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, aprobar',
+                cancelButtonText: 'No, esperar'
+            }).then((result) => {
+                if (result.value) {
+                    $scope.CambiarEstadoProyecto(estado);
+                    swal(
+                        'Aprobado',
+                        'El proyecto se ha aprobado satisfactoriamente',
+                        'success'
+                    )
+                    $("#exampleModal").modal("hide");
+                } else {
+                    swal(
+                        'Listo',
+                        'No se ha aprobado el proyecto',
+                        'success'
+                    )
+                    $("#exampleModal").modal("hide");
+                }
+            })
+        }
+
         $scope.CambiarEstadoProyecto = function (estado) {
             item = {
                 Paramatro1: $scope.IdProyecto.toString(),
@@ -85,7 +145,7 @@
                 barWidth: 23,
                 subText: {
                     enabled: true,
-                    text: 'Total Proyectos'
+                    text: 'Total proyectos'
                 },
                 readOnly: true,
                 animate: {
@@ -102,7 +162,7 @@
                 barWidth: 23,
                 subText: {
                     enabled: true,
-                    text: 'En Proceso'
+                    text: 'En proceso'
                 },
                 readOnly: true,
                 animate: {
@@ -146,8 +206,6 @@
                 }
             }
         
-       
-
         //Notificaciones
         setInterval(function () {
             DashboardService.ProyectosDashboard().then(function (response) {
@@ -158,9 +216,7 @@
                 }
             })
             }, 1000)
-
-
-
+        
         $scope.notificacionesMostrar = false;
         $scope.mostrarNotificaciones = function () {
             if ($scope.notificacionesMostrar == false) {
@@ -182,44 +238,29 @@
             $rootScope.Id = $cookieStore.get('IdDetalleHuella');
         }
 
-        //$scope.Filter = function (e) {
+        $("#btnCancelado").click(function () {
+            $("#btnCancelado").addClass("seleccionado");
+            $("#btnEjecucion").removeClass("seleccionado");
+            $("#btnAprobar").removeClass("seleccionado");
+        })
 
-        //    //var rex = new RegExp($(e.target).val(), 'i');
-        //    //$('.searchable tr').hide();
-        //    //$('.searchable tr').filter(function () {
-        //    //    return rex.test($(this).text());
-        //    //}).show();
+        $("#btnEjecucion").click(function () {
+            $("#btnEjecucion").addClass("seleccionado");
+            $("#btnCancelado").removeClass("seleccionado");
+            $("#btnAprobar").removeClass("seleccionado");
+        })
 
-        //    var Lista = $scope.Listar
-        //    var Busqueda = $("#Buscar").val();
-        //    var exp = new RegExp(Busqueda);
-        //    if (Busqueda == "") {
-        //        $scope.Listar = Lista;
-        //    }
-        //    var Proyectos = [];
-        //    //$scope.datalists = $scope.ListaCompleta;
-        //    Proyectos = $scope.Listar.filter(function (item) {
+        $("#btnAprobar").click(function () {
+            $("#btnAprobar").addClass("seleccionado");
+            $("#btnCancelado").removeClass("seleccionado");
+            $("#btnEjecucion").removeClass("seleccionado");
+        })
 
 
-        //        if (exp.test(item.IdDetalle) {
-
-        //            return item;
-        //        }
-
-        //        //else if (exp.test(item.Parametro4.toLowerCase()) || exp.test(item.Parametro4.toUpperCase())) {
-        //        //    return item;
-        //        //}
-
-        //        //else if (exp.test(item.Parametro2.toLowerCase()) || exp.test(item.Parametro2.toUpperCase())) {
-        //        //    return item;
-        //        //}
-        //    });
-
-        //    $scope.Listar = Proyectos;
-        //    ////Variable para setear la paginación 
-        //    //$scope.curPage = 0;
-
-        //};
+        $scope.cerrarSesion = function () {
+            $cookies.remove("username");
+            $location.url("Login");
+        }
 	}
 	//inyectar las dependencias que se esta usando
     dashboard.$inject = ["$scope", "DashboardService", "$location", "$rootScope" ,"$cookies"];

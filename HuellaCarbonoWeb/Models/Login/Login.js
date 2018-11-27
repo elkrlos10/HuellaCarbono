@@ -10,13 +10,20 @@
 
         $scope.ConsultarUsuario = function () {
             if ($scope.Usuario.NombreUsuario == null || $scope.Usuario.NombreUsuario == "") {
-                alert("Necesita ingresar el campo de Usuario");
+                swal(
+                    'Error',
+                    'Necesita ingresar el campo de usuario',
+                    'error'
+                );
 
                 return false;
 
             } else if ($scope.Usuario.Password == null || $scope.Usuario.Password == "") {
-                alert("Necesita ingresar el campo de contraseña");
-
+                swal(
+                    'Error',
+                    'Necesita ingresar el campo de contraseña',
+                    'error'
+                );
                 return false;
             } else {
                 var hash = CryptoJS.MD5($scope.Usuario.Password);
@@ -25,8 +32,12 @@
                 LoginService.ConsultarUsuario($scope.Usuario).then(function (response) {
                     if (response.data.user) {
                         if (response.data.usuario.TipoUsuario !=3) {
-
-                            alert("el usuario no tiene permisos");
+                            swal(
+                                'Error',
+                                'El usuario no tiene permisos',
+                                'error'
+                            );
+                            
                             return;
                         }
                         if (response.data.usuario != null) {
@@ -44,7 +55,11 @@
                         }
                     } else {
 
-                        alert("El usuario o la contraseña es incorrecta");
+                        swal(
+                            'Error',
+                            'El usuario o la contraseña es incorrecta',
+                            'error'
+                        );
                     }
                 });
             }

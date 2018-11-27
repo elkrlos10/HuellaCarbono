@@ -5,7 +5,6 @@
 
         $rootScope.IdProyecto = $cookieStore.get('IdDetalleHuella');
         $rootScope.Id = undefined;
-        alert($rootScope.Id);
 
         //FASE UNO ESTABLECIMIENTO
         $scope.Establecimiento = {
@@ -269,17 +268,14 @@
             Etapa: ""
         }
 
-
-       
-
         $scope.GuardarEstablecimiento = function () {
             $scope.Establecimiento.IdDetalleHuella = $rootScope.IdProyecto;
-           
+
             ProyectoIntService.GuardarEstablecimiento($scope.Establecimiento).then(function (response) {
                 if (response.data.success) {
                     $scope.Establecimiento = response.data.response;
                     swal(
-                        'Buen Trabajo',
+                        'Buen trabajo',
                         'La fase establecimiento se ha guardado correctamente',
                         'success'
                     )
@@ -290,6 +286,9 @@
                     if ($scope.Establecimiento[prop] == true) {
                         $("#" + prop).attr("disabled", true);
                         $scope.posicion++;
+                        if ($scope.posicion == 9) {
+                            $("#btnGuardar1").attr("disabled", true);
+                        }
                     }
                 }
 
@@ -300,7 +299,7 @@
         $scope.Establecimiento.IdDetalleHuella = $rootScope.IdProyecto;
 
         $scope.posicion = 0;
-        
+
         ProyectoIntService.ConsultarEstablecimiento($scope.Establecimiento).then(function (response) {
             if (response.data.success) {
                 $scope.Establecimiento = response.data.response;
@@ -309,6 +308,9 @@
                         $("#" + prop).prop("disabled", true);
                         $scope.posicion++;
 
+                        if ($scope.posicion == 9) {
+                            $("#btnGuardar1").attr("disabled", true);
+                        }
                     }
                 }
             }
@@ -339,6 +341,9 @@
                         if ($scope.Establecimiento[prop] == true) {
                             $("#" + prop).prop("disabled", true);
                             $scope.posicion++;
+                            if ($scope.posicion == 9) {
+                                $("#btnGuardar1").attr("disabled", true);
+                            }
                         }
                     }
 
@@ -403,6 +408,7 @@
             else {
                 $scope.Objeto = $scope.Mantenimiento3;
             }
+
             $scope.Objeto.IdDetalleHuella = $rootScope.IdProyecto;
             $scope.Objeto.Etapa = Etapa;
             $scope.posicionMantenimiento = 0;
@@ -410,17 +416,22 @@
 
             ProyectoIntService.ConsultarMantenimiento2($scope.Objeto).then(function (response) {
                 if (response.data.success) {
+                    if (Etapa == 2) {
+                        $scope.ConsultarDasometria(Etapa)
+                    } else {
+                        $scope.ConsultarDasometria2(Etapa)
+                    }
+
                     if (response.data.response.Etapa == 2) {
                         $scope.Mantenimiento2 = response.data.response;
                         for (const prop in $scope.Mantenimiento2) {
                             if ($scope.Mantenimiento2[prop] == true) {
                                 $("#" + prop + "2").prop("disabled", true);
                                 $scope.posicionMantenimiento++;
-
                             }
                         }
-                        $scope.ConsultarDasometria(Etapa);
                     }
+
                     else {
                         $scope.Mantenimiento3 = response.data.response;
                         for (const prop in $scope.Mantenimiento3) {
@@ -429,8 +440,6 @@
                                 $scope.posicionMantenimiento2++;
                             }
                         }
-                        $scope.ConsultarDasometria2(Etapa);
-
                     }
                 }
             })
@@ -450,6 +459,7 @@
             $scope.posicionMantenimiento4 = 0;
             ProyectoIntService.GuardarMantenimiento3($scope.Objeto).then(function (response) {
                 if (response.data.success) {
+
                     if (response.data.response.Etapa == 4) {
                         $scope.Mantenimiento4 = response.data.response;
 
@@ -495,6 +505,11 @@
             $scope.posicionMantenimiento4 = 0;
             ProyectoIntService.ConsultarMantenimiento3($scope.Objeto).then(function (response) {
                 if (response.data.success) {
+                    if (Etapa== 4) {
+                        $scope.ConsultarDasometria3(Etapa)
+                    } else {
+                        $scope.ConsultarDasometria4(Etapa)
+                    }
                     if (response.data.response.Etapa == 4) {
                         $scope.Mantenimiento4 = response.data.response;
                         for (const prop in $scope.Mantenimiento4) {
@@ -503,7 +518,7 @@
                                 $scope.posicionMantenimiento3++;
                             }
                         }
-                        $scope.ConsultarDasometria3(Etapa)
+                       
                     }
                     else {
                         $scope.Mantenimiento5 = response.data.response;
@@ -513,7 +528,7 @@
                                 $scope.posicionMantenimiento4++;
                             }
                         }
-                        $scope.ConsultarDasometria4(Etapa)
+                        
                     }
                 }
             })
@@ -536,73 +551,84 @@
         $("#novenoMes4 td div input , #novenoMes4 td div textarea").attr("disabled", true);
         $("#doceavoMes4 td div input , #doceavoMes4 td div textarea").attr("disabled", true);
 
-        
-
         $scope.GuardarDasometria = function (Etapa, form) {
             var numDasometria = 0;
-            if (!$("#tercerMes td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria1;
-            }
+            swal({
+                title: 'Está seguro',
+                text: "Desea guardar los cambios en dasometría",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, guardar',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.value) {
+                    if (!$("#tercerMes td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria1;
+                    }
 
-            if (!$("#sextoMes td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria2;
-            }
+                    if (!$("#sextoMes td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria2;
+                    }
 
-            if (!$("#novenoMes td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria3;
-            }
+                    if (!$("#novenoMes td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria3;
+                    }
 
-            if (!$("#doceavoMes td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria4;
-            }
+                    if (!$("#doceavoMes td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria4;
+                    }
 
-            //if (!form.validate()) {
-            //    swal(
-            //        'Algo salio mal',
-            //        'El error puede deberse a que ingresaste letras en campos no permitidos o dejaste campos vacios',
-            //        'error'
-            //    )
-            //    return;
-            //}
 
-            if ($scope.ValidacionesDasometria($scope.objeto)) {
-                return;
-            }
+                    if ($scope.ValidacionesDasometria($scope.objeto)) {
+                        return;
+                    }
 
-            $scope.objeto.Etapa = Etapa;
-            $scope.objeto.IdDetalleHuella = $rootScope.IdProyecto;
-        
-            ProyectoIntService.GuardarDasometria($scope.objeto).then(function (response) {
-                if (response.data.success) {
-                    var DasometriaValue = response.data.response;
-                    $.each(DasometriaValue, function (index, value) {
-                        if (index == 0) {
-                            $scope.Dasometria1 = value;
-                            $("#tercerMes td div input , #tercerMes td div textarea").attr("disabled", true);
-                            $("#sextoMes td div input , #sextoMes td div textarea").attr("disabled", false);
+                    $scope.objeto.Etapa = Etapa;
+                    $scope.objeto.IdDetalleHuella = $rootScope.IdProyecto;
+
+                    ProyectoIntService.GuardarDasometria($scope.objeto).then(function (response) {
+                        if (response.data.success) {
+                            var DasometriaValue = response.data.response;
+                            $.each(DasometriaValue, function (index, value) {
+                                if (index == 0) {
+                                    $scope.Dasometria1 = value;
+                                    $("#tercerMes td div input , #tercerMes td div textarea").attr("disabled", true);
+                                    $("#sextoMes td div input , #sextoMes td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 1) {
+                                    $scope.Dasometria2 = value;
+                                    $("#sextoMes td div input , #sextoMes td div textarea").attr("disabled", true);
+                                    $("#novenoMes td div input , #novenoMes td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 2) {
+                                    $scope.Dasometria3 = value;
+                                    $("#novenoMes td div input , #novenoMes td div textarea").attr("disabled", true);
+                                    $("#doceavoMes td div input , #doceavoMes td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 3) {
+                                    $scope.Dasometria4 = value;
+                                    $("#doceavoMes td div input , #doceavoMes td div textarea").attr("disabled", true);
+                                }
+                            });
+                            swal(
+                                'Buen Trabajo',
+                                'Los cambios en dasometria se ha guardado correctamente',
+                                'success'
+                            )
                         }
-                        else if (index == 1) {
-                            $scope.Dasometria2 = value;
-                            $("#sextoMes td div input , #sextoMes td div textarea").attr("disabled", true);
-                            $("#novenoMes td div input , #novenoMes td div textarea").attr("disabled", false);
-                        }
-                        else if (index == 2) {
-                            $scope.Dasometria3 = value;
-                            $("#novenoMes td div input , #novenoMes td div textarea").attr("disabled", true);
-                            $("#doceavoMes td div input , #doceavoMes td div textarea").attr("disabled", false);
-                        }
-                        else if (index == 3) {
-                            $scope.Dasometria4 = value;
-                            $("#doceavoMes td div input , #doceavoMes td div textarea").attr("disabled", true);
-                        }
-                    });
+                    })
+                } else {
                     swal(
-                        'Buen Trabajo',
-                        'Los cambios en dasometria se ha guardado correctamente',
+                        'Listo',
+                        'No se han guardado los cambios',
                         'success'
                     )
+
                 }
             })
+
         }
 
         $scope.ConsultarDasometria = function (Etapa) {
@@ -642,60 +668,82 @@
 
         $scope.GuardarDasometria2 = function (Etapa, form) {
             var numDasometria = 0;
-            if (!$("#tercerMes2 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria5;
-            }
 
-            if (!$("#sextoMes2 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria6;
-            }
+            swal({
+                title: 'Está seguro',
+                text: "Desea guardar los cambios en dasometría",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, guardar',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.value) {
+                    if (!$("#tercerMes2 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria5;
+                    }
 
-            if (!$("#novenoMes2 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria7;
-            }
+                    if (!$("#sextoMes2 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria6;
+                    }
 
-            if (!$("#doceavoMes2 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria8;
-            }
+                    if (!$("#novenoMes2 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria7;
+                    }
 
-            if ($scope.ValidacionesDasometria($scope.objeto)) {
-                return;
-            }
+                    if (!$("#doceavoMes2 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria8;
+                    }
 
-            $scope.objeto.Etapa = Etapa;
-            $scope.objeto.IdDetalleHuella = $rootScope.IdProyecto;
+                    if ($scope.ValidacionesDasometria($scope.objeto)) {
+                        return;
+                    }
 
-            ProyectoIntService.GuardarDasometria($scope.objeto).then(function (response) {
-                if (response.data.success) {
-                    var DasometriaValue = response.data.response;
-                    $.each(DasometriaValue, function (index, value) {
-                        if (index == 0) {
-                            $scope.Dasometria5 = value;
-                            $("#tercerMes2 td div input , #tercerMes2 td div textarea").attr("disabled", true);
-                            $("#sextoMes2 td div input , #sextoMes2 td div textarea").attr("disabled", false);
+                    $scope.objeto.Etapa = Etapa;
+                    $scope.objeto.IdDetalleHuella = $rootScope.IdProyecto;
+
+                    ProyectoIntService.GuardarDasometria($scope.objeto).then(function (response) {
+                        if (response.data.success) {
+                            var DasometriaValue = response.data.response;
+                            $.each(DasometriaValue, function (index, value) {
+                                if (index == 0) {
+                                    $scope.Dasometria5 = value;
+                                    $("#tercerMes2 td div input , #tercerMes2 td div textarea").attr("disabled", true);
+                                    $("#sextoMes2 td div input , #sextoMes2 td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 1) {
+                                    $scope.Dasometria6 = value;
+                                    $("#sextoMes2 td div input , #sextoMes2 td div textarea").attr("disabled", true);
+                                    $("#novenoMes2 td div input , #novenoMes2 td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 2) {
+                                    $scope.Dasometria7 = value;
+                                    $("#novenoMes2 td div input , #novenoMes2 td div textarea").attr("disabled", true);
+                                    $("#doceavoMes2 td div input , #doceavoMes2 td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 3) {
+                                    $scope.Dasometria8 = value;
+                                    $("#doceavoMes2 td div input , #doceavoMes2 td div textarea").attr("disabled", true);
+                                }
+                            });
+                            swal(
+                                'Buen Trabajo',
+                                'Los cambios en dasometria se ha guardado correctamente',
+                                'success'
+                            )
                         }
-                        else if (index == 1) {
-                            $scope.Dasometria6 = value;
-                            $("#sextoMes2 td div input , #sextoMes2 td div textarea").attr("disabled", true);
-                            $("#novenoMes2 td div input , #novenoMes2 td div textarea").attr("disabled", false);
-                        }
-                        else if (index == 2) {
-                            $scope.Dasometria7 = value;
-                            $("#novenoMes2 td div input , #novenoMes2 td div textarea").attr("disabled", true);
-                            $("#doceavoMes2 td div input , #doceavoMes2 td div textarea").attr("disabled", false);
-                        }
-                        else if (index == 3) {
-                            $scope.Dasometria8 = value;
-                            $("#doceavoMes2 td div input , #doceavoMes2 td div textarea").attr("disabled", true);
-                        }
-                    });
+                    })
+                } else {
                     swal(
-                        'Buen Trabajo',
-                        'Los cambios en dasometria se ha guardado correctamente',
+                        'Listo',
+                        'No se han guardado los cambios',
                         'success'
                     )
+
                 }
             })
+
         }
 
         $scope.ConsultarDasometria2 = function (Etapa) {
@@ -735,60 +783,81 @@
 
         $scope.GuardarDasometria3 = function (Etapa, form) {
             var numDasometria = 0;
-            if (!$("#tercerMes3 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria9;
-            }
+            swal({
+                title: 'Está seguro',
+                text: "Desea guardar los cambios en dasometría",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, guardar',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.value) {
+                    if (!$("#tercerMes3 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria9;
+                    }
 
-            if (!$("#sextoMes3 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria10;
-            }
+                    if (!$("#sextoMes3 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria10;
+                    }
 
-            if (!$("#novenoMes3 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria11;
-            }
+                    if (!$("#novenoMes3 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria11;
+                    }
 
-            if (!$("#doceavoMes3 td div input").attr("disabled")) {
-                $scope.objeto = $scope.Dasometria12;
-            }
+                    if (!$("#doceavoMes3 td div input").attr("disabled")) {
+                        $scope.objeto = $scope.Dasometria12;
+                    }
 
-            if ($scope.ValidacionesDasometria($scope.objeto)) {
-                return;
-            }
+                    if ($scope.ValidacionesDasometria($scope.objeto)) {
+                        return;
+                    }
 
-            $scope.objeto.Etapa = Etapa;
-            $scope.objeto.IdDetalleHuella = $rootScope.IdProyecto;
+                    $scope.objeto.Etapa = Etapa;
+                    $scope.objeto.IdDetalleHuella = $rootScope.IdProyecto;
 
-            ProyectoIntService.GuardarDasometria($scope.objeto).then(function (response) {
-                if (response.data.success) {
-                    var DasometriaValue = response.data.response;
-                    $.each(DasometriaValue, function (index, value) {
-                        if (index == 0) {
-                            $scope.Dasometria9 = value;
-                            $("#tercerMes3 td div input , #tercerMes3 td div textarea").attr("disabled", true);
-                            $("#sextoMes3 td div input , #sextoMes3 td div textarea").attr("disabled", false);
+                    ProyectoIntService.GuardarDasometria($scope.objeto).then(function (response) {
+                        if (response.data.success) {
+                            var DasometriaValue = response.data.response;
+                            $.each(DasometriaValue, function (index, value) {
+                                if (index == 0) {
+                                    $scope.Dasometria9 = value;
+                                    $("#tercerMes3 td div input , #tercerMes3 td div textarea").attr("disabled", true);
+                                    $("#sextoMes3 td div input , #sextoMes3 td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 1) {
+                                    $scope.Dasometria10 = value;
+                                    $("#sextoMes3 td div input , #sextoMes3 td div textarea").attr("disabled", true);
+                                    $("#novenoMes3 td div input , #novenoMes3 td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 2) {
+                                    $scope.Dasometria11 = value;
+                                    $("#novenoMes3 td div input , #novenoMes3 td div textarea").attr("disabled", true);
+                                    $("#doceavoMes3 td div input , #doceavoMes3 td div textarea").attr("disabled", false);
+                                }
+                                else if (index == 3) {
+                                    $scope.Dasometria12 = value;
+                                    $("#doceavoMes3 td div input , #doceavoMes3 td div textarea").attr("disabled", true);
+                                }
+                            });
+                            swal(
+                                'Buen Trabajo',
+                                'Los cambios en dasometria se ha guardado correctamente',
+                                'success'
+                            )
                         }
-                        else if (index == 1) {
-                            $scope.Dasometria10 = value;
-                            $("#sextoMes3 td div input , #sextoMes3 td div textarea").attr("disabled", true);
-                            $("#novenoMes3 td div input , #novenoMes3 td div textarea").attr("disabled", false);
-                        }
-                        else if (index == 2) {
-                            $scope.Dasometria11 = value;
-                            $("#novenoMes3 td div input , #novenoMes3 td div textarea").attr("disabled", true);
-                            $("#doceavoMes3 td div input , #doceavoMes3 td div textarea").attr("disabled", false);
-                        }
-                        else if (index == 3) {
-                            $scope.Dasometria12 = value;
-                            $("#doceavoMes3 td div input , #doceavoMes3 td div textarea").attr("disabled", true);
-                        }
-                    });
+                    })
+                } else {
                     swal(
-                        'Buen Trabajo',
-                        'Los cambios en dasometria se ha guardado correctamente',
+                        'Listo',
+                        'No se han guardado los cambios',
                         'success'
                     )
+
                 }
             })
+
         }
 
         $scope.ConsultarDasometria3 = function (Etapa) {
@@ -913,11 +982,10 @@
                             $("#doceavoMes4 td div input , #doceavoMes4 td div textarea").attr("disabled", true);
                         }
                     });
-                   
+
                 }
             })
         }
-
 
         ProyectoIntService.Porcentaje($rootScope.IdProyecto).then(function (response) {
             if (response.data.success) {
@@ -939,76 +1007,76 @@
                         background: "#4e600a"
                     });
                 }
-                    
-                    if ($scope.Porcentaje >= 40) {
-                        $scope.hrefMantenimiento1 = "#mantenimiento1";
-                        $("#Mantenimiento1").removeClass("disabled");
-                        $("#Mantenimiento1").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
 
-                        $scope.hrefMantenimiento2 = "#mantenimiento2";
-                        $("#Mantenimiento2").removeClass("disabled");
-                        $("#Mantenimiento2").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
+                if ($scope.Porcentaje >= 40) {
+                    $scope.hrefMantenimiento1 = "#mantenimiento1";
+                    $("#Mantenimiento1").removeClass("disabled");
+                    $("#Mantenimiento1").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
 
-                    }
-                    if ($scope.Porcentaje >= 60) {
-                        $scope.hrefMantenimiento1 = "#mantenimiento1";
-                        $("#Mantenimiento1").removeClass("disabled");
-                        $("#Mantenimiento1").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
+                    $scope.hrefMantenimiento2 = "#mantenimiento2";
+                    $("#Mantenimiento2").removeClass("disabled");
+                    $("#Mantenimiento2").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
 
-                        $scope.hrefMantenimiento2 = "#mantenimiento2";
-                        $("#Mantenimiento2").removeClass("disabled");
-                        $("#Mantenimiento2").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
-
-                        $scope.hrefMantenimiento3 = "#mantenimiento3";
-                        $("#Mantenimiento3").removeClass("disabled");
-                        $("#Mantenimiento3").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
-                    }
-                    if ($scope.Porcentaje >= 80) {
-                        $scope.hrefMantenimiento1 = "#mantenimiento1";
-                        $("#Mantenimiento1").removeClass("disabled");
-                        $("#Mantenimiento1").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
-
-                        $scope.hrefMantenimiento2 = "#mantenimiento2";
-                        $("#Mantenimiento2").removeClass("disabled");
-                        $("#Mantenimiento2").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
-
-                        $scope.hrefMantenimiento3 = "#mantenimiento3";
-                        $("#Mantenimiento3").removeClass("disabled");
-                        $("#Mantenimiento3").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
-
-                        $scope.hrefMantenimiento4 = "#mantenimiento4";
-                        $("#Mantenimiento4").removeClass("disabled");
-                        $("#Mantenimiento4").css({
-                            color: "#fff",
-                            cursor: "pointer"
-                        });
-                    }
-                    console.log($scope.Porcentaje);
                 }
+                if ($scope.Porcentaje >= 60) {
+                    $scope.hrefMantenimiento1 = "#mantenimiento1";
+                    $("#Mantenimiento1").removeClass("disabled");
+                    $("#Mantenimiento1").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+
+                    $scope.hrefMantenimiento2 = "#mantenimiento2";
+                    $("#Mantenimiento2").removeClass("disabled");
+                    $("#Mantenimiento2").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+
+                    $scope.hrefMantenimiento3 = "#mantenimiento3";
+                    $("#Mantenimiento3").removeClass("disabled");
+                    $("#Mantenimiento3").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+                }
+                if ($scope.Porcentaje >= 80) {
+                    $scope.hrefMantenimiento1 = "#mantenimiento1";
+                    $("#Mantenimiento1").removeClass("disabled");
+                    $("#Mantenimiento1").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+
+                    $scope.hrefMantenimiento2 = "#mantenimiento2";
+                    $("#Mantenimiento2").removeClass("disabled");
+                    $("#Mantenimiento2").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+
+                    $scope.hrefMantenimiento3 = "#mantenimiento3";
+                    $("#Mantenimiento3").removeClass("disabled");
+                    $("#Mantenimiento3").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+
+                    $scope.hrefMantenimiento4 = "#mantenimiento4";
+                    $("#Mantenimiento4").removeClass("disabled");
+                    $("#Mantenimiento4").css({
+                        color: "#fff",
+                        cursor: "pointer"
+                    });
+                }
+                console.log($scope.Porcentaje);
+            }
         })
 
         $scope.ConsultarPorcentaje = function () {
@@ -1054,7 +1122,7 @@
                             color: "#fff",
                             cursor: "pointer"
                         });
-                         $("#Mantenimiento1").hover({
+                        $("#Mantenimiento1").hover({
                             color: "#4e600a",
                             border: "none"
                         });
@@ -1119,11 +1187,11 @@
             })
         }
 
-        $scope.ValidacionesDasometria = function(validaciones){
+        $scope.ValidacionesDasometria = function (validaciones) {
             if (validaciones.Altura == "" || validaciones.Dap == "" || validaciones.Perimetro == "" || validaciones.Diametro == "") {
                 swal(
-                    'Algo salio mal',
-                    'Dejaste campos vacios',
+                    'Algo salió mal',
+                    'Algunos campos están vacíos',
                     'error'
                 )
                 return true;
@@ -1131,52 +1199,11 @@
             return false;
         }
 
-        //$scope.validationOptions = {
-        //    rules: {
-        //        altura: {
-        //            required: true,
-        //            number: true
-        //        },
-        //        dap: {
-        //            required: true,
-        //            number: true
-        //        },
-        //        perimetro: {
-        //            required: true,
-        //            number: true
-        //        },
-        //        diametro: {
-        //            required: true,
-        //            number: true
-        //        },
-        //        observaciones: {
-        //            required: true
-        //        },
-        //    },
-        //    messages: {
-        //        altura: {
-        //            required: "El campo es requerido",
-        //            number: "Deben ser numeros"
-        //        },
-        //        dap: {
-        //            required: "El campo es requerido",
-        //            number: "Deben ser numeros"
-        //        },
-        //        perimetro: {
-        //            required: "El campo es requerido",
-        //            number: "Deben ser numeros"
-        //        },
-        //        diametro: {
-        //            required: "El campo es requerido",
-        //            number: "Deben ser numeros"
-        //        },
-        //        observaciones: {
-        //            required: "El campo es requerido"
-        //        },
-        //    }
+        $scope.cerrarSesion = function () {
+            $cookies.remove("username");
+            $location.url("Login");
+        }
 
-        //};
-        
     }
 
     //inyectar las dependencias que se esta usando

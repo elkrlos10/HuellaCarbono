@@ -28,7 +28,10 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
             .otherwise({
                 redirecTo: "/"
             });
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }
 
     //Injectamos las dependencias que utilizamos

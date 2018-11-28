@@ -12,6 +12,6 @@ namespace Modelo.DTO
         public string Paramatro2 { get; set; }
         public string Paramatro3 { get; set; }
         public string Paramatro4 { get; set; }
-        public string Paramatro5 { get; set; }
-    }
+		public string Paramatro5 { get; set; }
+	}
 }

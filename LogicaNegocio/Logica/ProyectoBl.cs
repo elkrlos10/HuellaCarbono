@@ -737,15 +737,17 @@
 
 		}
 
-		//public Empresa ConsultarEmpresa(int IdDetalleHuella)
-		//{
-		//	var empresa = (from e in entity.Empresa
-		//					  where e.IdEmpresa == IdDetalleHuella
-		//					  && d.Etapa == Etapa
-		//					  select d).ToList();
+		public string ConsultarEmpresa(int IdDetalleHuella)
+		{
+			var empresa = (from d in entity.DetalleHuella
+						   join h in entity.Huella on d.IdHuella equals h.IdHuella
+						   join p in entity.Proyecto on h.IdProyecto equals p.IdProyecto
+						   join e in entity.Empresa on p.IdEmpresa equals e.IdEmpresa
+						   where d.IdDetalle == IdDetalleHuella
+						   select e.NombreEmpresa).FirstOrDefault();
 
-		//	return dasometria;
-		//}
+			return empresa;
+		}
 
 	}
 }

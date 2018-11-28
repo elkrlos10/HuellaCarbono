@@ -42,6 +42,13 @@
             return $http.post(UrlServices + "Proyecto/Porcentaje", item);
         }
 
+        service.ConsultarEmpresa = function (id) {
+            var item = {
+                Paramatro1: id
+            }
+            return $http.post(UrlServices + "Proyecto/ConsultarEmpresa", item);
+        }
+
         return service;
     }
 

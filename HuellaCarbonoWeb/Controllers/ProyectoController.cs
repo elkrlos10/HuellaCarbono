@@ -351,7 +351,23 @@ namespace HuellaCarbonoWeb.Controllers
 			}
 		}
 
+		[HttpPost]
+		public IHttpActionResult ConsultarEmpresa(ParametrosDTO oParametroDTO)
+		{
+			try
+			{
 
+				ProyectoBl oProyectoBl = new ProyectoBl();
+				var response = oProyectoBl.ConsultarEmpresa(int.Parse(oParametroDTO.Paramatro1));
+				
+				return Ok(new { success = true, response });
+			}
+			catch (Exception e)
+			{
+				return Ok(new { success = false, e.Message });
+
+			}
+		}
 
 
 

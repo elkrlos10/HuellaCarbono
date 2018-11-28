@@ -439,6 +439,10 @@
 
         $scope.ConsultarMantenimiento2 = function (Etapa) {
 
+
+            if ($("#Mantenimiento2").hasClass("disabled") && Etapa == 3) {
+                return;
+            }
             if (Etapa == 2) {
                 $scope.Objeto = $scope.Mantenimiento2;
             }
@@ -474,6 +478,7 @@
                             }
 
                         }
+
                     }
 
                     else {
@@ -553,10 +558,11 @@
                 }
             })
         }
-
-
-
+        
         $scope.ConsultarMantenimiento3 = function (Etapa) {
+            if ($("#Mantenimiento4").hasClass("disabled") && Etapa == 5) {
+                return;
+            }
             if (Etapa == 4) {
                 $scope.Objeto = $scope.Mantenimiento4;
             }
@@ -735,7 +741,6 @@
                         }
 
                     });
-
                 }
             })
         }
@@ -1278,10 +1283,30 @@
             $location.url("Login");
         }
 
+        setTimeout(function () {
+            ProyectoIntService.ConsultarEmpresa($rootScope.IdProyecto).then(function (response) {
+                if (response.data.success) {
+                    $scope.Empresa = response.data.response;
+                }
+            });
+        }, 500);
+
+        //$scope.validardasometria1 = function () {
+        //    if ($("#tercerMes td div input").attr("disabled")){
+        //        $("#btndasometria1").attr("disabled", true);
+        //    }
+
+        //    //if () {
+        //    //    
+        //    //}
+        //}
+
+
+
     }
 
     //inyectar las dependencias que se esta usando
-    proyectoInt.$inject = ["$scope", "$rootScope", "ProyectoIntService","$location", "$cookies", "$cookieStore"];
+    proyectoInt.$inject = ["$scope", "$rootScope", "ProyectoIntService", "$location", "$cookies", "$cookieStore"];
     //para declarar que este es mi controlador
     AngularApp.controller("ProyectoIntController", proyectoInt);
 

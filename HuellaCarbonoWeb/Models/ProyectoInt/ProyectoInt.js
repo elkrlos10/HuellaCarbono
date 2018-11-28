@@ -1149,6 +1149,10 @@
             if (response.data.success) {
                 $scope.Porcentaje = response.data.response;
 
+                //var campo = $scope.Dasometria4.Diametro;
+                //var campo2 = $("#doceavoMes2 td div input").val();
+                //var campo3 = $("#doceavoMes3 td div input").val();
+                
                 if ($scope.Porcentaje >= 20) {
                     $scope.hrefMantenimiento1 = "#mantenimiento1";
                     $("#Mantenimiento1").removeClass("disabled");
@@ -1245,6 +1249,10 @@
             ProyectoIntService.Porcentaje($rootScope.IdProyecto).then(function (response) {
                 if (response.data.success) {
                     $scope.Porcentaje = response.data.response;
+                    var campo = $scope.Dasometria4.Diametro;
+                    var campo2 = $("#doceavoMes2 td div input").val();
+                    var campo3 = $("#doceavoMes3 td div input").val();
+
                     if ($scope.Porcentaje >= 20) {
                         $scope.hrefMantenimiento1 = "#mantenimiento1";
                         $("#Mantenimiento1").removeClass("disabled");

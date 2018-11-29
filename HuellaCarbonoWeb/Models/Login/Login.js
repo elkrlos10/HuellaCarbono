@@ -9,6 +9,7 @@
         };
 
         $scope.ConsultarUsuario = function () {
+            waitingDialog.show();
             if ($scope.Usuario.NombreUsuario == null || $scope.Usuario.NombreUsuario == "") {
                 swal(
                     'Error',
@@ -31,6 +32,8 @@
               
                 LoginService.ConsultarUsuario($scope.Usuario).then(function (response) {
                     if (response.data.user) {
+                        waitingDialog.hide();
+
                         if (response.data.usuario.TipoUsuario !=3) {
                             swal(
                                 'Error',

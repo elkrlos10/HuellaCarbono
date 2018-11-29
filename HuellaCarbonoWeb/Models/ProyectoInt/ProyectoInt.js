@@ -439,7 +439,6 @@
 
         $scope.ConsultarMantenimiento2 = function (Etapa) {
 
-
             if ($("#Mantenimiento2").hasClass("disabled") && Etapa == 3) {
                 return;
             }
@@ -702,8 +701,9 @@
                             if (campo.length > 0) {
                                 $("#BtnDasometria1").attr("disabled", true);
                                 $("#BtnDasometria1").removeClass("btnFases");
-                                $("#BtnDasometria1").addClass("btnFases2");
+                                $("#BtnDasometria1").addClass("btnFases2 dasoBlock");
                             }
+                            $scope.consultarEmpresa();
                         }
                     })
                 } else {
@@ -728,7 +728,7 @@
                 if (campo.length > 0) {
                     $("#BtnDasometria1").attr("disabled", true);
                     $("#BtnDasometria1").removeClass("btnFases");
-                    $("#BtnDasometria1").addClass("btnFases2");
+                    $("#BtnDasometria1").addClass("btnFases2 dasoBlock");
                 }
             }, 200)
 
@@ -831,8 +831,9 @@
                             if (campo.length > 0) {
                                 $("#BtnDasometria2").attr("disabled", true);
                                 $("#BtnDasometria2").removeClass("btnFases");
-                                $("#BtnDasometria2").addClass("btnFases2");
+                                $("#BtnDasometria2").addClass("btnFases2 dasoBlock");
                             }
+                            $scope.consultarEmpresa();
                         }
                     })
                 } else {
@@ -857,7 +858,7 @@
                 if (campo.length > 0) {
                     $("#BtnDasometria2").attr("disabled", true);
                     $("#BtnDasometria2").removeClass("btnFases");
-                    $("#BtnDasometria2").addClass("btnFases2");
+                    $("#BtnDasometria2").addClass("btnFases2 dasoBlock");
                 }
             }, 200)
             ProyectoIntService.ConsultarDasometria(item).then(function (response) {
@@ -959,8 +960,9 @@
                             if (campo.length > 0) {
                                 $("#BtnDasometria3").attr("disabled", true);
                                 $("#BtnDasometria3").removeClass("btnFases");
-                                $("#BtnDasometria3").addClass("btnFases2");
+                                $("#BtnDasometria3").addClass("btnFases2 dasoBlock");
                             }
+                            $scope.consultarEmpresa();
                         }
                     })
                 } else {
@@ -969,6 +971,7 @@
                         'No se han guardado los cambios',
                         'success'
                     )
+                    
 
                 }
             })
@@ -985,7 +988,7 @@
                 if (campo.length > 0) {
                     $("#BtnDasometria3").attr("disabled", true);
                     $("#BtnDasometria3").removeClass("btnFases");
-                    $("#BtnDasometria3").addClass("btnFases2");
+                    $("#BtnDasometria3").addClass("btnFases2 dasoBlock");
                 }
             }, 200)
             ProyectoIntService.ConsultarDasometria(item).then(function (response) {
@@ -1088,8 +1091,9 @@
                             if (campo.length > 0) {
                                 $("#BtnDasometria4").attr("disabled", true);
                                 $("#BtnDasometria4").removeClass("btnFases");
-                                $("#BtnDasometria4").addClass("btnFases2");
+                                $("#BtnDasometria4").addClass("btnFases2 dasoBlock");
                             }
+                            $scope.consultarEmpresa();
                         }
                     })
                 } else {
@@ -1102,7 +1106,7 @@
                 }
             })
         }
-
+      
         $scope.ConsultarDasometria4 = function (Etapa) {
             var item = {
                 Paramatro1: $rootScope.IdProyecto,
@@ -1113,7 +1117,7 @@
                 if (campo.length > 0) {
                     $("#BtnDasometria4").attr("disabled", true);
                     $("#BtnDasometria4").removeClass("btnFases");
-                    $("#BtnDasometria4").addClass("btnFases2");
+                    $("#BtnDasometria4").addClass("btnFases2 dasoBlock");
                 }
             }, 200)
             ProyectoIntService.ConsultarDasometria(item).then(function (response) {
@@ -1144,114 +1148,10 @@
                 }
             })
         }
-
-        ProyectoIntService.Porcentaje($rootScope.IdProyecto).then(function (response) {
-            if (response.data.success) {
-                $scope.Porcentaje = response.data.response;
-
-                //var campo = $scope.Dasometria4.Diametro;
-                //var campo2 = $("#doceavoMes2 td div input").val();
-                //var campo3 = $("#doceavoMes3 td div input").val();
-                
-                if ($scope.Porcentaje >= 20) {
-                    $scope.hrefMantenimiento1 = "#mantenimiento1";
-                    $("#Mantenimiento1").removeClass("disabled");
-                    $("#Mantenimiento1").addClass("btnFaseNew");
-
-                    $("#Mantenimiento1").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-                  
-                }
-                if ($scope.Porcentaje >= 40) {
-                    $scope.hrefMantenimiento1 = "#mantenimiento1";
-                    $("#Mantenimiento1").removeClass("disabled");
-                    $("#Mantenimiento1").addClass("btnFaseNew");
-                    $("#Mantenimiento1").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                    $scope.hrefMantenimiento2 = "#mantenimiento2";
-                    $("#Mantenimiento2").removeClass("disabled");
-                    $("#Mantenimiento2").addClass("btnFaseNew");
-                    $("#Mantenimiento2").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                }
-                if ($scope.Porcentaje >= 60) {
-                    $scope.hrefMantenimiento1 = "#mantenimiento1";
-                    $("#Mantenimiento1").removeClass("disabled");
-                    $("#Mantenimiento1").addClass("btnFaseNew");
-                    $("#Mantenimiento1").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                    $scope.hrefMantenimiento2 = "#mantenimiento2";
-                    $("#Mantenimiento2").removeClass("disabled");
-                    $("#Mantenimiento2").addClass("btnFaseNew");
-                    $("#Mantenimiento2").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                    $scope.hrefMantenimiento3 = "#mantenimiento3";
-                    $("#Mantenimiento3").addClass("btnFaseNew");
-                    $("#Mantenimiento3").removeClass("disabled");
-                    $("#Mantenimiento3").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-                }
-                if ($scope.Porcentaje >= 80) {
-
-                    $scope.hrefMantenimiento1 = "#mantenimiento1";
-                    $("#Mantenimiento1").removeClass("disabled");
-                    $("#Mantenimiento1").addClass("btnFaseNew");
-                    $("#Mantenimiento1").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                    $scope.hrefMantenimiento2 = "#mantenimiento2";
-                    $("#Mantenimiento2").removeClass("disabled");
-                    $("#Mantenimiento2").addClass("btnFaseNew");
-                    $("#Mantenimiento2").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                    $scope.hrefMantenimiento3 = "#mantenimiento3";
-                    $("#Mantenimiento3").removeClass("disabled");
-                    $("#Mantenimiento3").addClass("btnFaseNew");
-                    $("#Mantenimiento3").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-
-                    $scope.hrefMantenimiento4 = "#mantenimiento4";
-                    $("#Mantenimiento4").addClass("btnFaseNew");
-                    $("#Mantenimiento4").removeClass("disabled");
-                    $("#Mantenimiento4").css({
-                        color: "#fff",
-                        cursor: "pointer"
-                    });
-                }
-
-            }
-        })
-
-        $scope.ConsultarPorcentaje = function () {
+        setTimeout(function () {
             ProyectoIntService.Porcentaje($rootScope.IdProyecto).then(function (response) {
                 if (response.data.success) {
                     $scope.Porcentaje = response.data.response;
-                    var campo = $scope.Dasometria4.Diametro;
-                    var campo2 = $("#doceavoMes2 td div input").val();
-                    var campo3 = $("#doceavoMes3 td div input").val();
 
                     if ($scope.Porcentaje >= 20) {
                         $scope.hrefMantenimiento1 = "#mantenimiento1";
@@ -1264,7 +1164,7 @@
                         });
 
                     }
-                    if ($scope.Porcentaje >= 40) {
+                    if ($scope.Porcentaje >= 40 && $scope.cantidadDasometria == "4") {
                         $scope.hrefMantenimiento1 = "#mantenimiento1";
                         $("#Mantenimiento1").removeClass("disabled");
                         $("#Mantenimiento1").addClass("btnFaseNew");
@@ -1282,7 +1182,7 @@
                         });
 
                     }
-                    if ($scope.Porcentaje >= 60) {
+                    if ($scope.Porcentaje >= 60 && $scope.cantidadDasometria == "8") {
                         $scope.hrefMantenimiento1 = "#mantenimiento1";
                         $("#Mantenimiento1").removeClass("disabled");
                         $("#Mantenimiento1").addClass("btnFaseNew");
@@ -1307,7 +1207,107 @@
                             cursor: "pointer"
                         });
                     }
-                    if ($scope.Porcentaje >= 80) {
+                    if ($scope.Porcentaje >= 80 && $scope.cantidadDasometria == "12") {
+
+                        $scope.hrefMantenimiento1 = "#mantenimiento1";
+                        $("#Mantenimiento1").removeClass("disabled");
+                        $("#Mantenimiento1").addClass("btnFaseNew");
+                        $("#Mantenimiento1").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                        $scope.hrefMantenimiento2 = "#mantenimiento2";
+                        $("#Mantenimiento2").removeClass("disabled");
+                        $("#Mantenimiento2").addClass("btnFaseNew");
+                        $("#Mantenimiento2").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                        $scope.hrefMantenimiento3 = "#mantenimiento3";
+                        $("#Mantenimiento3").removeClass("disabled");
+                        $("#Mantenimiento3").addClass("btnFaseNew");
+                        $("#Mantenimiento3").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                        $scope.hrefMantenimiento4 = "#mantenimiento4";
+                        $("#Mantenimiento4").addClass("btnFaseNew");
+                        $("#Mantenimiento4").removeClass("disabled");
+                        $("#Mantenimiento4").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+                    }
+
+                }
+            })
+        }, 1000);
+        
+
+        $scope.ConsultarPorcentaje = function () {
+            ProyectoIntService.Porcentaje($rootScope.IdProyecto).then(function (response) {
+                if (response.data.success) {
+                    
+                    $scope.Porcentaje = response.data.response;
+                  
+                    if ($scope.Porcentaje >= 20 ) {
+                        $scope.hrefMantenimiento1 = "#mantenimiento1";
+                        $("#Mantenimiento1").removeClass("disabled");
+                        $("#Mantenimiento1").addClass("btnFaseNew");
+
+                        $("#Mantenimiento1").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                    }
+                    if ($scope.Porcentaje >= 40 && $scope.cantidadDasometria == "4") {
+                        $scope.hrefMantenimiento1 = "#mantenimiento1";
+                        $("#Mantenimiento1").removeClass("disabled");
+                        $("#Mantenimiento1").addClass("btnFaseNew");
+                        $("#Mantenimiento1").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                        $scope.hrefMantenimiento2 = "#mantenimiento2";
+                        $("#Mantenimiento2").removeClass("disabled");
+                        $("#Mantenimiento2").addClass("btnFaseNew");
+                        $("#Mantenimiento2").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                    }
+                    if ($scope.Porcentaje >= 60 && $scope.cantidadDasometria == "8") {
+                        $scope.hrefMantenimiento1 = "#mantenimiento1";
+                        $("#Mantenimiento1").removeClass("disabled");
+                        $("#Mantenimiento1").addClass("btnFaseNew");
+                        $("#Mantenimiento1").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                        $scope.hrefMantenimiento2 = "#mantenimiento2";
+                        $("#Mantenimiento2").removeClass("disabled");
+                        $("#Mantenimiento2").addClass("btnFaseNew");
+                        $("#Mantenimiento2").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                        $scope.hrefMantenimiento3 = "#mantenimiento3";
+                        $("#Mantenimiento3").addClass("btnFaseNew");
+                        $("#Mantenimiento3").removeClass("disabled");
+                        $("#Mantenimiento3").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+                    }
+                    if ($scope.Porcentaje >= 80 && $scope.cantidadDasometria == "12") {
 
                         $scope.hrefMantenimiento1 = "#mantenimiento1";
                         $("#Mantenimiento1").removeClass("disabled");
@@ -1369,14 +1369,82 @@
             $cookies.remove("username");
             $location.url("Login");
         }
+        
+        $scope.consultarEmpresa = function(){
+            ProyectoIntService.ConsultarEmpresa($rootScope.IdProyecto).then(function (response) {
+                if (response.data.success) {
+                    $scope.Empresa = response.data.response.Paramatro1;
+                    $scope.cantidadDasometria = response.data.response.Paramatro2;
+                    if (response.data.response.Paramatro2 == "4") {
+                        $scope.hrefMantenimiento2 = "#mantenimiento2";
+                        $("#Mantenimiento2").removeClass("disabled");
+                        $("#Mantenimiento2").addClass("btnFaseNew");
+                        $("#Mantenimiento2").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                    }
+
+                    if (response.data.response.Paramatro2 == "8") {
+                        $scope.hrefMantenimiento3 = "#mantenimiento3";
+                        $("#Mantenimiento3").removeClass("disabled");
+                        $("#Mantenimiento3").addClass("btnFaseNew");
+                        $("#Mantenimiento3").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+                    }
+                    if (response.data.response.Paramatro2 == "12") {
+                        $scope.hrefMantenimiento4 = "#mantenimiento4";
+                        $("#Mantenimiento4").addClass("btnFaseNew");
+                        $("#Mantenimiento4").removeClass("disabled");
+                        $("#Mantenimiento4").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+                    }
+                }
+            });
+        }
 
         setTimeout(function () {
             ProyectoIntService.ConsultarEmpresa($rootScope.IdProyecto).then(function (response) {
                 if (response.data.success) {
-                    $scope.Empresa = response.data.response;
+                    $scope.Empresa = response.data.response.Paramatro1;
+                    $scope.cantidadDasometria = response.data.response.Paramatro2;
+                    if (response.data.response.Paramatro2== "4") {
+                        $scope.hrefMantenimiento2 = "#mantenimiento2";
+                        $("#Mantenimiento2").removeClass("disabled");
+                        $("#Mantenimiento2").addClass("btnFaseNew");
+                        $("#Mantenimiento2").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+
+                    }
+
+                    if (response.data.response.Paramatro2 == "8") {
+                        $scope.hrefMantenimiento3 = "#mantenimiento3";
+                        $("#Mantenimiento3").removeClass("disabled");
+                        $("#Mantenimiento3").addClass("btnFaseNew");
+                        $("#Mantenimiento3").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+                    }
+                    if (response.data.response.Paramatro2 == "12") {
+                        $scope.hrefMantenimiento4 = "#mantenimiento4";
+                        $("#Mantenimiento4").addClass("btnFaseNew");
+                        $("#Mantenimiento4").removeClass("disabled");
+                        $("#Mantenimiento4").css({
+                            color: "#fff",
+                            cursor: "pointer"
+                        });
+                    }
                 }
             });
-        }, 500);
+        }, 1000);
 
 
 

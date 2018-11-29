@@ -30,7 +30,7 @@
 			entity.SaveChanges();
 			oProyecto.NombreEmpresa = empresa.NombreEmpresa;
 			oProyecto.IdProyecto = proyecto.IdProyecto;
-            oProyecto.TipoEmpresa = empresa.TipoEmpresa;
+			oProyecto.TipoEmpresa = empresa.TipoEmpresa;
 
 			return Task.FromResult<ProyectoDTO>(oProyecto);
 		}
@@ -383,7 +383,7 @@
 							 {
 								 IdHuella = h.IdHuella,
 								 IdProyecto = h.IdProyecto,
-								 IdDetalle= d.IdDetalle,
+								 IdDetalle = d.IdDetalle,
 								 Fecha = h.Fecha,
 								 TipoArbol = h.TipoArbol,
 								 Zona = h.Zona,
@@ -411,7 +411,7 @@
 			{
 				var index = item1.i;
 				proyectos[index].PorcentajeDashboard = Porcentaje(item1.value.IdProyecto);
-				var pruebaPor =  Porcentaje(item1.value.IdProyecto);
+				var pruebaPor = Porcentaje(item1.value.IdProyecto);
 
 			}
 
@@ -451,7 +451,7 @@
 							 {
 								 IdHuella = h.IdHuella,
 								 IdProyecto = h.IdProyecto,
-								 IdDetalle=d.IdDetalle,
+								 IdDetalle = d.IdDetalle,
 								 Fecha = h.Fecha,
 								 TipoArbol = h.TipoArbol,
 								 Zona = h.Zona,
@@ -565,7 +565,7 @@
 
 		public List<Dasometria> GuardarDasometria(Dasometria oDasometria)
 		{
-		
+
 			oDasometria.Fecha = DateTime.Now;
 			entity.Dasometria.Add(oDasometria);
 			entity.SaveChanges();
@@ -737,7 +737,7 @@
 
 		}
 
-		public string ConsultarEmpresa(int IdDetalleHuella)
+		public ParametrosDTO ConsultarEmpresa(int IdDetalleHuella)
 		{
 			var empresa = (from d in entity.DetalleHuella
 						   join h in entity.Huella on d.IdHuella equals h.IdHuella
@@ -746,7 +746,16 @@
 						   where d.IdDetalle == IdDetalleHuella
 						   select e.NombreEmpresa).FirstOrDefault();
 
-			return empresa;
+
+			var dasometria = (from d in entity.Dasometria
+							  where d.IdDetalleHuella == IdDetalleHuella
+							  select d).Count();
+			var Parametros = new ParametrosDTO
+			{
+				Paramatro1 = empresa,
+				Paramatro2 = dasometria.ToString()
+			};
+			return Parametros;
 		}
 
 	}

@@ -12,6 +12,7 @@ var waitingDialog = waitingDialog || (function ($) {
         '</div></div></div>');
 
 
+
     return {
         /**
 		 * Opens our dialog
@@ -21,11 +22,6 @@ var waitingDialog = waitingDialog || (function ($) {
 		 * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
 		 */
         show: function (message, options) {
-            FindBrowser();
-
-            if (BrowserID == 1) {
-                return;
-            }
             // Assigning defaults
             if (typeof options === 'undefined') {
                 options = {};
@@ -59,11 +55,6 @@ var waitingDialog = waitingDialog || (function ($) {
 		 * Closes dialog
 		 */
         hide: function () {
-            FindBrowser();
-
-            if (BrowserID == 1) {
-                return;
-            }
             $dialog.modal('hide');
         }
     };

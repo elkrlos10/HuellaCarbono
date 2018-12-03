@@ -550,7 +550,7 @@
 
                     }
                     swal(
-                        'Buen Trabajo',
+                        'Buen trabajo',
                         'Los cambios se ha guardado correctamente',
                         'success'
                     )

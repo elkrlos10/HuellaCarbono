@@ -1,5 +1,6 @@
-﻿var UrlServices = "http://localhost:63142/api/";
+﻿//var UrlServices = "http://localhost:63142/api/";
 //var UrlServices = "http://10.3.240.88:8089/api/";
+var UrlServices = "https://www.huellacarbonosena.com";
 
 
 var waitingDialog = waitingDialog || (function ($) {

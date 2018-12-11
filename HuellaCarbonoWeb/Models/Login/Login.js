@@ -57,7 +57,7 @@
 
                         }
                     } else {
-
+                        waitingDialog.hide();
                         swal(
                             'Error',
                             'El usuario o la contraseña es incorrecta',

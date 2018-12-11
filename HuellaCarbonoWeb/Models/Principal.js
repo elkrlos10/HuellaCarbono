@@ -70,7 +70,8 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
                 $location.url("/Login");
                 return false;
             } else {
-                if ($location.path() == "/Login" && $rootScope.globals.currentUser.tipousuario == 3) {
+                //if ($location.path() == "/Login" && $rootScope.globals.currentUser.tipousuario == 3)
+                if ($rootScope.globals.currentUser.tipousuario == 3) {
                     $location.url("/Dashboard");
 
                     return false;

@@ -35,17 +35,17 @@ namespace LogicaNegocio.Logica
                              NombreEmpresa = e.NombreEmpresa
                          }).FirstOrDefault();
 
+            if (Datos == null)
+            {
+                return null;
+            }
+
             var Can_Proyectos = (from p in entity.Proyecto
                                  join h in entity.Huella on p.IdProyecto equals h.IdProyecto
                                  join d in entity.DetalleHuella on h.IdHuella equals d.IdHuella
                                  where p.IdEmpresa == Datos.IdEmpresa
                                  select d).ToList();
 
-
-            if (Datos == null)
-            {
-                return null;
-            }
 
             if (Can_Proyectos.Count == 0)
             {

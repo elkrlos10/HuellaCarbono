@@ -21,6 +21,11 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
             controller: "DashboardController"
         })
 
+        $routeProvider.when("/Politicas", {
+            templateUrl: "Views/PoliticasPrivacidad.html",
+            controller: "PoliticasController"
+        })
+
         $routeProvider.when("/ProyectoInt", {
             templateUrl: "Views/ProyectoInt.html",
             controller: "ProyectoIntController"
@@ -62,7 +67,7 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
             $rootScope.globals = $cookieStore.get('username');
           
 
-            if ($location.path() == "/Encuesta") {
+            if ($location.path() == "/Encuesta" || $location.path() == "/Politicas") {
                 return false;
             }
 

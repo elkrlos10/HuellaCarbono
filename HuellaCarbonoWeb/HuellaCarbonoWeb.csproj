@@ -162,6 +162,7 @@
     <Content Include="Models\General.js" />
     <Content Include="Models\Login\Login.js" />
     <Content Include="Models\Login\LoginService.js" />
+    <Content Include="Models\Politicas\Politicas.js" />
     <Content Include="Models\Principal.js" />
     <Content Include="Models\ProyectoInt\ProyectoInt.js" />
     <Content Include="Models\ProyectoInt\ProyectoIntService.js" />
@@ -193,6 +194,7 @@
     <Content Include="Views\Dashboard.html" />
     <Content Include="Views\Encuesta.html" />
     <Content Include="Views\Login.html" />
+    <Content Include="Views\PoliticasPrivacidad.html" />
     <Content Include="Views\ProyectoInt.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

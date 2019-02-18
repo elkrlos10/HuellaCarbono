@@ -65,7 +65,8 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
 
             $rootScope.globals = $cookieStore.get('username');
-          
+            //$rootScope.Id = $cookieStore.get('IdDetalleHuella');
+            //console.log($rootScope.Id);
 
             if ($location.path() == "/Encuesta" || $location.path() == "/Politicas") {
                 return false;
@@ -79,13 +80,14 @@ var AngularApp = angular.module("HuellaApp", ["ngRoute", "rzModule", "ngMaterial
                 if ($rootScope.globals.currentUser.tipousuario == 3) {
                     $location.url("/Dashboard");
 
-                    return false;
+                    if ($location.path() == "/Dashboard" && $rootScope.Id != undefined) {
+                        $location.url("/ProyectoInt");
+                    }
+
+                   
                 }
 
-                else if ($location.path() == "/Dashboard" && $rootScope.Id != undefined) {
-                    $location.url("/ProyectoInt");
-                    
-                }
+                
             }
 
         });
